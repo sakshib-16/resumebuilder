@@ -1,0 +1,8 @@
+.nav {
+    height: 7vh;
+    background: #F9F9F9;
+    box-shadow: 10px 4px 29px rgba(191, 191, 191, 0.25);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

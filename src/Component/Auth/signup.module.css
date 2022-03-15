@@ -1,0 +1,24 @@
+.signup {
+    display: flex;
+}
+
+.signin_msg {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 20px;
+    font-family: 'Inter', sans-serif;
+}
+
+.signin_msg a {
+    margin-left: 4px;
+    color: #1EA5FC;
+    text-decoration: none;
+}
+
+.signin_msg p {
+    margin-right: 4px;
+    color: #1A1A1A;
+}
