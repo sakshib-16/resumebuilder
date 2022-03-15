@@ -4,3 +4,7 @@
     background: #FEFEFE;
     border: 1px solid #1EA5FC;
 }
+
+.create_resume {
+    display: flex;
+}
