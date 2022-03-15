@@ -1,11 +1,13 @@
 import logo from './logo.svg';
 import './App.css';
-import Template1 from './Component/Templates/Template1/Template1';
+// import { PersonalDetails } from './Component/Container/Details/PersonalDetails';
+import { Experience } from './Component/Container/Details/Experience';
 
 function App() {
   return (
-    <div className="App">
-      <Template1/>
+    <div className="">
+      {/* <PersonalDetails /> */}
+      <Experience/>
     </div>
   );
 }
