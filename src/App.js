@@ -12,11 +12,14 @@ import { CreateResume } from './Component/Container/CreateResume/CreateResume';
 function App() {
   return (
     <div className="App">
+     
       {/* <Sidebar/> */}
       {/* <Template1 /> */}
-      <Navigation />
-      {/* <Auth /> */}
-      <CreateResume />
+      {/* <Navigation /> */}
+          <Auth />
+         {/* <CreateResume/> */}
+
+
     </div>
   );
 }
