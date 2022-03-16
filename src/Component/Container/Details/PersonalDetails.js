@@ -1,5 +1,7 @@
 import React from 'react'
 import classes from './Detail.module.css'
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+
 
 export const PersonalDetails = () => {
   return (
@@ -25,8 +27,10 @@ export const PersonalDetails = () => {
              <input type="text" id="lname" name="lastname" placeholder="Country"/>
           </div>
 
-          <div className={(classes.row,classes.btn)}>
-          <input type="submit" value="Submit" />
+        <div className={(classes.row,classes.btn)}>
+            <div className={classes.submitBtn}>Submit <ArrowForwardIcon/> 
+            </div>
+           
           </div>
     </div>
     </div>

@@ -1,12 +1,17 @@
 import React, { useState } from 'react'
 import classes from './form.module.css'
 import VisibilityIcon from '@mui/icons-material/Visibility';
+import logo from './resumelogo.png'
+
 
 export const Form = ({btn, msg}) => {
     const [showPassword, setShowPassword] = useState(false)
     const [reShowPassword, setReShowPassword] = useState(false)
   return (
     <div className={classes.form}>
+      <div className={classes.logoImage}>
+        <img src={logo}/>
+      </div>
       <p className={classes.login_msg}>{msg}</p>
     <form>
       <label className={classes.label}>Login</label>

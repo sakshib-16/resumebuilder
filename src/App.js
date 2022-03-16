@@ -7,18 +7,15 @@ import HomePage from './Component/Container/Homepage/Homepage'
 import { Sidebar } from './Component/Container/Details/Sidebar/Sidebar';
 import { Auth } from './Component/Auth/Auth';
 import { Navigation } from './Component/Container/Navigation/Navigation';
+import { PersonalDetails } from './Component/Container/Details/PersonalDetails';
 
 
 function App() {
   return (
     <div className="App">
-      {/* <HomePage/> */}
       {/* <Sidebar/> */}
-      {/* <Template1 /> */}
-      <Navigation />
-        <Auth />
-         {/* <PersonalDetails /> */}
-      <Experience/>
+      <Auth />
+      <PersonalDetails/>
     </div>
   );
 }

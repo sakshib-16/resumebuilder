@@ -1,4 +1,4 @@
-input[type="text"] {
+.innerContainer input[type="text"] {
   width: 90%;
   padding: 20px;
   outline: 0;
@@ -15,7 +15,7 @@ input[type="text"] {
 .container {
   border-radius: 5px;
   background: #e5e5e5;
-  padding: 40px;
+  padding: 65px;
 }
 .container h1 {
   font-family: "Inter";
@@ -69,7 +69,7 @@ input[type="text"] {
   border-radius: 10.7993px;
   margin-top: 6px;
 }
-::placeholder {
+.innerContainer ::placeholder {
   font-family: "Inter";
   font-style: normal;
   font-weight: 500;
@@ -79,7 +79,7 @@ input[type="text"] {
   color: #7d7d7d;
   margin-bottom: 2px;
 }
-.btn input {
+.btn .submitBtn {
   background-color: #1ea5fc;
   margin: 20px 10px 10px 0px;
   color: white;
@@ -87,9 +87,14 @@ input[type="text"] {
   border: none;
   border-radius: 4px;
   cursor: pointer;
+  font-size: 16px;
+  font-weight: 700;
+  display: flex;
+  float: right;
 }
 .btn {
-  text-align: right;
+  float: right;
+  margin: 10px;
 }
 
 /* Experience styling */
@@ -98,13 +103,51 @@ input[type="text"] {
 }
 .disFlex {
   display: flex;
+  width: 49%;
+}
+.disFlex input {
+  width: 77%;
+  color: #7d7d7d;
+}
+.ruleIcon {
+  margin-top: 20px;
+  width: 50px;
+  color: #7d7d7d;
+}
+.checkbox {
+  float: right;
+  width: 30%;
+  padding: 20px;
+  color: #7d7d7d;
+  font-weight: 500;
+  font-size: 14px;
+  font-family: "Inter";
+}
+.arrowIcon {
+  color: #7d7d7d;
+}
+.borderBox h2 {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500 !important;
+  font-size: 25px;
+  margin: 0 auto;
+  padding: 20px;
+  color: #1ea5fc;
+  display: flex;
+  justify-content: center;
+}
+.borderBox {
+  width: 70%;
+  margin: 0 auto;
+  border: 1px dashed #9f9f9f;
+  box-sizing: border-box;
+  border-radius: 8px;
+}
+.addIcon {
+  font-size: 37px;
+  margin-right: 16px;
 }
 /* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
 @media screen and (max-width: 600px) {
-  .col-25,
-  .col-75,
-  input[type="submit"] {
-    width: 100%;
-    margin-top: 0;
-  }
 }
