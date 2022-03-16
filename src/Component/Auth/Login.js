@@ -1,6 +1,6 @@
 import React from 'react'
 import { Form } from './Form'
-import classes from './login.module.css'
+import classes from './auth.module.css'
 
 export const Login = ({btn, msg}) => {
   return (
