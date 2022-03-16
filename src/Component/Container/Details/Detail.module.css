@@ -1,5 +1,5 @@
 .innerContainer input[type="text"] {
-  width: 90%;
+  width: 92%;
   padding: 20px;
   outline: 0;
   border-width: 0 0 1px;
@@ -13,9 +13,9 @@
 }
 
 .container {
+  width: 75%;
   border-radius: 5px;
   background: #e5e5e5;
-  padding: 65px;
 }
 .container h1 {
   font-family: "Inter";
@@ -111,7 +111,7 @@
 }
 .ruleIcon {
   margin-top: 20px;
-  width: 50px;
+  width: 60px;
   color: #7d7d7d;
 }
 .checkbox {
@@ -147,6 +147,9 @@
 .addIcon {
   font-size: 37px;
   margin-right: 16px;
+}
+.downarrow {
+  display: flex;
 }
 /* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
 @media screen and (max-width: 600px) {

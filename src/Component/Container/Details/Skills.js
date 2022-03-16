@@ -11,8 +11,10 @@ export const Skills = () => {
       
           <input type="text" placeholder="Skills (E.g. Design, React, MySQL)" />
          
-          <div className={(classes.row,classes.btn)}>
-          <input type="submit" value="Submit" />
+            <div className={(classes.row,classes.btn)}>
+            <div className={classes.submitBtn}>Submit
+                 <ArrowForwardIcon/> 
+            </div>  
           </div>
     </div>
     </div>
