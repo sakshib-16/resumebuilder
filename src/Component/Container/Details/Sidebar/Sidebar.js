@@ -8,7 +8,7 @@ export const Sidebar = () => {
     <div className={classes.sidebar}>
     <div className={classes.list}>
       <ul>
-     <li> <a href="#">Personal Details</a></li>
+       <li> <a href="#">Personal Details</a></li>
        <li> <a href="">Experience</a> </li>
        <li><a href="">Education</a> </li>
         <li><a href="">Skills</a> </li>

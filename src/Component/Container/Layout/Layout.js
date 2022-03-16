@@ -1,4 +1,5 @@
 import React from 'react'
+import { Certificates } from '../Details/Certificates'
 import { Education } from '../Details/Education'
 import { Experience } from '../Details/Experience'
 import { PersonalDetails } from '../Details/PersonalDetails'
@@ -7,11 +8,14 @@ import classes from './Layout.module.css'
 
 export const Layout = () => {
     return (
-      <>
+        <>
+            
     <div className={classes.wrapper}>
-          <Sidebar />
+                <Sidebar />
+                {/* <Experience/> */}
           {/* <PersonalDetails /> */}
-          <Education/>
+                {/* <Certificates/> */}
+                <Education/>
             </div>
             </>
   )

@@ -15,6 +15,7 @@
   text-align: left;
   text-decoration: none;
   padding: 12px;
+  list-style: none;
 }
 .list li a {
   color: #4d4b4b;
@@ -24,8 +25,13 @@
   font-family: "Inter";
   font-style: normal;
 }
-.sidebar .list li a:hover {
+.sidebar .list li:hover {
   color: #4d4b4b;
   padding: 12px;
   background: #dfebff;
+}
+.list ul li:before {
+  content: "\2022";
+  padding: 0 10px 0 0;
+  font-size: 20px;
 }
