@@ -1,5 +1,6 @@
 import React from "react";
 import classes from "./homepage.module.css";
+import {Link } from "react-router-dom";
 
 const HomePage = () => {
   return (
@@ -11,11 +12,11 @@ const HomePage = () => {
             Build your resume on our website and get a free analysis report your
             our AI algorithm
           </p>
-            <button className={classes.continue}>
-                continue
-            </button>
+          <Link to="/CreateResume"><button className={classes.continue}>
+                Continue
+            </button></Link>
         </div>
-          <div className={classes.img}>image</div>
+          <div className={classes.img}></div>
       </div>
     </>
   );

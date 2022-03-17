@@ -25,21 +25,26 @@ export const Experience = () => {
           <input type="text" id="lname" name="lastname" placeholder="Company or Project" />
           <div className={classes.calender}>
             <div className={classes.disFlex}>
-              
+              <div className={classes.coverDiv}>
               <Datetime dateFormat="MM" timeFormat={false} renderYear={false} closeOnSelect inputProps={{placeholder:"Month"}} />
-                <span><ArrowDropDownIcon className={classes.arrowIcon} /></span> 
-               
+                <span><ArrowDropDownIcon className={classes.arrowIcon} /></span>
+                </div>
+              
                 <Datetime dateFormat="YYYY" timeFormat={false} renderMonth={false} closeOnSelect inputProps={{ placeholder: "Year" }} />
-               <div><ArrowDropDownIcon className={ classes.arrowIcon}/></div>   
+                <div><ArrowDropDownIcon className={classes.arrowIcon} /></div>   
+                </div>
              <div className={classes.ruleIcon}><HorizontalRuleIcon  style={{ fontSize: 10 }}/></div>
-            </div>
+            
                
             <div className={classes.disFlex}>
+               <div className={classes.coverDiv}>
              <Datetime dateFormat="MM" timeFormat={false} renderYear={false} closeOnSelect inputProps={{placeholder:"Month"}}/>
-                <div><ArrowDropDownIcon className={ classes.arrowIcon}/></div> 
+              <div><ArrowDropDownIcon className={classes.arrowIcon} /></div> 
+             </div>
+              
               <Datetime dateFormat="YYYY" timeFormat={false} renderMonth={false} closeOnSelect inputProps={{ placeholder: "Year" }} /> 
                <div><ArrowDropDownIcon className={ classes.arrowIcon}/></div> 
-            </div>
+              </div>
             
           </div>
           <div className={classes.checkbox}>
@@ -53,8 +58,7 @@ export const Experience = () => {
           <div className={(classes.row,classes.btn)}>
             <div className={classes.submitBtn}>Submit
                  <ArrowForwardIcon/> 
-            </div>
-           
+            </div>  
           </div>
     </div>
     </div>

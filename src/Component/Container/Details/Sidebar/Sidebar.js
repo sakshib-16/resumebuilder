@@ -7,15 +7,15 @@ export const Sidebar = () => {
   return (
     <div className={classes.sidebar}>
     <div className={classes.list}>
-      
-      <a href="#">Personal Details</a>
-       <a href="">Experience</a> 
-       <a href="">Education</a> 
-       <a href="">Skills</a> 
-       <a href="">Language</a> 
-       <a href="">Certificates</a> 
-       <a href="">Summary</a> 
-    
+      <ul>
+       <li> <a href="#">Personal Details</a></li>
+       <li> <a href="">Experience</a> </li>
+       <li><a href="">Education</a> </li>
+        <li><a href="">Skills</a> </li>
+        <li><a href="">Language</a> </li>
+        <li><a href="">Certificates</a> </li>
+       <li> <a href="">Summary</a> </li>
+      </ul>
     </div>
     </div>
   )

@@ -1,21 +1,16 @@
 .innerContainer input[type="text"] {
-  width: 90%;
+  width: 92%;
   padding: 20px;
   outline: 0;
   border-width: 0 0 1px;
   border-color: #7d7d7d;
-  background: linear-gradient(
-    282.82deg,
-    rgba(255, 255, 255, 0.56) 19.86%,
-    rgba(248, 248, 255, 0.71) 44.92%,
-    rgba(255, 255, 255, 0.59) 79.42%
-  );
+  background: transparent;
 }
 
 .container {
+  width: 75%;
   border-radius: 5px;
   background: #e5e5e5;
-  padding: 65px;
 }
 .container h1 {
   font-family: "Inter";
@@ -103,7 +98,7 @@
 }
 .disFlex {
   display: flex;
-  width: 49%;
+  width: 45%;
 }
 .disFlex input {
   width: 77%;
@@ -111,8 +106,9 @@
 }
 .ruleIcon {
   margin-top: 20px;
-  width: 50px;
+  width: 25px;
   color: #7d7d7d;
+  margin-left: 20px;
 }
 .checkbox {
   float: right;
@@ -125,6 +121,7 @@
 }
 .arrowIcon {
   color: #7d7d7d;
+  margin-top: 13px;
 }
 .borderBox h2 {
   font-family: "Inter";
@@ -147,6 +144,23 @@
 .addIcon {
   font-size: 37px;
   margin-right: 16px;
+  margin-top: 3px;
+}
+.downarrow {
+  display: flex;
+}
+.coverDiv {
+  display: flex;
+  margin-right: 27px;
+}
+.edYear {
+  width: 100% !important;
+  margin-right: -30px;
+}
+
+.fullWidth {
+  width: 100%;
+  display: flex;
 }
 /* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
 @media screen and (max-width: 600px) {
