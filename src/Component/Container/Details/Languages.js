@@ -1,4 +1,6 @@
 import React from 'react'
+import classes from './Detail.module.css'
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 
 export const Languages = () => {
   return (

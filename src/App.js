@@ -2,8 +2,11 @@
 // import './App.css';
 import { PersonalDetails } from './Component/Container/Details/PersonalDetails';
 import { Experience } from './Component/Container/Details/Experience';
-import HomePage from './Component/Container/Homepage/Homepage'
-import { Sidebar } from './Component/Container/Details/Sidebar/Sidebar';
+import { Education } from './Component/Container/Details/Education';
+import { Skills } from './Component/Container/Details/Skills';
+import { Certificates } from './Component/Container/Details/Certificates';
+import { Summary } from './Component/Container/Details/Summary';
+import { Languages  } from './Component/Container/Details/Languages';
 import { Auth } from './Component/Auth/Auth';
 import { Navigation } from './Component/Container/Navigation/Navigation';
 import { CreateResume } from './Component/Container/CreateResume/CreateResume';
@@ -12,6 +15,7 @@ import { Layout } from './Component/Container/Layout/Layout';
 import ReactDOM from "react-dom";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Login } from './Component/Auth/Login';
+import {Templates} from './Component/Container/Template/Templates'
   
 function App() {
   return (
@@ -20,7 +24,9 @@ function App() {
         <Routes>
            <Route path="/" element={<Auth />}/> 
           <Route path="/login" element={<Login btn="Sign in" msg="Nice to see you again" />} />     
-           <Route path="/createResume" element={<CreateResume/>}/> 
+          <Route path="/createResume" element={<CreateResume />} /> 
+          <Route path="/templates" element={<Templates/>} /> 
+          <Route path="/details" element={<Layout/>} /> 
 
             </Routes>
     </BrowserRouter>

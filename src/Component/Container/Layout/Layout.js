@@ -4,6 +4,7 @@ import { Education } from '../Details/Education'
 import { Experience } from '../Details/Experience'
 import { PersonalDetails } from '../Details/PersonalDetails'
 import { Sidebar } from '../Details/Sidebar/Sidebar'
+import { Wrapper } from '../Details/Wrapper/Wrapper'
 import classes from './Layout.module.css'
 
 export const Layout = () => {
@@ -11,11 +12,8 @@ export const Layout = () => {
         <>
             
     <div className={classes.wrapper}>
-                <Sidebar />
-                {/* <Experience/> */}
-          {/* <PersonalDetails /> */}
-                {/* <Certificates/> */}
-                <Education/>
+                <Sidebar/>
+              <Wrapper/>
             </div>
             </>
   )

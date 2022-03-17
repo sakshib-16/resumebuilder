@@ -1,4 +1,6 @@
 import React from 'react'
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import classes from './Detail.module.css'
 
 export const Summary = () => {
   return (
