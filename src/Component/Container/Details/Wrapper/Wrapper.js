@@ -12,17 +12,16 @@ import { PersonalDetails } from '../PersonalDetails'
 export const Wrapper = () => {
     return (
          
-        <div className="">
-         {/* <Route exact path="/" component={PersonalDetails} /> */}
-          
+        <Routes>
+          <Route path="/*" element={<PersonalDetails/>} /> 
           <Route path="/experience" element={<Experience/>} /> 
           <Route path="/education" element={<Education/>} /> 
           <Route path="/skills" element={<Skills/>} /> 
           <Route path="/certificates" element={<Certificates/>} /> 
            <Route path="/languages" element={<Languages/>} /> 
-          <Route path="/summary" element={<Summary />} />   
+          <Route path="/summary" element={<Summary/>} />   
      
-       </div>
+      </Routes>
          
   )
 }

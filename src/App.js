@@ -24,9 +24,9 @@ function App() {
         <Routes>
            <Route path="/" element={<Auth />}/> 
           <Route path="/login" element={<Login btn="Sign in" msg="Nice to see you again" />} />     
-          <Route path="/createResume" element={<CreateResume />} /> 
+          <Route path="/createresume" element={<CreateResume />}/> 
           <Route path="/templates" element={<Templates/>} /> 
-          <Route path="/details" element={<Layout/>} /> 
+          <Route path="/*" element={<Layout/>} /> 
 
             </Routes>
     </BrowserRouter>
