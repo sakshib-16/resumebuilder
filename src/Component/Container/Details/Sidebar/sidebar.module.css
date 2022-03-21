@@ -9,7 +9,7 @@
   height: 100vh;
   align-items: center;
 }
-.sidebar .list li {
+.sidebar .list a li {
   color: #4d4b4b;
   border-radius: 6.68px;
   text-align: left;
@@ -17,7 +17,7 @@
   padding: 12px;
   list-style: none;
 }
-.list li a {
+.list li {
   color: #4d4b4b;
   text-decoration: none;
   font-weight: 500;
@@ -34,4 +34,8 @@
   content: "\2022";
   padding: 0 10px 0 0;
   font-size: 20px;
+  display: inline-block;
+}
+.sidebar .list ul a {
+  text-decoration: none;
 }

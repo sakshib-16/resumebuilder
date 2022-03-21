@@ -1,0 +1,60 @@
+.templates .create_resume h1,
+.my_resume h1 {
+  color: #2d2d2d;
+  font-weight: 700;
+}
+
+.templates .resume {
+  display: flex;
+  flex-direction: column;
+  margin-left: 90px;
+  margin-top: 20px;
+  font-family: "Inter";
+}
+
+.templates .container {
+  display: flex;
+  font-family: "Inter";
+}
+
+.templates .options {
+  align-self: center;
+  margin-top: 30px;
+  margin-left: 15px;
+}
+
+.templates .options p {
+  font-weight: 500;
+  font-size: 16px;
+}
+
+.templates.option {
+  display: flex;
+  align-items: center;
+  margin: 15px 0;
+  color: #504e4e;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.option:nth-child(4) {
+  color: #1ea5fc;
+}
+
+.option span {
+  margin-left: 10px;
+}
+.templates .img {
+  width: 221px;
+  height: 268px;
+  background-image: url("https://www.myperfectresume.com/wp-content/uploads/2022/01/Human_Resources_Resume_template.svg");
+  /* background-color: #2D2D2D; */
+  margin-right: 40px;
+  margin-top: 41px;
+  background-size: cover;
+}
+
+.templates .disFlex {
+  display: flex;
+}

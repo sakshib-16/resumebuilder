@@ -1,5 +1,8 @@
 import React from 'react'
 import classes from './sidebar.module.css'
+import { Link } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Education } from '../Education';
 
 
 
@@ -8,15 +11,17 @@ export const Sidebar = () => {
     <div className={classes.sidebar}>
     <div className={classes.list}>
       <ul>
-       <li> <a href="#">Personal Details</a></li>
-       <li> <a href="">Experience</a> </li>
-       <li><a href="">Education</a> </li>
-        <li><a href="">Skills</a> </li>
-        <li><a href="">Language</a> </li>
-        <li><a href="">Certificates</a> </li>
-       <li> <a href="">Summary</a> </li>
+        <Link to="/*"><li>Personal Details</li> </Link>
+       <Link to="/experience"><li>Experience</li></Link>
+       <Link to="/education"><li>Education</li></Link>
+       <Link to="/skills"><li>Skills</li></Link>
+       <Link to="/languages"><li>Language</li> </Link>
+      <Link to="/certificates"><li>Certificates</li> </Link>
+      <Link to="/summary"><li> Summary</li></Link>
       </ul>
-    </div>
+      </div>
+     
+
     </div>
   )
 }
