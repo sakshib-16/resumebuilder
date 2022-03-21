@@ -6,9 +6,9 @@ import Signup from './Signup'
 export const Auth = () => {
   return (
     <div>
-        {/* <Login btn="Sign In" msg="Nice to see you again" /> */}
+        <Login btn="Sign In" msg="Nice to see you again" />
       {/* <Signup btn="Sign Up" msg="Make you Account" /> */}
-      <HomePage/>
+      {/* <HomePage/> */}
     </div>
   )
 }

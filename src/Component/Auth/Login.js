@@ -1,6 +1,7 @@
 import React from 'react'
 import { Form } from './Form'
 import classes from './auth.module.css'
+import {Link } from "react-router-dom";
 
 export const Login = ({btn, msg}) => {
   return (
@@ -11,7 +12,7 @@ export const Login = ({btn, msg}) => {
      <Form btn={btn} msg={msg} />
      <div className={classes.signup_msg}>
        <p>Dont have an account?</p>
-       <a href="#">Sign up now</a>
+     <Link to="/signup"><a href="#">Sign up now</a></Link>
      </div>
     </div>
   </div>
