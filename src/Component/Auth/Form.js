@@ -25,6 +25,9 @@ export const Form = ({btn, msg}) => {
             setShowPassword(true)
             }}/>
       </div>
+      {
+        btn === 'Sign Up' &&
+      <>
       <label className={classes.label}>Re-Password</label>
       <div className={classes.input}>
       <input type={reShowPassword ? 'text' : 'password'} className={classes.input_box} placeholder="Enter password"/>
@@ -32,6 +35,8 @@ export const Form = ({btn, msg}) => {
             setReShowPassword(true)
             }}/>
       </div>
+      </>
+      }
 
       <div className={classes.options}>
           <div>
