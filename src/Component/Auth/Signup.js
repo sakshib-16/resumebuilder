@@ -9,13 +9,11 @@ import { SignupContainer } from './SignupContainer';
 import HomePage from '../Container/Homepage/Homepage';
 
 
-
-
 const Signup = ({ btn, msg }) => {
   
-  const [menu,setMenu]=useState(false)
+  const [menu, setMenu] = useState(false)
+  
   const credential = useSelector((i) => i.authReducer)
-
   const auth = getAuth();
   createUserWithEmailAndPassword(auth, credential.email, credential.password)
  .then((userCredential) => {
@@ -36,7 +34,7 @@ const Signup = ({ btn, msg }) => {
         !menu ?
       
           <SignupContainer btn={btn} msg={msg} /> :
-          <HomePage />
+          <HomePage/>
       }
     </>
     
