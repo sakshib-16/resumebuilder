@@ -5,7 +5,7 @@ import 'react-datetime/css/react-datetime.css';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import HorizontalRuleIcon from '@mui/icons-material/HorizontalRule';
 import AddIcon from '@mui/icons-material/Add';
-import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import { Submit } from './Submit/Submit';
 export const Certificates = () => {
   return (
  <div className={classes.container}>
@@ -44,13 +44,7 @@ export const Certificates = () => {
             <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike"/>
           <label for="vehicle1"> Currently Working here</label>
           </div> */}
-          
-
-          <div className={(classes.row,classes.btn)}>
-            <div className={classes.submitBtn}>Submit
-                 <ArrowForwardIcon/> 
-            </div>  
-          </div>
+          <Submit/>
     </div>
     </div>
 </div>

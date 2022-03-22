@@ -1,0 +1,17 @@
+.btn {
+  float: right;
+  margin: 10px;
+}
+.btn .submitBtn {
+  background-color: #1ea5fc;
+  margin: 20px 10px 10px 0px;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 700;
+  display: flex;
+  float: right;
+}
