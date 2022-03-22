@@ -2,9 +2,12 @@ import React from 'react'
 import { Form } from './Form'
 import classes from './auth.module.css'
 import {Link } from "react-router-dom";
+//import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+
 
 
 const Signup = ({btn, msg}) => {
+
   return (
     <div className={classes.signup}>
       <div className={classes.banner}>
