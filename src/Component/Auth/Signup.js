@@ -9,8 +9,6 @@ import { SignupContainer } from './SignupContainer';
 import HomePage from '../Container/Homepage/Homepage';
 
 
-
-
 const Signup = ({ btn, msg }) => {
   
   const [menu,setMenu]=useState(false)
