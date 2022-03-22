@@ -22,11 +22,12 @@ function App() {
     <div className="App">  
         <BrowserRouter>
         <Routes>
-          <Route path="/login" element={<Login btn="Sign in" msg="Nice to see you again" />} /> 
+          <Route path="/login" element={<Login btn="Sign in" msg="Nice to see you again" />}    
+          />
           <Route path="/" element={<Signup btn="Sign Up" msg="Make you Account" />} />     
           <Route path="/createresume" element={<CreateResume />}/> 
           <Route path="/templates" element={<Templates/>} /> 
-          <Route path="/*" element={<Layout/>} /> 
+          <Route path="/*" element={<Layout />} /> 
 
             </Routes>
     </BrowserRouter>

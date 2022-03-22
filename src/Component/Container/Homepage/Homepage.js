@@ -1,13 +1,13 @@
 import React from "react";
 import classes from "./homepage.module.css";
 import { Link } from "react-router-dom";
-// import { Navigation } from '../Navigation/Navigation'
+import { Navigation } from '../Navigation/Navigation'
 
 const HomePage = () => {
   return (
-    <>
+    <div className={classes.container}>
+        <Navigation/>
       <div className={classes.homepage}>
-        {/* <Navigation/> */}
         <div className={classes.content}>
           <spam> Make your resume </spam>
           <p>
@@ -20,7 +20,7 @@ const HomePage = () => {
         </div>
           <div className={classes.img}></div>
       </div>
-    </>
+    </div>
   );
 };
 export default HomePage;

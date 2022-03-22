@@ -7,15 +7,18 @@ import { Sidebar } from '../Details/Sidebar/Sidebar'
 import { Wrapper } from '../Details/Wrapper/Wrapper'
 import classes from './Layout.module.css'
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Navigation } from '../Navigation/Navigation'
 
 export const Layout = () => {
     return (
         <>
+         <Navigation/>
+
+        <div className={classes.wrapper}>
             
-    <div className={classes.wrapper}>
-                <Sidebar /> 
-                {/* <PersonalDetails/> */}
-                  <Wrapper/>
+            <Sidebar /> 
+            <Wrapper />
+             
             </div> 
               
           
