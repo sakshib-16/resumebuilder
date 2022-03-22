@@ -7,7 +7,6 @@ import { Skills } from './Component/Container/Details/Skills';
 import { Certificates } from './Component/Container/Details/Certificates';
 import { Summary } from './Component/Container/Details/Summary';
 import { Languages  } from './Component/Container/Details/Languages';
-import { Auth } from './Component/Auth/Auth';
 import { Navigation } from './Component/Container/Navigation/Navigation';
 import { CreateResume } from './Component/Container/CreateResume/CreateResume';
 import classes from './App.module.css';
@@ -23,9 +22,8 @@ function App() {
     <div className="App">  
         <BrowserRouter>
         <Routes>
-           <Route path="/" element={<Auth />}/> 
           <Route path="/login" element={<Login btn="Sign in" msg="Nice to see you again" />} /> 
-          <Route path="/signup" element={<Signup btn="Sign Up" msg="Make you Account" />} />     
+          <Route path="/" element={<Signup btn="Sign Up" msg="Make you Account" />} />     
           <Route path="/createresume" element={<CreateResume />}/> 
           <Route path="/templates" element={<Templates/>} /> 
           <Route path="/*" element={<Layout/>} /> 

@@ -1,31 +1,26 @@
-import React from 'react'
-import { Form } from './Form'
-import classes from './auth.module.css'
-<<<<<<< HEAD
-import {Link,Redirect} from "react-router-dom";
-import { useSelector } from 'react-redux'
-=======
-import { Link } from "react-router-dom";
->>>>>>> master
+import React,{useState} from 'react'
 
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { useDispatch, useSelector } from 'react-redux';
 import HomePage from '../Container/Homepage/Homepage';
 import { menu } from '../../Redux/action';
+import { LoginContainer } from './LoginContainer';
 
 
 export const Login = ({btn, msg}) => {
-  const dispatch = useDispatch()
-  const menu = useSelector(i => i.menuReducer)
+  // const dispatch = useDispatch()
+  // const menu = useSelector(i => i.menuReducer)
   const credential = useSelector((i) => i.authReducer)
+  const [menu,setMenu]= useState(false)
 
   const auth = getAuth();
-signInWithEmailAndPassword(auth, credential.email, credential.password)
+  signInWithEmailAndPassword(auth, credential.email, credential.password)
 .then((userCredential) => {
  // Signed in 
  const user = userCredential.user;
- dispatch(menu(true))
- console.log(user)
+//  dispatch(menu(true))
+ setMenu(true)
+ console.log(menu)
 
  // ...
 })
@@ -34,18 +29,14 @@ signInWithEmailAndPassword(auth, credential.email, credential.password)
  const errorMessage = error.message;
 });
 
-  console.log(menu)
   return (
-    <div className={classes.login}>
-      <div className={classes.banner}>
-      </div>
-        <div>
-        <Form btn={btn} msg={msg} />
-        <div className={classes.signup_msg}>
-        <p>Dont have an account?</p>
-        <Link to="/signup"><a href="#">Sign up now</a></Link>
-        </div>
-      </div>
-    </div>
+    <>
+      {
+        !menu ?
+      
+          <LoginContainer btn={btn} msg={msg} /> :
+          <HomePage />
+      }
+    </>
   )
 }
