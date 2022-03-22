@@ -15,7 +15,8 @@ import { Layout } from './Component/Container/Layout/Layout';
 import ReactDOM from "react-dom";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Login } from './Component/Auth/Login';
-import {Templates} from './Component/Container/Template/Templates'
+import { Templates } from './Component/Container/Template/Templates';
+import Signup from './Component/Auth/Signup';
   
 function App() {
   return (
@@ -23,7 +24,8 @@ function App() {
         <BrowserRouter>
         <Routes>
            <Route path="/" element={<Auth />}/> 
-          <Route path="/login" element={<Login btn="Sign in" msg="Nice to see you again" />} />     
+          <Route path="/login" element={<Login btn="Sign in" msg="Nice to see you again" />} /> 
+          <Route path="/signup" element={<Signup btn="Sign Up" msg="Make you Account" />} />     
           <Route path="/createresume" element={<CreateResume />}/> 
           <Route path="/templates" element={<Templates/>} /> 
           <Route path="/*" element={<Layout/>} /> 

@@ -2,8 +2,8 @@ import React from 'react'
 import classes from './Detail.module.css'
 import AddIcon from '@mui/icons-material/Add';
 import Datetime from "react-datetime";
-import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
+import { Submit } from './Submit/Submit';
 
 export const Education = () => {
   return (
@@ -28,12 +28,7 @@ export const Education = () => {
               </div>
           <input type="text" id="lname" name="lastname" placeholder="Field of Study" />
            <input type="text" id="lname" name="lastname" placeholder="Accomplishments"/>
-           <div className={(classes.row,classes.btn)}>
-            <div className={classes.submitBtn}>Submit
-                 <ArrowForwardIcon/> 
-            </div>
-           
-          </div>
+           <Submit/>
     </div>
     </div>
 </div>  )

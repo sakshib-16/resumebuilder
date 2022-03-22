@@ -2,11 +2,14 @@ import React, { useState } from 'react'
 import classes from './form.module.css'
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import logo from './resumelogo.png'
+import {useDispatch} from 'react-redux'
 
 
 export const Form = ({btn, msg}) => {
-    const [showPassword, setShowPassword] = useState(false)
-    const [reShowPassword, setReShowPassword] = useState(false)
+    
+  const dispatch = useDispatch()
+  const [auth,setAuth]=useState({})
+
   return (
     <div className={classes.form}>
       <div className={classes.logoImage}>
@@ -16,13 +19,16 @@ export const Form = ({btn, msg}) => {
     <form>
       <label className={classes.label}>Login</label>
       <div className={classes.input}>
-      <input className={classes.input_box} placeholder="Email or phone number"/>
+          <input className={classes.input_box} placeholder="Email or phone number"
+          onChange={e=>setAuth({...auth,email:e.target.value})}/>
           </div>
       <label className={classes.label}>Password</label>
       <div className={classes.input}>
-        <input type={showPassword ? 'text' : 'password'} className={classes.input_box} placeholder="Enter password" />
-        <VisibilityIcon fontSize="very-small" sx={{color: '#4D4D4D'}} onMouseUp={() => setShowPassword(false)} onMouseDown={() => {
-            setShowPassword(true)
+          <input type={auth.showPassword ? 'text' : 'password'} className={classes.input_box} placeholder="Enter password"
+           onChange={e=>setAuth({...auth,password:e.target.value})}/>
+          <VisibilityIcon fontSize="very-small" sx={{ color: '#4D4D4D' }} onMouseUp={() => setAuth({...auth,showPassword:false})}
+            onMouseDown={() => {
+            setAuth({...auth,showPassword:true})
             }}/>
       </div>
       {
@@ -30,10 +36,12 @@ export const Form = ({btn, msg}) => {
       <>
       <label className={classes.label}>Re-Password</label>
       <div className={classes.input}>
-      <input type={reShowPassword ? 'text' : 'password'} className={classes.input_box} placeholder="Enter password"/>
-      <VisibilityIcon fontSize="very-small" sx={{color: '#4D4D4D'}} onMouseUp={() => setReShowPassword(false)} onMouseDown={() => {
-            setReShowPassword(true)
-            }}/>
+              <input type={auth.reShowPassword ? 'text' : 'password'} className={classes.input_box} placeholder="Enter password"
+               onChange={e=>setAuth({...auth,repassword:e.target.value})}/>
+              <VisibilityIcon fontSize="very-small" sx={{ color: '#4D4D4D' }} onMouseUp={() => setAuth({ ...auth, reShowPassword: false })}
+                onMouseDown={() => {
+                  setAuth({ ...auth, reShowPassword: true })
+                }} />
       </div>
       </>
       }
@@ -47,7 +55,10 @@ export const Form = ({btn, msg}) => {
           </div>
         <a href="">Forgot password?</a>
       </div>
-      <button className={classes.btn}>{btn}</button>
+        <button className={classes.btn} onClick={(e) => { 
+          e.preventDefault()
+          dispatch({ type: 'auth', payload: auth })
+        } }>{btn}</button>
     </form>
     </div>
   )

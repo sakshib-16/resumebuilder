@@ -5,7 +5,7 @@ import 'react-datetime/css/react-datetime.css';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import HorizontalRuleIcon from '@mui/icons-material/HorizontalRule';
 import AddIcon from '@mui/icons-material/Add';
-import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import { Submit } from './Submit/Submit';
 
 export const Experience = () => {
   
@@ -53,13 +53,7 @@ export const Experience = () => {
           </div>
         
           <input type="text" id="lname" name="lastname" placeholder="Accomplishments"/>
-          
-
-          <div className={(classes.row,classes.btn)}>
-            <div className={classes.submitBtn}>Submit
-                 <ArrowForwardIcon/> 
-            </div>  
-          </div>
+          <Submit/>
     </div>
     </div>
 </div>

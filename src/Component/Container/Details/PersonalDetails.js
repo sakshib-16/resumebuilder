@@ -1,9 +1,22 @@
 import React from 'react'
 import classes from './Detail.module.css'
-import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import {useState} from 'react';
+import database from '../../../Firebase/Firebase';
+import { Submit } from './Submit/Submit';
 
 
 export const PersonalDetails = () => {
+  
+  //const PersonalDetail = {}
+
+  const [personal, setPersonal] = useState({});
+  console.log(personal)
+
+  // const Push = () => {
+  //   database.ref("user").set({
+      
+  //   }).catch(alert);
+  // }
   return (
     <div className={classes.container}>
                 <h1>Personal Details</h1>
@@ -11,29 +24,32 @@ export const PersonalDetails = () => {
        <div className={classes.innerContainer}>
        
        <div className={classes.row}>
-          <input type="text" id="fname" name="firstname" placeholder="First Name"/>
-          <input type="text" id="lname" name="lastname" placeholder="Last Name"/>
-          <input type="text" id="lname" name="lastname" placeholder="Job Title" />
-          
-  
+          <input type="text" name="firstname" placeholder="First Name"
+            onChange={(e) => setPersonal({...personal,firstName:e.target.value} )}/>
+          <input type="text"  name="lastname" placeholder="Last Name"
+           onChange={(e) =>setPersonal({...personal,lastName:e.target.value} )}/>
+          <input type="text" name="jobtitle" placeholder="Job Title"
+          onChange={(e) =>setPersonal({...personal,jobTitle:e.target.value} )}/>
+         
           <h2>Contact Details</h2>
-          <input type="text" id="lname" name="lastname" placeholder="Phone Number"/>
-          <input type="text" id="lname" name="lastname" placeholder="Email Address"/>
-          <input type="text" id="lname" name="lastname" placeholder="Personal Website" />
+          <input type="text" name="phonenumber" placeholder="Phone Number"
+           onChange={(e) =>setPersonal({...personal,phoneNumber:e.target.value} )}/>
+          <input type="text" name="emailaddress" placeholder="Email Address"
+           onChange={(e) =>setPersonal({...personal,emailAddress:e.target.value} )}/>
+          <input type="text" name="personalwebsite" placeholder="Personal Website"
+           onChange={(e) =>setPersonal({...personal,personalWebsite:e.target.value} )}/>
         
           <h2>Location</h2>
            <div className={(classes.row,classes.disflex)}>
-            <input type="text" id="lname" name="lastname" placeholder="City" />
-             <input type="text" id="lname" name="lastname" placeholder="Country"/>
+            <input type="text"  name="city" placeholder="City"
+             onChange={(e) =>setPersonal({...personal,city:e.target.value} )}/>
+            <input type="text" name="country" placeholder="Country"
+             onChange={(e) =>setPersonal({...personal,country:e.target.value} )}/>
           </div>
 
-        <div className={(classes.row,classes.btn)}>
-            <div className={classes.submitBtn}>Submit <ArrowForwardIcon/> 
-            </div>
-           
-          </div>
+          <Submit/>
     </div>
-    </div>
+  </div>
 </div>
 
   )
