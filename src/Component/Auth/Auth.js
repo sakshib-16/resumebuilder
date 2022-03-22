@@ -1,61 +1,21 @@
 import React, { useState } from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import HomePage from '../Container/Homepage/Homepage'
 import Signup from './Signup'
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
-import { signInWithEmailAndPassword } from "firebase/auth";
+import { menu } from '../../Redux/action';
 
 export const Auth = () => {
 
-  const [menu, setMenu] = useState(false)
+  // const [menu, setMenu] = useState(false)
   
-  const credential = useSelector((i) => i.authReducer)
-  
-  console.log(credential.email)
-  
-  if (credential.repassword) {
-    const auth = getAuth();
-   createUserWithEmailAndPassword(auth, credential.email, credential.password)
-  .then((userCredential) => {
-    // Signed in
-    const user = userCredential.user;
-    setMenu(true)
-    // ...
-  })
-  .catch((error) => {
-    const errorCode = error.code;
-    const errorMessage = error.message;
-    // ..
-  });
-    
-  }
-  else {
-    console.log("hhhh")
-  //   const auth = getAuth();
-  //  signInWithEmailAndPassword(auth, credential.email, credential.password)
-  // .then((userCredential) => {
-  //   // Signed in 
-  //   const user = userCredential.user;
-  //   setMenu(true)
-
-  //   // ...
-  // })
-  // .catch((error) => {
-  //   const errorCode = error.code;
-  //   const errorMessage = error.message;
-  // });
-  }
+  // console.log(credential.email)
+  // console.log(credential.length)
   
   return (
     
     <div>
-      {
-       !menu ? 
-          <Signup btn="Sign Up" msg="Make you Account" /> :
-          
-         <HomePage/>
-
-      }
+          <Signup btn="Sign Up" msg="Make you Account" />
 
     </div>
   )
