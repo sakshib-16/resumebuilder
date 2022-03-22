@@ -21,7 +21,6 @@ export const Login = ({btn, msg}) => {
 //  dispatch(menu(true))
  setMenu(true)
  console.log(menu)
-
  // ...
 })
 .catch((error) => {
@@ -33,7 +32,6 @@ export const Login = ({btn, msg}) => {
     <>
       {
         !menu ?
-      
           <LoginContainer btn={btn} msg={msg} /> :
           <HomePage />
       }
