@@ -30,19 +30,20 @@ export const Auth = () => {
     
   }
   else {
-    const auth = getAuth();
-   signInWithEmailAndPassword(auth, credential.email, credential.password)
-  .then((userCredential) => {
-    // Signed in 
-    const user = userCredential.user;
-    setMenu(true)
+    console.log("hhhh")
+  //   const auth = getAuth();
+  //  signInWithEmailAndPassword(auth, credential.email, credential.password)
+  // .then((userCredential) => {
+  //   // Signed in 
+  //   const user = userCredential.user;
+  //   setMenu(true)
 
-    // ...
-  })
-  .catch((error) => {
-    const errorCode = error.code;
-    const errorMessage = error.message;
-  });
+  //   // ...
+  // })
+  // .catch((error) => {
+  //   const errorCode = error.code;
+  //   const errorMessage = error.message;
+  // });
   }
   
   return (
