@@ -21,8 +21,8 @@ const signOutUser = () => {
 }
 
 export const Navigation = () => {
-  const [show, setShow] = useState(false)
-  
+  const [show, setShow] = useState(false);
+
   const showHide = () => {
     if (!show) 
       setShow(true)
@@ -31,18 +31,22 @@ export const Navigation = () => {
   }
   return (
     <>
-    <div className={classes.nav}>
-      <div className={classes.logo}>
+      <div className={classes.nav}>
+        <div className={classes.logo}></div>
+        <div className={classes.logoutContainer}>
+          <div className={classes.user_option} onClick={showHide}>
+            <PermIdentityIcon fontSize="medium" />
+            <ArrowDropDownIcon fontSize="medium" />
+          </div>
+        </div>
       </div>
-      <div className={classes.logoutContainer}>
       <div className={classes.user_option} onClick={showHide}>
         <PermIdentityIcon fontSize="medium" />
         <ArrowDropDownIcon fontSize="medium" />
 
       </div>
       
-    </div>
-    </div>
+    
     {show ?
         <div className={classes.logout} onClick={signOutUser}>
           Logout
