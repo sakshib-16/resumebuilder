@@ -12,9 +12,9 @@ export const SignupContainer = ({btn,msg}) => {
       </div>
       <div>
       <Form btn={btn} msg={msg}/>
-      <div className={classes.signin_msg}>
-      <p>Already have an account?</p>
-      <Link to="/login"><a href="#">Sign in now</a></Link>
+       <div className={classes.signin_msg}>
+        <p>Already have an account?</p>
+        <Link to="/login"><a href="#">Sign in now</a></Link>
       </div>
       </div>
       </div>

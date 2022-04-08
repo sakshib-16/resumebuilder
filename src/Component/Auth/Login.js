@@ -23,7 +23,7 @@ export const Login = ({btn, msg}) => {
  console.log(menu)
  // ...
 })
-.catch((error) => {
+.catch((error) => {                         
  const errorCode = error.code;
  const errorMessage = error.message;
 });

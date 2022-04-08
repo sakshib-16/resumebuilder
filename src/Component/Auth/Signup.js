@@ -12,7 +12,6 @@ import HomePage from '../Container/Homepage/Homepage';
 const Signup = ({ btn, msg }) => {
   
   const [menu, setMenu] = useState(false)
-  
   const credential = useSelector((i) => i.authReducer)
   const auth = getAuth();
   createUserWithEmailAndPassword(auth, credential.email, credential.password)
@@ -27,7 +26,6 @@ const Signup = ({ btn, msg }) => {
    const errorMessage = error.message;
    // ..
  });
-
   return (
      <>
       {
@@ -40,5 +38,6 @@ const Signup = ({ btn, msg }) => {
     
   )
 }
-
 export default Signup
+
+

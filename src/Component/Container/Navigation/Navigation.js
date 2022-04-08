@@ -2,22 +2,28 @@ import classes from './navigation.module.css'
 import PermIdentityIcon from '@mui/icons-material/PermIdentity';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import { useState } from 'react';
-
+import { useNavigate } from "react-router-dom";
 
 import { getAuth, signOut } from "firebase/auth";
 
-// const auth = getAuth();
-// signOut(auth).then(() => {
-//   // Sign-out successful.
-// }).catch((error) => {
-//   // An error happened.
-// });
+
+const signOutUser = () => {
+  const { auth, logout } = getAuth();
+
+  signOut(auth).then(() => {
+
+    console.log("signppout")
+    // 
+    // Sign-out successful.
+  }).catch((error) => {
+    // An error happened.
+  });
+}
 
 export const Navigation = () => {
   const [show, setShow] = useState(false)
   
   const showHide = () => {
-    console.log("jhjh")
     if (!show) 
       setShow(true)
     else setShow(false)
@@ -38,7 +44,7 @@ export const Navigation = () => {
     </div>
     </div>
     {show ?
-        <div className={classes.logout}>
+        <div className={classes.logout} onClick={signOutUser}>
           Logout
         </div>: null
       }

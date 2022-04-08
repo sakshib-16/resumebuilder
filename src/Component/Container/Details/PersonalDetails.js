@@ -3,6 +3,7 @@ import classes from './Detail.module.css'
 import {useState} from 'react';
 import database from '../../../Firebase/Firebase';
 import { Submit } from './Submit/Submit';
+import { push } from 'firebase/database';
 
 
 export const PersonalDetails = () => {
@@ -12,11 +13,12 @@ export const PersonalDetails = () => {
   const [personal, setPersonal] = useState({});
   console.log(personal)
 
-  // const Push = () => {
-  //   database.ref("user").set({
-      
-  //   }).catch(alert);
-  // }
+  const Push = () => {
+    database.ref("user").set({
+      name : personal.firstName
+    }).catch(alert);
+  }
+  
   return (
     <div className={classes.container}>
                 <h1>Personal Details</h1>
@@ -47,7 +49,7 @@ export const PersonalDetails = () => {
              onChange={(e) =>setPersonal({...personal,country:e.target.value} )}/>
           </div>
 
-          <Submit/>
+          <Submit click={Push}/>
     </div>
   </div>
 </div>
