@@ -3,8 +3,8 @@
 // }
 
 export const menu = (val) => {
-    return {
-        type: 'menu',
-        payload: val
-    }
-}
+  return {
+    type: "menu",
+    payload: val,
+  };
+};
