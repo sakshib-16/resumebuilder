@@ -73,6 +73,7 @@ export const Form = ({ btn, msg }) => {
           </div>
           <a href="">Forgot password?</a>
         </div>
+
         <button
           className={classes.btn}
           onClick={(e) => {

@@ -12,7 +12,7 @@ const firebaseConfig = {
   projectId: "resume-builder-dad7c",
   storageBucket: "resume-builder-dad7c.appspot.com",
   messagingSenderId: "582048354662",
-  appId: "1:582048354662:web:190f4e6adadee2ed59b8a7"
+  appId: "1:582048354662:web:190f4e6adadee2ed59b8a7",
 };
 
 // Initialize Firebase
@@ -20,3 +20,5 @@ const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
 
 export default db;
+
+// ###############
