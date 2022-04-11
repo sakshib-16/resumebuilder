@@ -40,11 +40,11 @@ export const Navigation = () => {
           </div>
         </div>
       </div>
-      <div className={classes.user_option} onClick={showHide}>
+      {/* <div className={classes.user_option} onClick={showHide}>
         <PermIdentityIcon fontSize="medium" />
         <ArrowDropDownIcon fontSize="medium" />
 
-      </div>
+      </div> */}
       
     
     {show ?

@@ -18,17 +18,17 @@ import { Templates } from "./Component/Container/Template/Templates";
 import Signup from "./Component/Auth/Signup";
 
 function App() {
-  const auth = getAuth();
-  const [authUser,setAuthUser] =useState(false)
-  onAuthStateChanged(auth, (user) => {
-  if (user) {
-    setAuthUser(true)
-    // ...   
-  } else {
-    // User is signed out
-    // ...
-  }
-});
+//  const auth = getAuth();
+  //const [authUser,setAuthUser] =useState(false)
+  // onAuthStateChanged(auth, (user) => {
+  // if (user) {
+  //   setAuthUser(true)
+  //   // ...   
+  // } else {
+  //   // User is signed out
+  //   // ...
+  // }
+//});
 
   return (
     <div className="App">

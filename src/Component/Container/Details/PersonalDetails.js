@@ -4,18 +4,48 @@ import {useState} from 'react';
 import database from '../../../Firebase/Firebase';
 import { Submit } from './Submit/Submit';
 import { push } from 'firebase/database';
+import { useNavigate } from "react-router-dom";
 
 
 export const PersonalDetails = () => {
   //const PersonalDetail = {}
+let navigate = useNavigate();
 
   const [personal, setPersonal] = useState({});
 
-  const Push = () => {
-    database.ref("user").set({
-      name : personal.firstName
-    }).catch(alert);
-  }
+  const Push = async (e) => {
+    e.preventDefault();
+    const { firstname, lastName, jobTitle, phoneNumber, emailAddress, personalWebsite, city, country } = personal;
+    const res = await fetch(
+      "https://resume-builder-dad7c-default-rtdb.firebaseio.com/personaldetails.json",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          firstname,
+          lastName,
+          jobTitle,
+          phoneNumber,
+          emailAddress,
+          personalWebsite,
+          city,
+          country
+
+        })
+      }
+    )
+
+    if (res) {
+      console.log("resposne")
+      // return <Navigate to="/" replace />
+       navigate(`/layout/experience`);
+    }
+    else {
+        console.log("Please fill form")
+    }
+  }   
   
   return (
     <div className={classes.container}>
