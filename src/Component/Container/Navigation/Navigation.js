@@ -1,34 +1,30 @@
-import classes from './navigation.module.css'
-import PermIdentityIcon from '@mui/icons-material/PermIdentity';
-import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
-import { useState } from 'react';
+import classes from "./navigation.module.css";
+import PermIdentityIcon from "@mui/icons-material/PermIdentity";
+import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { getAuth, signOut } from "firebase/auth";
 
-
-const signOutUser = () => {
-  const { auth, logout } = getAuth();
-
-  signOut(auth).then(() => {
-
-    console.log("signppout")
-    // 
-    // Sign-out successful.
-  }).catch((error) => {
-    // An error happened.
-  });
-}
-
 export const Navigation = () => {
   const [show, setShow] = useState(false);
+  let navigate = useNavigate();
 
-  const showHide = () => {
-    if (!show) 
-      setShow(true)
-    else setShow(false)
-  
-  }
+  const showHide = () => (!show ? setShow(true) : setShow(false));
+
+  const logout = () => {
+    const auth = getAuth();
+    signOut(auth)
+      .then(() => {
+        // Sign-out successful.
+        sessionStorage.clear();
+        navigate("/");
+      })
+      .catch((error) => {
+        // An error happened.
+      });
+  };
+
   return (
     <>
       <div className={classes.nav}>
@@ -40,18 +36,11 @@ export const Navigation = () => {
           </div>
         </div>
       </div>
-      {/* <div className={classes.user_option} onClick={showHide}>
-        <PermIdentityIcon fontSize="medium" />
-        <ArrowDropDownIcon fontSize="medium" />
-
-      </div> */}
-      
-    
-    {show ?
-        <div className={classes.logout} onClick={signOutUser}>
+      {show ? (
+        <div className={classes.logout} onClick={logout}>
           Logout
-        </div>: null
-      }
-      </>
-  )
-}
+        </div>
+      ) : null}
+    </>
+  );
+};

@@ -16,6 +16,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Login } from "./Component/Auth/Login";
 import { Templates } from "./Component/Container/Template/Templates";
 import Signup from "./Component/Auth/Signup";
+import HomePage from "./Component/Container/Homepage/Homepage";
+import Protected from "./Component/Auth/Protected";
 
 function App() {
 //  const auth = getAuth();
@@ -42,9 +44,38 @@ function App() {
             path="/"
             element={<Signup btn="Sign Up" msg="Make you Account" />}
           />
-          <Route path="/createresume" element={<CreateResume />} />
-          <Route path="/templates" element={<Templates />} />
-          <Route path="/layout/*" element={<Layout />} />
+          <Route
+            path="/createresume"
+            element={
+              <Protected>
+                <CreateResume />
+              </Protected>
+            }
+          />
+          <Route
+            path="/templates"
+            element={
+              <Protected>
+                <Templates />{" "}
+              </Protected>
+            }
+          />
+          <Route
+            path="/homepage"
+            element={
+              <Protected>
+                <HomePage />{" "}
+              </Protected>
+            }
+          />
+          <Route
+            path="/layout/*"
+            element={
+              <Protected>
+                <Layout />{" "}
+              </Protected>
+            }
+          />
         </Routes>
       </BrowserRouter>
     </div>
