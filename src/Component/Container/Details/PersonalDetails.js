@@ -5,47 +5,64 @@ import database from '../../../Firebase/Firebase';
 import { Submit } from './Submit/Submit';
 import { push } from 'firebase/database';
 import { useNavigate } from "react-router-dom";
-
+import { useDispatch, useSelector } from "react-redux";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+import UserId from './UserId/UserId';
+import { ref, set } from "firebase/database";
+import db from '../../../Firebase/Firebase';
 
 export const PersonalDetails = () => {
   //const PersonalDetail = {}
-let navigate = useNavigate();
+
+   let navigate = useNavigate();
 
   const [personal, setPersonal] = useState({});
+  const [userid,setUserId] =useState('')
 
-  const Push = async (e) => {
-    e.preventDefault();
-    const { firstname, lastName, jobTitle, phoneNumber, emailAddress, personalWebsite, city, country } = personal;
-    const res = await fetch(
-      "https://resume-builder-dad7c-default-rtdb.firebaseio.com/personaldetails.json",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          firstname,
+
+  //getting uid
+  const auth = getAuth();
+    onAuthStateChanged(auth, (user) => {
+  if (user) {
+    // User is signed in, see docs for a list of available properties
+    // https://firebase.google.com/docs/reference/js/firebase.User
+    const uid = user.uid;
+    console.log(uid)
+    setUserId(uid);
+    // ...
+  } else {
+    // User is signed out
+    // ...
+  }
+});
+
+
+
+  const Push = (personal) => {
+    console.log(personal)
+
+   // e.preventDefault();
+
+    const { firstName, lastName, jobTitle, phoneNumber, emailAddress, personalWebsite, city, country } = personal;
+    
+
+    set(ref(db, 'container/' + userid + '/personal'), {
+          firstName,
           lastName,
           jobTitle,
           phoneNumber,
           emailAddress,
           personalWebsite,
           city,
-          country
-
-        })
-      }
-    )
-
-    if (res) {
-      console.log("resposne")
-      // return <Navigate to="/" replace />
-       navigate(`/layout/experience`);
-    }
-    else {
-        console.log("Please fill form")
-    }
-  }   
+          country,
+})
+.then(() => {
+  navigate(`/layout/experience`);
+})
+.catch((error) => {
+  // The write failed...
+});
+} 
   
   return (
     <div className={classes.container}>
@@ -53,6 +70,7 @@ let navigate = useNavigate();
 
       <div className={classes.innerContainer}>
         <div className={classes.row}>
+          <UserId/>
           <input
             type="text"
             name="firstname"
@@ -124,7 +142,7 @@ let navigate = useNavigate();
             />
           </div>
 
-          <Submit click={Push}/>
+          <Submit click={()=>Push(personal)}/>
     </div>
       </div>
       </div>
