@@ -7,8 +7,8 @@ import DownloadIcon from '@mui/icons-material/Download';
 export const MyResume = () => {
   return (
       <div className={classes.container}>
-<div className={`${classes.my_resume} ${classes.resume}`}>
-    <h1>My Resume</h1>
+        <div className={`${classes.my_resume} ${classes.resume}`}>
+            <h1>My Resume</h1>
       <div>
       </div>
     </div>

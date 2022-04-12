@@ -17,7 +17,9 @@ const Signup = ({ btn, msg }) => {
     .then((userCredential) => {
       // Signed in
       const user = userCredential.user;
-      dispatch(menu(true));
+     // dispatch(menu(true));
+          console.log(userCredential.user.uid);
+
       //  setMenu(true)
       // ...
     })

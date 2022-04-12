@@ -9,7 +9,4 @@ export const menuReducer = (state = initialState, action) => {
         default:
             return state
     }
-    
-
-    
 }

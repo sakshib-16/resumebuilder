@@ -1,25 +1,76 @@
-import React from "react";
-import classes from "./Detail.module.css";
-import { useState } from "react";
-import database from "../../../Firebase/Firebase";
-import { Submit } from "./Submit/Submit";
+import React from 'react'
+import classes from './Detail.module.css'
+import {useState} from 'react';
+import database from '../../../Firebase/Firebase';
+import { Submit } from './Submit/Submit';
+import { push } from 'firebase/database';
+import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+import UserId from './UserId/UserId';
+import { ref, set } from "firebase/database";
+import db from '../../../Firebase/Firebase';
 
 export const PersonalDetails = () => {
   //const PersonalDetail = {}
 
+   let navigate = useNavigate();
+
   const [personal, setPersonal] = useState({});
+  const [userid,setUserId] =useState('')
 
-  // const Push = () => {
-  //   database.ref("user").set({
 
-  //   }).catch(alert);
-  // }
+  //getting uid
+  const auth = getAuth();
+    onAuthStateChanged(auth, (user) => {
+  if (user) {
+    // User is signed in, see docs for a list of available properties
+    // https://firebase.google.com/docs/reference/js/firebase.User
+    const uid = user.uid;
+    console.log(uid)
+    setUserId(uid);
+    // ...
+  } else {
+    // User is signed out
+    // ...
+  }
+});
+
+
+
+  const Push = (personal) => {
+    console.log(personal)
+
+   // e.preventDefault();
+
+    const { firstName, lastName, jobTitle, phoneNumber, emailAddress, personalWebsite, city, country } = personal;
+    
+
+    set(ref(db, 'container/' + userid + '/personal'), {
+          firstName,
+          lastName,
+          jobTitle,
+          phoneNumber,
+          emailAddress,
+          personalWebsite,
+          city,
+          country,
+})
+.then(() => {
+  navigate(`/layout/experience`);
+})
+.catch((error) => {
+  // The write failed...
+});
+} 
+  
   return (
     <div className={classes.container}>
       <h1>Personal Details</h1>
 
       <div className={classes.innerContainer}>
         <div className={classes.row}>
+          <UserId/>
           <input
             type="text"
             name="firstname"
@@ -91,9 +142,9 @@ export const PersonalDetails = () => {
             />
           </div>
 
-          <Submit />
-        </div>
-      </div>
+          <Submit click={()=>Push(personal)}/>
     </div>
+      </div>
+      </div>
   );
 };

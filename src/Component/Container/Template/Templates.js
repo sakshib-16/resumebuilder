@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 import { Navigation } from "../Navigation/Navigation";
 
 export const Templates = () => {
+
+ 
   return (
     <div className={classes.templates}>
       <Navigation />

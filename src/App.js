@@ -20,6 +20,18 @@ import HomePage from "./Component/Container/Homepage/Homepage";
 import Protected from "./Component/Auth/Protected";
 
 function App() {
+//  const auth = getAuth();
+  //const [authUser,setAuthUser] =useState(false)
+  // onAuthStateChanged(auth, (user) => {
+  // if (user) {
+  //   setAuthUser(true)
+  //   // ...   
+  // } else {
+  //   // User is signed out
+  //   // ...
+  // }
+//});
+
   return (
     <div className="App">
       <BrowserRouter>
