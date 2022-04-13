@@ -1,80 +1,98 @@
-import React from 'react'
-import classes from './Detail.module.css'
-import {useState} from 'react';
-import database from '../../../Firebase/Firebase';
-import { Submit } from './Submit/Submit';
-import { push } from 'firebase/database';
+import React, { useEffect, useRef } from "react";
+import classes from "./Detail.module.css";
+import { useState } from "react";
+import database from "../../../Firebase/Firebase";
+import { Submit } from "./Submit/Submit";
+import { push } from "firebase/database";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
-import UserId from './UserId/UserId';
-import { ref, set } from "firebase/database";
-import db from '../../../Firebase/Firebase';
+import UserId from "./UserId/UserId";
+import { ref, set, onValue } from "firebase/database";
+import db from "../../../Firebase/Firebase";
 
 export const PersonalDetails = () => {
   //const PersonalDetail = {}
 
-   let navigate = useNavigate();
+  let navigate = useNavigate();
 
-  const [personal, setPersonal] = useState({});
-  const [userid,setUserId] =useState('')
+  const [personal, setPersonal] = useState({
+    firstName: null,
+    lastName: null,
+    jobTitle: null,
+    phoneNumber: null,
+    emailAddress: null,
+    personalWebsite: null,
+    city: null,
+    country: null,
+  });
+  const [fetchedData, setFetchedData] = useState("");
+  const firstName = useRef();
 
+  const userid = useSelector((id) => id.userIdReducer);
 
-  //getting uid
-  const auth = getAuth();
-    onAuthStateChanged(auth, (user) => {
-  if (user) {
-    // User is signed in, see docs for a list of available properties
-    // https://firebase.google.com/docs/reference/js/firebase.User
-    const uid = user.uid;
-    console.log(uid)
-    setUserId(uid);
-    // ...
-  } else {
-    // User is signed out
-    // ...
-  }
-});
+  //read data
+  const getData = () => {
+    const starCountRef = ref(db, "container/" + userid + "/personal");
+    onValue(starCountRef, (snapshot) => {
+      const data = snapshot.val();
+      if (!fetchedData) setFetchedData(data);
+      firstName.current.value = fetchedData.firstName || "";
 
+      console.log(fetchedData.firstName);
+    });
+  };
 
+  useEffect(() => {
+    getData();
+  }, [fetchedData]);
 
-  const Push = (personal) => {
-    console.log(personal)
+  const Push = () => {
+    console.log(personal);
 
-   // e.preventDefault();
+    // e.preventDefault();
 
-    const { firstName, lastName, jobTitle, phoneNumber, emailAddress, personalWebsite, city, country } = personal;
-    
+    const {
+      firstName,
+      lastName,
+      jobTitle,
+      phoneNumber,
+      emailAddress,
+      personalWebsite,
+      city,
+      country,
+    } = personal;
 
-    set(ref(db, 'container/' + userid + '/personal'), {
-          firstName,
-          lastName,
-          jobTitle,
-          phoneNumber,
-          emailAddress,
-          personalWebsite,
-          city,
-          country,
-})
-.then(() => {
-  navigate(`/layout/experience`);
-})
-.catch((error) => {
-  // The write failed...
-});
-} 
-  
+    set(ref(db, "container/" + userid + "/personal"), {
+      firstName,
+      lastName,
+      jobTitle,
+      phoneNumber,
+      emailAddress,
+      personalWebsite,
+      city,
+      country,
+    })
+      .then(() => {
+        navigate(`/layout/experience`);
+      })
+      .catch((error) => {
+        // The write failed...
+      });
+  };
+
   return (
     <div className={classes.container}>
       <h1>Personal Details</h1>
 
       <div className={classes.innerContainer}>
         <div className={classes.row}>
-          <UserId/>
+          <UserId />
           <input
             type="text"
             name="firstname"
             placeholder="First Name"
+            ref={firstName}
             onChange={(e) =>
               setPersonal({ ...personal, firstName: e.target.value })
             }
@@ -118,7 +136,10 @@ export const PersonalDetails = () => {
             name="personalwebsite"
             placeholder="Personal Website"
             onChange={(e) =>
-              setPersonal({ ...personal, personalWebsite: e.target.value })
+              setPersonal({
+                ...personal,
+                personalWebsite: e.target.value,
+              })
             }
           />
 
@@ -142,9 +163,9 @@ export const PersonalDetails = () => {
             />
           </div>
 
-          <Submit click={()=>Push(personal)}/>
+          <Submit click={() => Push(personal)} />
+        </div>
+      </div>
     </div>
-      </div>
-      </div>
   );
 };
