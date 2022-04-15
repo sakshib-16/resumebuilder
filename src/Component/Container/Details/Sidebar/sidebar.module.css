@@ -1,6 +1,6 @@
 .sidebar {
   width: 25%;
-  margin: auto;
+  /* margin: auto; */
 }
 .sidebar .list {
   display: flex;

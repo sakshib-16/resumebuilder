@@ -5,24 +5,15 @@ import { ref, set, onValue } from "firebase/database";
 import db from "../../../Firebase/Firebase";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 
 export const Skills = () => {
   const [skill, setSkill] = useState({
     skills: null,
   });
-  const [userid, setUserId] = useState("");
 
+  const userid = sessionStorage.getItem("uid");
   let navigate = useNavigate();
-  //getting uid
-  const auth = getAuth();
-  onAuthStateChanged(auth, (user) => {
-    if (user) {
-      const uid = user.uid;
-      setUserId(uid);
-      // ...
-    } else {
-    }
-  });
 
   const Push = async (e) => {
     e.preventDefault();
@@ -48,6 +39,7 @@ export const Skills = () => {
             type="text"
             placeholder="Skills (E.g. Design, React, MySQL)"
             onChange={(e) => setSkill({ ...skill, skills: e.target.value })}
+            value={skill.skills}
           />
 
           <Submit click={Push} />

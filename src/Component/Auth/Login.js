@@ -17,10 +17,12 @@ export const Login = ({ btn, msg }) => {
     .then((userCredential) => {
       // Signed in
       const user = userCredential.user;
-      console.log(userCredential.user.uid);
+      console.log(user.uid);
 
       setLoggedUser(user);
       sessionStorage.setItem("loginSession", true);
+      sessionStorage.setItem("uid", user.uid);
+
       dispatch({ type: "UID", payload: userCredential.user.uid });
     })
     .catch((error) => {
