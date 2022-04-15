@@ -7,7 +7,7 @@ import { Navigation } from "../Navigation/Navigation";
 
 export const CreateResume = () => {
   return (
-    <div>
+    <div className={classes.resume_container}>
       <Navigation />
 
       <div className={`${classes.create_resume} ${classes.resume}`}>
@@ -19,7 +19,6 @@ export const CreateResume = () => {
           </Link>
         </div>
       </div>
-
       <MyResume />
     </div>
   );

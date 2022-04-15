@@ -32,8 +32,7 @@ export const Form = ({ btn, msg }) => {
             onChange={(e) => setAuth({ ...auth, password: e.target.value })}
           />
           <VisibilityIcon
-            fontSize="very-small"
-            sx={{ color: "#4D4D4D" }}
+            sx={{ color: "#4D4D4D", fontSize: 18 }}
             onMouseUp={() => setAuth({ ...auth, showPassword: false })}
             onMouseDown={() => {
               setAuth({ ...auth, showPassword: true });
@@ -53,8 +52,7 @@ export const Form = ({ btn, msg }) => {
                 }
               />
               <VisibilityIcon
-                fontSize="very-small"
-                sx={{ color: "#4D4D4D" }}
+                sx={{ color: "#4D4D4D", fontSize: 18 }}
                 onMouseUp={() => setAuth({ ...auth, reShowPassword: false })}
                 onMouseDown={() => {
                   setAuth({ ...auth, reShowPassword: true });

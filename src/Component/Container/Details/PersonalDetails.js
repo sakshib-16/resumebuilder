@@ -55,6 +55,7 @@ export const PersonalDetails = () => {
 
   useEffect(() => {
     getData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [fetchedData]);
 
   const Push = () => {
