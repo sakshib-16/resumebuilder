@@ -13,6 +13,7 @@ export const Skills = () => {
   const skillRef = useRef();
   const userid = useSelector((id) => id.userIdReducer);
 
+  const userid = sessionStorage.getItem("uid");
   let navigate = useNavigate();
 
   const Push = (e) => {
