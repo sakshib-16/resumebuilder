@@ -1,58 +1,64 @@
-.resume div {
-    width: 166px;
-    height: 234px;
-    background: #FEFEFE;
-    border: 1px solid #1EA5FC;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    color: #403F3F;
+.resume_container {
+  background: #f2f4f7;
+  height: 100vh;
 }
 
-.create_resume h1, .my_resume h1 {
-    color: #2D2D2D;
-    font-weight: 700;
+.resume div {
+  width: 166px;
+  height: 234px;
+  background: #fefefe;
+  border: 1px solid #1ea5fc;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #403f3f;
+}
+
+.create_resume h1,
+.my_resume h1 {
+  color: #2d2d2d;
+  font-weight: 700;
 }
 
 .resume {
-    display: flex;
-    flex-direction: column;
-    margin-left: 90px;
-    margin-top: 20px;
-    font-family: 'Inter';
+  display: flex;
+  flex-direction: column;
+  margin-left: 90px;
+  margin-top: 20px;
+  font-family: "Inter";
 }
 
 .container {
-    display: flex;
-    font-family: 'Inter';
+  display: flex;
+  font-family: "Inter";
 }
 
 .options {
-    align-self: center;
-    margin-top: 30px;
-    margin-left: 15px;
+  align-self: center;
+  margin-top: 30px;
+  margin-left: 15px;
 }
 
 .options p {
-    font-weight: 500;
-    font-size: 16px;
+  font-weight: 500;
+  font-size: 16px;
 }
 
 .option {
-    display: flex;
-    align-items: center;
-    margin: 15px 0;
-    color: #504E4E;
-    cursor: pointer;
-    font-size: 14px;
-    font-weight: 500;
+  display: flex;
+  align-items: center;
+  margin: 15px 0;
+  color: #504e4e;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
 }
 
 .option:nth-child(4) {
-    color: #1EA5FC;
+  color: #1ea5fc;
 }
 
 .option span {
-    margin-left: 10px;
+  margin-left: 10px;
 }

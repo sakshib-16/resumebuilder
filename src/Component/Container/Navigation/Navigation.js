@@ -5,6 +5,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { getAuth, signOut } from "firebase/auth";
+import { Logo } from "../../logo/Logo";
 
 export const Navigation = () => {
   const [show, setShow] = useState(false);
@@ -28,11 +29,13 @@ export const Navigation = () => {
   return (
     <>
       <div className={classes.nav}>
-        <div className={classes.logo}></div>
+        <div className={classes.logo}>
+          <Logo />
+        </div>
         <div className={classes.logoutContainer}>
           <div className={classes.user_option} onClick={showHide}>
-            <PermIdentityIcon fontSize="medium" />
-            <ArrowDropDownIcon fontSize="medium" />
+            <PermIdentityIcon sx={{ fontSize: 30 }} />
+            <ArrowDropDownIcon sx={{ fontSize: 30 }} />
           </div>
         </div>
       </div>
