@@ -1,3 +1,8 @@
+.templates {
+  background: #f2f4f7;
+  height: 100vh;
+}
+
 .templates .create_resume h1,
 .my_resume h1 {
   color: #2d2d2d;

@@ -5,13 +5,16 @@
 .btn .submitBtn {
   background-color: #1ea5fc;
   margin: 20px 10px 10px 0px;
+  width: 118px;
+  height: 35.26px;
   color: white;
-  padding: 12px 20px;
+  /* padding: 12px 20px; */
   border: none;
   border-radius: 4px;
   cursor: pointer;
   font-size: 16px;
   font-weight: 700;
   display: flex;
-  float: right;
+  align-items: center;
+  justify-content: center;
 }

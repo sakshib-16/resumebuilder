@@ -56,5 +56,6 @@
   cursor: pointer;
 }
 .container {
-  background-color: #e5e5e5;
+  background: #f2f4f7;
+  height: 100vh;
 }

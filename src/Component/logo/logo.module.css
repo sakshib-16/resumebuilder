@@ -1,0 +1,14 @@
+.p2 {
+  color: #1ea5fc;
+  display: inline-block;
+}
+
+.p1 {
+  display: inline-block;
+}
+
+.logo {
+  font-size: 1.4rem;
+  margin: 4px;
+  user-select: none;
+}

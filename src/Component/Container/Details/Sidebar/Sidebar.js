@@ -1,8 +1,6 @@
 import React from "react";
 import classes from "./sidebar.module.css";
 import { Link } from "react-router-dom";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { Education } from "../Education";
 
 export const Sidebar = () => {
   return (
