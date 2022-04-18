@@ -11,6 +11,7 @@ import db from "../../../Firebase/Firebase";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import moment from "moment";
+import { userid } from "./variable/variable";
 
 export const Certificates = () => {
   const [certificate, setCertificate] = useState({
@@ -20,7 +21,6 @@ export const Certificates = () => {
     certomonth: null,
     certoyear: null,
   });
-  const userid = sessionStorage.getItem("uid");
 
   let navigate = useNavigate();
 

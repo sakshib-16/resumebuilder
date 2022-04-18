@@ -5,15 +5,13 @@ import { ref, set, onValue } from "firebase/database";
 import db from "../../../Firebase/Firebase";
 import { useNavigate } from "react-router-dom";
 import { Badge } from "./badge/Badge";
-import { useSelector } from "react-redux";
+import { userid } from "./variable/variable";
 
 export const Skills = () => {
   const [skill, setSkill] = useState(null);
   const [skills, setSkills] = useState([]);
   const skillRef = useRef();
-  const userid = useSelector((id) => id.userIdReducer);
 
-  const userid = sessionStorage.getItem("uid");
   let navigate = useNavigate();
 
   const Push = (e) => {

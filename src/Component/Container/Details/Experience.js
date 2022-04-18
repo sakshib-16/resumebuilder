@@ -11,10 +11,9 @@ import moment from "moment";
 import { useDispatch, useSelector } from "react-redux";
 import { ref, set, onValue } from "firebase/database";
 import db from "../../../Firebase/Firebase";
+import { userid } from "./variable/variable";
 
 export const Experience = () => {
-  const userid = sessionStorage.getItem("uid");
-
   let navigate = useNavigate();
 
   const [experience, setExperience] = useState({

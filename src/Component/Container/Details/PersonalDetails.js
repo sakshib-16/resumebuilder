@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { ref, set, onValue } from "firebase/database";
 import db from "../../../Firebase/Firebase";
+import { userid } from "./variable/variable";
 
 export const PersonalDetails = () => {
   //const PersonalDetail = {}
@@ -35,7 +36,7 @@ export const PersonalDetails = () => {
   const city = useRef();
   const country = useRef();
 
-  const userid = sessionStorage.getItem("uid");
+  console.log(userid);
   //read data
   const getData = () => {
     const starCountRef = ref(db, "container/" + userid + "/personal");

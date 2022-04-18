@@ -5,13 +5,12 @@ import { ref, set, onValue } from "firebase/database";
 import db from "../../../Firebase/Firebase";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { userid } from "./variable/variable";
 
 export const Summary = () => {
   const [summary, setSummary] = useState({
     summry: null,
   });
-  const userid = sessionStorage.getItem("uid");
 
   const summry = useRef();
   let navigate = useNavigate();

@@ -6,17 +6,10 @@ import { Certificates } from "../Certificates";
 import { Languages } from "../Languages";
 import { Summary } from "../Summary";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { Details } from "@mui/icons-material";
 import { PersonalDetails } from "../PersonalDetails";
-import { getDatabase, ref, set } from "firebase/database";
-import db from "../../../../Firebase/Firebase";
 import Protected from "../../../Auth/Protected";
 
 export const Wrapper = () => {
-  const ed = {
-    name: "harry",
-    school: "jj",
-  };
   // useEffect(() => {
   // function writeUserData() {
   // // const db = getDatabase();

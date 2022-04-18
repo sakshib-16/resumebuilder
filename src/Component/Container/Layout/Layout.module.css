@@ -2,3 +2,6 @@
   display: flex;
   background: #f2f4f7;
 }
+.container{
+   height: 100vh;
+}
