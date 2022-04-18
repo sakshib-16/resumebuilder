@@ -9,6 +9,7 @@ import db from "../../../Firebase/Firebase";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import moment from "moment";
+import { userid } from "./variable/variable";
 
 export const Education = () => {
   const [education, setEducation] = useState({
@@ -18,7 +19,6 @@ export const Education = () => {
     field: null,
     accomplishment: null,
   });
-  const userid = sessionStorage.getItem("uid");
 
   let navigate = useNavigate();
 

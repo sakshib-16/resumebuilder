@@ -7,10 +7,12 @@ import { Navigation } from "../Navigation/Navigation";
 export const Layout = () => {
   return (
     <>
-      <Navigation />
-      <div className={classes.wrapper}>
-        <Sidebar />
-        <Wrapper />
+      <div className={classes.container}>
+        <Navigation />
+        <div className={classes.wrapper}>
+          <Sidebar />
+          <Wrapper />
+        </div>
       </div>
     </>
   );
