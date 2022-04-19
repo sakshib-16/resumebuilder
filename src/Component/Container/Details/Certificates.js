@@ -11,6 +11,7 @@ import db from "../../../Firebase/Firebase";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import moment from "moment";
+import { SubHeader } from "./sub-header/SubHeader";
 
 export const Certificates = () => {
   const [certificate, setCertificate] = useState({
@@ -56,7 +57,7 @@ export const Certificates = () => {
 
   return (
     <div className={classes.container}>
-      <h1>Certificates</h1>
+      <SubHeader heading="Certificates" />
 
       <div className={classes.innerContainer}>
         <div className={classes.row}>

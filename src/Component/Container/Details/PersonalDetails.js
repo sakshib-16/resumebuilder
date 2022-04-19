@@ -10,6 +10,7 @@ import { getAuth, onAuthStateChanged } from "firebase/auth";
 import UserId from "./UserId/UserId";
 import { ref, set, onValue } from "firebase/database";
 import db from "../../../Firebase/Firebase";
+import { SubHeader } from "./sub-header/SubHeader";
 
 export const PersonalDetails = () => {
   //const PersonalDetail = {}
@@ -84,7 +85,7 @@ export const PersonalDetails = () => {
 
   return (
     <div className={classes.container}>
-      <h1>Personal Details</h1>
+      <SubHeader heading="Personal Details" />
 
       <div className={classes.innerContainer}>
         <div className={classes.row}>

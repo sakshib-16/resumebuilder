@@ -6,6 +6,7 @@ import db from "../../../Firebase/Firebase";
 import { useNavigate } from "react-router-dom";
 import { Badge } from "./badge/Badge";
 import { useSelector } from "react-redux";
+import { SubHeader } from "./sub-header/SubHeader";
 
 export const Skills = () => {
   const [skill, setSkill] = useState(null);
@@ -17,7 +18,6 @@ export const Skills = () => {
 
   const Push = (e) => {
     e.preventDefault();
-    const { skills } = skill;
     set(ref(db, "container/" + userid + "/skills"), {
       skills,
     })
@@ -48,13 +48,16 @@ export const Skills = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setSkills([...skills, { id: Date.now(), value: skill }]);
-    skillRef.current.value = "";
+    if (skill) {
+      setSkills([...skills, { id: Date.now(), value: skill }]);
+      setSkill("");
+      skillRef.current.value = "";
+    }
   };
 
   return (
     <div className={classes.container}>
-      <h1>Skills</h1>
+      <SubHeader heading="Skills" />
 
       <div className={classes.innerContainer}>
         <div className={classes.row}>

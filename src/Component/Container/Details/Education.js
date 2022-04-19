@@ -9,6 +9,7 @@ import db from "../../../Firebase/Firebase";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import moment from "moment";
+import { SubHeader } from "./sub-header/SubHeader";
 
 export const Education = () => {
   const [education, setEducation] = useState({
@@ -54,7 +55,7 @@ export const Education = () => {
 
   return (
     <div className={classes.container}>
-      <h1>Education</h1>
+      <SubHeader heading="Education" />
       <div className={classes.borderBox}>
         <h2>
           <AddIcon className={classes.addIcon} /> Add Education

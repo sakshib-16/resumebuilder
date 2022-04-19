@@ -11,6 +11,7 @@ import moment from "moment";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { ref, set, onValue } from "firebase/database";
 import db from "../../../Firebase/Firebase";
+import { SubHeader } from "./sub-header/SubHeader";
 
 export const Experience = () => {
   let navigate = useNavigate();
@@ -82,7 +83,7 @@ export const Experience = () => {
 
   return (
     <div className={classes.container}>
-      <h1>Experience</h1>
+      <SubHeader heading="Experience" />
       <div className={classes.borderBox}>
         <h2>
           <AddIcon className={classes.addIcon} /> Add Experience
