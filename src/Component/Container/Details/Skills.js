@@ -7,12 +7,12 @@ import { useNavigate } from "react-router-dom";
 import { Badge } from "./badge/Badge";
 import { useSelector } from "react-redux";
 import { SubHeader } from "./sub-header/SubHeader";
+import { userid } from "./variable/variable";
 
 export const Skills = () => {
   const [skill, setSkill] = useState(null);
   const [skills, setSkills] = useState([]);
   const skillRef = useRef();
-  const userid = useSelector((id) => id.userIdReducer);
 
   let navigate = useNavigate();
 

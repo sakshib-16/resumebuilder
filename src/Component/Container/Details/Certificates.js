@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import classes from "./Detail.module.css";
 import Datetime from "react-datetime";
 import "react-datetime/css/react-datetime.css";
@@ -8,10 +8,11 @@ import AddIcon from "@mui/icons-material/Add";
 import { Submit } from "./Submit/Submit";
 import { ref, set, onValue } from "firebase/database";
 import db from "../../../Firebase/Firebase";
-import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import moment from "moment";
 import { SubHeader } from "./sub-header/SubHeader";
+import { userid } from "./variable/variable";
 
 export const Certificates = () => {
   const [certificate, setCertificate] = useState({
@@ -21,19 +22,35 @@ export const Certificates = () => {
     certomonth: null,
     certoyear: null,
   });
-  const [userid, setUserId] = useState("");
 
   let navigate = useNavigate();
-  //getting uid
-  const auth = getAuth();
-  onAuthStateChanged(auth, (user) => {
-    if (user) {
-      const uid = user.uid;
-      setUserId(uid);
-      // ...
-    } else {
-    }
-  });
+
+  const [fetchedData, setFetchedData] = useState("");
+
+  const cername = useRef();
+  const cerfrommonth = useRef();
+  const cerfromyear = useRef();
+  const certomonth = useRef();
+  const certoyear = useRef();
+
+  const getData = () => {
+    const starCountRef = ref(db, "container/" + userid + "/certificate");
+    onValue(starCountRef, (snapshot) => {
+      const data = snapshot.val();
+      if (!fetchedData) setFetchedData(data);
+      cername.current.value = fetchedData.cername || "";
+      cerfrommonth.current.value = fetchedData.cerfrommonth || "";
+      cerfromyear.current.value = fetchedData.cerfromyear || "";
+      certomonth.current.value = fetchedData.certomonth || "";
+      certoyear.current.value = fetchedData.certoyear || "";
+
+      console.log(fetchedData.firstName);
+    });
+  };
+
+  useEffect(() => {
+    getData();
+  }, [fetchedData]);
 
   const Push = async (e) => {
     e.preventDefault();

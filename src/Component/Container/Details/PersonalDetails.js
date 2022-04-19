@@ -6,11 +6,10 @@ import { Submit } from "./Submit/Submit";
 import { push } from "firebase/database";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getAuth, onAuthStateChanged } from "firebase/auth";
-import UserId from "./UserId/UserId";
 import { ref, set, onValue } from "firebase/database";
 import db from "../../../Firebase/Firebase";
 import { SubHeader } from "./sub-header/SubHeader";
+import { userid } from "./variable/variable";
 
 export const PersonalDetails = () => {
   //const PersonalDetail = {}
@@ -28,10 +27,17 @@ export const PersonalDetails = () => {
     country: null,
   });
   const [fetchedData, setFetchedData] = useState("");
+
   const firstName = useRef();
+  const lastName = useRef();
+  const jobTitle = useRef();
+  const phoneNumber = useRef();
+  const emailAddress = useRef();
+  const personalWebsite = useRef();
+  const city = useRef();
+  const country = useRef();
 
-  const userid = useSelector((id) => id.userIdReducer);
-
+  console.log(userid);
   //read data
   const getData = () => {
     const starCountRef = ref(db, "container/" + userid + "/personal");
@@ -39,8 +45,13 @@ export const PersonalDetails = () => {
       const data = snapshot.val();
       if (!fetchedData) setFetchedData(data);
       firstName.current.value = fetchedData.firstName || "";
-
-      console.log(fetchedData.firstName);
+      lastName.current.value = fetchedData.lastName || "";
+      jobTitle.current.value = fetchedData.jobTitle || "";
+      phoneNumber.current.value = fetchedData.phoneNumber || "";
+      emailAddress.current.value = fetchedData.emailAddress || "";
+      personalWebsite.current.value = fetchedData.personalWebsite || "";
+      city.current.value = fetchedData.city || "";
+      country.current.value = fetchedData.country || "";
     });
   };
 
@@ -50,8 +61,6 @@ export const PersonalDetails = () => {
   }, [fetchedData]);
 
   const Push = () => {
-    console.log(personal);
-
     // e.preventDefault();
 
     const {
@@ -89,7 +98,6 @@ export const PersonalDetails = () => {
 
       <div className={classes.innerContainer}>
         <div className={classes.row}>
-          <UserId />
           <input
             type="text"
             name="firstname"
@@ -103,6 +111,7 @@ export const PersonalDetails = () => {
             type="text"
             name="lastname"
             placeholder="Last Name"
+            ref={lastName}
             onChange={(e) =>
               setPersonal({ ...personal, lastName: e.target.value })
             }
@@ -111,6 +120,7 @@ export const PersonalDetails = () => {
             type="text"
             name="jobtitle"
             placeholder="Job Title"
+            ref={jobTitle}
             onChange={(e) =>
               setPersonal({ ...personal, jobTitle: e.target.value })
             }
@@ -121,6 +131,7 @@ export const PersonalDetails = () => {
             type="text"
             name="phonenumber"
             placeholder="Phone Number"
+            ref={phoneNumber}
             onChange={(e) =>
               setPersonal({ ...personal, phoneNumber: e.target.value })
             }
@@ -129,6 +140,7 @@ export const PersonalDetails = () => {
             type="text"
             name="emailaddress"
             placeholder="Email Address"
+            ref={emailAddress}
             onChange={(e) =>
               setPersonal({ ...personal, emailAddress: e.target.value })
             }
@@ -137,6 +149,7 @@ export const PersonalDetails = () => {
             type="text"
             name="personalwebsite"
             placeholder="Personal Website"
+            ref={personalWebsite}
             onChange={(e) =>
               setPersonal({
                 ...personal,
@@ -151,6 +164,7 @@ export const PersonalDetails = () => {
               type="text"
               name="city"
               placeholder="City"
+              ref={city}
               onChange={(e) =>
                 setPersonal({ ...personal, city: e.target.value })
               }
@@ -159,13 +173,14 @@ export const PersonalDetails = () => {
               type="text"
               name="country"
               placeholder="Country"
+              ref={country}
               onChange={(e) =>
                 setPersonal({ ...personal, country: e.target.value })
               }
             />
           </div>
 
-          <Submit click={() => Push(personal)} />
+          <Submit click={Push} />
         </div>
       </div>
     </div>

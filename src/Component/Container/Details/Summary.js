@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import classes from "./Detail.module.css";
 import { Submit } from "./Submit/Submit";
 import { ref, set, onValue } from "firebase/database";
@@ -7,34 +7,25 @@ import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { SubHeader } from "./sub-header/SubHeader";
 import moment from "moment";
+import { userid } from "./variable/variable";
 
 export const Summary = () => {
   const [summary, setSummary] = useState({
-    summary: null,
+    summry: null,
   });
-  const [userid, setUserId] = useState("");
 
+  const summry = useRef();
   let navigate = useNavigate();
-  //getting uid
-  const auth = getAuth();
-  onAuthStateChanged(auth, (user) => {
-    if (user) {
-      const uid = user.uid;
-      setUserId(uid);
-      // ...
-    } else {
-    }
-  });
 
   const Push = async (e) => {
     e.preventDefault();
-    const { summary } = summary;
+    const { summry } = summary;
 
     set(ref(db, "container/" + userid + "/summary"), {
-      summary,
+      summry,
     })
       .then(() => {
-        navigate(`/layout/summary`);
+        navigate(`/layout`);
       })
       .catch((error) => {
         // The write failed...
@@ -48,11 +39,9 @@ export const Summary = () => {
           <input
             type="text"
             placeholder="Your Professional Summary"
-            onChange={(e) =>
-              setSummary({ ...summary, summary: e.target.value })
-            }
+            onChange={(e) => setSummary({ ...summary, summry: e.target.value })}
           />
-          <Submit />
+          <Submit click={Push} />
         </div>
       </div>
     </div>

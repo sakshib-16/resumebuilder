@@ -10,15 +10,15 @@ export const CreateResume = () => {
     <div className={classes.resume_container}>
       <Navigation />
 
-      <Link to="/templates">
-        <div className={`${classes.create_resume} ${classes.resume}`}>
-          <h1>Create Resume</h1>
-          <div>
-            <AddCircleOutlineIcon fontSize="large" />
+      <div className={`${classes.create_resume} ${classes.resume}`}>
+        <h1>Create Resume</h1>
+        <div>
+          <AddCircleOutlineIcon fontSize="large" />
+          <Link to="/templates">
             <p>Create New</p>
-          </div>
+          </Link>
         </div>
-      </Link>
+      </div>
       <MyResume />
     </div>
   );
