@@ -10,8 +10,7 @@ export const Preview = () => {
     <div>
       <Navigation />
       <h1>Preview</h1>
-      {/* {templateId == 1 ? <Template1 /> : <Template2 />} */}
-      <Template {...templateId} />
+      {templateId == 1 ? <Template1 /> : <Template2 />}
     </div>
   );
 };
