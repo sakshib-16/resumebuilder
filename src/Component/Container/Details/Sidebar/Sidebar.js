@@ -61,7 +61,6 @@ export const Sidebar = () => {
             <li>Experience</li>
           </Link>
           <Link to="/layout/education">
-
             <li>Education</li>
           </Link>
           <Link to="/layout/skills">

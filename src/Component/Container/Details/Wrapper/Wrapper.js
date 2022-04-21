@@ -3,6 +3,8 @@ import { Experience } from "../Experience";
 import { Education } from "../Education";
 import { Skills } from "../Skills";
 import { Certificates } from "../Certificates";
+import { Preview } from "../Preview";
+
 import { Languages } from "../Languages";
 import { Summary } from "../Summary";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -19,14 +21,14 @@ export const Wrapper = () => {
   //   }
   //   writeUserData();
   //   })
-
+  const uid = sessionStorage.getItem("uid");
   return (
     <Routes>
       <Route
         index
         element={
           <Protected>
-            <PersonalDetails />
+            <PersonalDetails userid={uid} />
           </Protected>
         }
       />
@@ -34,7 +36,7 @@ export const Wrapper = () => {
         path="/experience"
         element={
           <Protected>
-            <Experience />
+            <Experience userid={uid} />
           </Protected>
         }
       />
@@ -42,7 +44,7 @@ export const Wrapper = () => {
         path="/education"
         element={
           <Protected>
-            <Education />
+            <Education userid={uid} />
           </Protected>
         }
       />
@@ -50,7 +52,7 @@ export const Wrapper = () => {
         path="/skills"
         element={
           <Protected>
-            <Skills />
+            <Skills userid={uid} />
           </Protected>
         }
       />
@@ -58,7 +60,7 @@ export const Wrapper = () => {
         path="/certificates"
         element={
           <Protected>
-            <Certificates />
+            <Certificates userid={uid} />
           </Protected>
         }
       />
@@ -66,7 +68,7 @@ export const Wrapper = () => {
         path="/languages"
         element={
           <Protected>
-            <Languages />
+            <Languages userid={uid} />
           </Protected>
         }
       />
@@ -74,7 +76,7 @@ export const Wrapper = () => {
         path="/summary"
         element={
           <Protected>
-            <Summary />
+            <Summary userid={uid} />
           </Protected>
         }
       />

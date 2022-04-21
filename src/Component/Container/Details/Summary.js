@@ -7,7 +7,7 @@ import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { userid } from "./variable/variable";
 
-export const Summary = () => {
+export const Summary = ({ userid }) => {
   const [summary, setSummary] = useState({
     summry: null,
   });
@@ -23,7 +23,7 @@ export const Summary = () => {
       summry,
     })
       .then(() => {
-        navigate(`/layout`);
+        navigate(`/temp/preview`);
       })
       .catch((error) => {
         // The write failed...

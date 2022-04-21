@@ -19,6 +19,8 @@
 .my_resume h1 {
   color: #2d2d2d;
   font-weight: 700;
+    font-size: 20px;
+    margin-bottom: 12px;
 }
 
 .resume {
@@ -40,9 +42,10 @@
   margin-left: 15px;
 }
 
+.create_resume p,
 .options p {
   font-weight: 500;
-  font-size: 16px;
+  /* font-size: 16px; */
 }
 
 .option {
@@ -61,4 +64,7 @@
 
 .option span {
   margin-left: 10px;
+}
+.create_resumeicon p{
+  text-decoration: none;
 }

@@ -11,9 +11,8 @@ import db from "../../../Firebase/Firebase";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import moment from "moment";
-import { userid } from "./variable/variable";
 
-export const Certificates = () => {
+export const Certificates = ({ userid }) => {
   const [certificate, setCertificate] = useState({
     cername: null,
     cerfrommonth: null,

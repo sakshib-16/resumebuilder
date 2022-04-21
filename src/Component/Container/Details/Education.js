@@ -9,9 +9,8 @@ import db from "../../../Firebase/Firebase";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import moment from "moment";
-import { userid } from "./variable/variable";
 
-export const Education = () => {
+export const Education = ({ userid }) => {
   const [education, setEducation] = useState({
     university: null,
     degree: null,

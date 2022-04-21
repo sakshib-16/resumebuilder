@@ -5,9 +5,8 @@ import { ref, set, onValue } from "firebase/database";
 import db from "../../../Firebase/Firebase";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { userid } from "./variable/variable";
 
-export const Languages = () => {
+export const Languages = ({ userid }) => {
   const [language, setLanguage] = useState({
     language: null,
   });

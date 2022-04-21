@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { Badge } from "./badge/Badge";
 import { userid } from "./variable/variable";
 
-export const Skills = () => {
+export const Skills = ({ userid }) => {
   const [skill, setSkill] = useState(null);
   const [skills, setSkills] = useState([]);
   const skillRef = useRef();
