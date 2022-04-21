@@ -5,7 +5,7 @@ import { ref, set, onValue } from "firebase/database";
 import db from "../../../Firebase/Firebase";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
-import { userid } from "./variable/variable";
+import { SubHeader } from "./sub-header/SubHeader";
 
 export const Summary = ({ userid }) => {
   const [summary, setSummary] = useState({
@@ -31,8 +31,7 @@ export const Summary = ({ userid }) => {
   };
   return (
     <div className={classes.container}>
-      <h1>Summary</h1>
-
+      <SubHeader heading="Summary" />
       <div className={classes.innerContainer}>
         <div className={classes.row}>
           <input

@@ -5,9 +5,9 @@ import database from "../../../Firebase/Firebase";
 import { Submit } from "./Submit/Submit";
 import { push } from "firebase/database";
 import { useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
 import { ref, set, onValue } from "firebase/database";
 import db from "../../../Firebase/Firebase";
+import { SubHeader } from "./sub-header/SubHeader";
 
 export const PersonalDetails = ({ userid }) => {
   //const PersonalDetail = {}
@@ -92,7 +92,7 @@ export const PersonalDetails = ({ userid }) => {
 
   return (
     <div className={classes.container}>
-      <h1>Personal Details</h1>
+      <SubHeader heading="Personal Details" />
 
       <div className={classes.innerContainer}>
         <div className={classes.row}>

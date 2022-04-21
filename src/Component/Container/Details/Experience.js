@@ -11,6 +11,7 @@ import moment from "moment";
 import { useDispatch, useSelector } from "react-redux";
 import { ref, set, onValue } from "firebase/database";
 import db from "../../../Firebase/Firebase";
+import { SubHeader } from "./sub-header/SubHeader";
 
 export const Experience = ({ userid }) => {
   let navigate = useNavigate();
@@ -93,7 +94,7 @@ export const Experience = ({ userid }) => {
   };
   return (
     <div className={classes.container}>
-      <h1>Experience</h1>
+      <SubHeader heading="Experience" />
       <div className={classes.borderBox}>
         <h2 onClick={handleClick}>
           <AddIcon className={classes.addIcon} /> Add Experience
