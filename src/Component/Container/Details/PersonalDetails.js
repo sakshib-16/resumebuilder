@@ -8,12 +8,13 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { ref, set, onValue } from "firebase/database";
 import db from "../../../Firebase/Firebase";
-import { userid } from "./variable/variable";
+import { SubHeader } from "./sub-header/SubHeader";
 
 export const PersonalDetails = () => {
   //const PersonalDetail = {}
 
   let navigate = useNavigate();
+  const userid = sessionStorage.getItem("uid");
 
   const [personal, setPersonal] = useState({
     firstName: null,
@@ -93,7 +94,7 @@ export const PersonalDetails = () => {
 
   return (
     <div className={classes.container}>
-      <h1>Personal Details</h1>
+      <SubHeader heading="Personal Details" />
 
       <div className={classes.innerContainer}>
         <div className={classes.row}>

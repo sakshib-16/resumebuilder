@@ -1,22 +1,23 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import classes from "./Detail.module.css";
 import { Submit } from "./Submit/Submit";
 import { ref, set, onValue } from "firebase/database";
 import db from "../../../Firebase/Firebase";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { Badge } from "./badge/Badge";
+import { SubHeader } from "./sub-header/SubHeader";
 import { userid } from "./variable/variable";
 
 export const Languages = () => {
-  const [language, setLanguage] = useState({
-    language: null,
-  });
+  const [language, setLanguage] = useState("");
+  const [languages, setLanguages] = useState([]);
+  const langRef = useRef();
 
   let navigate = useNavigate();
 
   const Push = async (e) => {
     e.preventDefault();
-    const { languages } = language;
     set(ref(db, "container/" + userid + "/languages"), {
       languages,
     })
@@ -28,19 +29,42 @@ export const Languages = () => {
       });
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (language) {
+      setLanguages([...languages, { id: Date.now(), value: language }]);
+      setLanguage("");
+      langRef.current.value = "";
+    }
+  };
+
   return (
     <div className={classes.container}>
-      <h1>Languages</h1>
+      <SubHeader heading="Languages" />
 
       <div className={classes.innerContainer}>
         <div className={classes.row}>
-          <input
-            type="text"
-            placeholder="Languages (E.g. English, Hindi)"
-            onChange={(e) =>
-              setLanguage({ ...language, languages: e.target.value })
-            }
-          />
+          <form onSubmit={handleSubmit}>
+            <input
+              type="text"
+              ref={langRef}
+              placeholder="Languages (E.g. English, Hindi)"
+              onChange={(e) => setLanguage(e.target.value)}
+            />
+          </form>
+
+          {languages.map((lang, key) => {
+            return (
+              <Badge
+                skills={languages}
+                value={lang.value}
+                key={key}
+                id={lang.id}
+                remove={(rm) => setLanguages(rm)}
+              />
+            );
+          })}
+
           <Submit click={Push} />
         </div>
       </div>

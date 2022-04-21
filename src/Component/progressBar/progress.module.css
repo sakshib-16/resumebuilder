@@ -1,7 +1,15 @@
-.progress {
-    border: 1px solid black;
-    border-radius: 50%;
-    width: 100px;
-    height: 100px;
-    
+/* .progress_container {
+  border: 6px solid #dddddd;
+  border-radius: 50%;
+  width: 54px;
+  height: 54px;
+  box-sizing: border-box;
 }
+
+.progress {
+  border: 1px solid red;
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  box-sizing: border-box;
+} */

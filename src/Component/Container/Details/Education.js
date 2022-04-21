@@ -9,6 +9,7 @@ import db from "../../../Firebase/Firebase";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import moment from "moment";
+import { SubHeader } from "./sub-header/SubHeader";
 import { userid } from "./variable/variable";
 
 export const Education = () => {
@@ -80,7 +81,7 @@ export const Education = () => {
 
   return (
     <div className={classes.container}>
-      <h1>Education</h1>
+      <SubHeader heading="Education" />
       <div className={classes.borderBox}>
         <h2 onClick={handleClick}>
           <AddIcon className={classes.addIcon} /> Add Education

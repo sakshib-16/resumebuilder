@@ -11,6 +11,7 @@ import db from "../../../Firebase/Firebase";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import moment from "moment";
+import { SubHeader } from "./sub-header/SubHeader";
 import { userid } from "./variable/variable";
 
 export const Certificates = () => {
@@ -73,7 +74,7 @@ export const Certificates = () => {
 
   return (
     <div className={classes.container}>
-      <h1>Certificates</h1>
+      <SubHeader heading="Certificates" />
 
       <div className={classes.innerContainer}>
         <div className={classes.row}>
