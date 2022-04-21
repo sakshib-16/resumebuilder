@@ -9,12 +9,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { ref, set, onValue } from "firebase/database";
 import db from "../../../Firebase/Firebase";
 import { SubHeader } from "./sub-header/SubHeader";
-import { userid } from "./variable/variable";
 
 export const PersonalDetails = () => {
   //const PersonalDetail = {}
 
   let navigate = useNavigate();
+  const userid = sessionStorage.getItem("uid");
 
   const [personal, setPersonal] = useState({
     firstName: null,

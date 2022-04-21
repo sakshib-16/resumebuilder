@@ -124,6 +124,7 @@
   border-radius: 8px;
   display: flex;
   align-items: center;
+  user-select: none;
 }
 .addIcon {
   font-size: 37px;

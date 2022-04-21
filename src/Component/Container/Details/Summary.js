@@ -9,6 +9,8 @@ import { SubHeader } from "./sub-header/SubHeader";
 import moment from "moment";
 import { userid } from "./variable/variable";
 
+// "../Template/Template1/Template1.js"
+
 export const Summary = () => {
   const [summary, setSummary] = useState({
     summry: null,

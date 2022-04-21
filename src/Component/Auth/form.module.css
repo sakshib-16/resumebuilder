@@ -84,6 +84,7 @@
   border: none;
   outline: none;
   margin: 8px 0;
+  cursor: pointer;
 }
 
 .toggle {
