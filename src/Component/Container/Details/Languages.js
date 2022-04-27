@@ -6,6 +6,7 @@ import db from "../../../Firebase/Firebase";
 import { useNavigate } from "react-router-dom";
 import { Badge } from "./badge/Badge";
 import { SubHeader } from "./sub-header/SubHeader";
+import { setData } from "./server";
 
 export const Languages = ({ userid }) => {
   const [language, setLanguage] = useState("");
@@ -15,16 +16,9 @@ export const Languages = ({ userid }) => {
   let navigate = useNavigate();
 
   const Push = async (e) => {
-    e.preventDefault();
-    set(ref(db, "container/" + userid + "/languages"), {
-      languages,
-    })
-      .then(() => {
-        navigate(`/layout/certificates`);
-      })
-      .catch((error) => {
-        // The write failed...
-      });
+    setData([userid, "languages"], [...languages]).then(() => {
+      navigate("/layout/certificates");
+    });
   };
 
   const handleSubmit = (e) => {

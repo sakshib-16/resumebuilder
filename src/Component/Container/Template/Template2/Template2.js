@@ -16,7 +16,7 @@ const Template2 = () => {
         {({ toPdf }) => <button onClick={toPdf}>Generate Pdf</button>}
       </Pdf>
       <div ref={ref}>
-        <div className="l-Wrapper">
+        <div className="m-Wrapper">
           <div className="l-Header">
             <div className="l-Header-col">
               <h1 className="Title">
@@ -49,7 +49,7 @@ const Template2 = () => {
           </div>
 
           <section className="l-Section">
-            <h2 className="l-Section-title h3 u-hidden@sm-down">Summary</h2>
+            <h2 className="m-Section-title h3 u-hidden@sm-down">Summary</h2>
             <div className="l-Section-content">
               <p>
                 I specialize in component based HTML/CSS architecture, with a

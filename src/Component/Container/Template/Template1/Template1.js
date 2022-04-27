@@ -4,7 +4,17 @@ import Pdf from "react-to-pdf";
 
 const ref = React.createRef();
 
-const Template1 = () => {
+const Template1 = ({ data }) => {
+  console.log(data.personal);
+  const {
+    firstName,
+    lastName,
+    jobTitle,
+    city,
+    country,
+    phoneNumber,
+    emailAddress,
+  } = data.personal;
   return (
     <>
       <Pdf targetRef={ref} filename="code-example.pdf">
@@ -15,20 +25,25 @@ const Template1 = () => {
           <div className="l-Header">
             <div className="l-Header-col">
               <h1 className="Title">
-                <span className="u-shadow">Sonja Strieder</span>
+                <span className="u-shadow">
+                  {firstName}
+                  {lastName}
+                </span>
                 <br />
-                <span className="Title-sub">Front-end UI developer</span>
+                <span className="Title-sub">{jobTitle}</span>
               </h1>
             </div>
             <div className="l-Header-col Contact">
-              <div>Seattle, WA</div>
+              <div>
+                {city},{country}
+              </div>
               <div>
                 <a
                   className="u-link"
                   href="http://sonjastrieder.com/"
                   target="_blank"
                 >
-                  76767676666
+                  {phoneNumber}
                 </a>
               </div>
               <div>
@@ -37,7 +52,7 @@ const Template1 = () => {
                   href="mailto:sonja.strieder@gmail.com"
                   target="_blank"
                 >
-                  sonja.strieder@gmail.com
+                  {emailAddress}
                 </a>
               </div>
             </div>
@@ -46,20 +61,12 @@ const Template1 = () => {
           <section className="l-Section">
             <h2 className="l-Section-title h3 u-hidden@sm-down">Summary</h2>
             <div className="l-Section-content">
-              <p>
-                I specialize in component based HTML/CSS architecture, with a
-                focus on maintainability and scalability, a mobile first
-                approach.I specialize in component based HTML/CSS architecture,
-                with a focus on maintainability and scalability, a mobile first
-                approach. specialize in component based HTML/CSS architecture,
-                with a focus on maintainability and scalability, a mobile first
-                approach.
-              </p>
+              <p>{data.personal.summry}</p>
             </div>
           </section>
 
           <section className="l-Section">
-            <h2 className="l-Section-title h3">Skills</h2>
+            <h2 className="Section-title h3">Skills</h2>
             <div className="l-Section-content">
               <ul>
                 <li>Highly skilled in creating performance</li>
@@ -80,7 +87,7 @@ const Template1 = () => {
                 target="_blank"
               >
                 Snap Fashion, London
-              </a>{" "}
+              </a>
               (UK) May 2014 - Jul 2016
               <ul>
                 <li>
@@ -100,32 +107,6 @@ const Template1 = () => {
                   projects to the backend team.
                 </li>
               </ul>
-              <h3>Web Design & Interface Specialist</h3>
-              <a
-                className="u-link"
-                href="http://www.johnhenry.net/"
-                target="_blank"
-              >
-                JohnHenry, London
-              </a>{" "}
-              (UK) Jun 2010 - May 2014
-              <ul>
-                <li>
-                  Working within a team of 16+ I’ve established myself as a
-                  front-end developer with a strong focus on web standards,
-                  semantics, accessibility and progressive enhancement
-                  (HTML/CSS).
-                </li>
-                <li>
-                  Designed and/or built Wordpress themes as well as Shopify
-                  themes from scratch or customized them depending on the
-                  client’s needs.
-                </li>
-                <li>
-                  Headed the design team and designed simple and clean user
-                  interfaces.
-                </li>
-              </ul>
               <section className="l-Section">
                 <h2 className="l-Section-title h3">Education</h2>
                 <div className="l-Section-content">
@@ -136,7 +117,7 @@ const Template1 = () => {
                     target="_blank"
                   >
                     University of Applied Sciences Campus Hagenberg
-                  </a>{" "}
+                  </a>
                   (AUT) 2006 - 2009
                   <p>
                     A full-time degree programme that provides the technical
