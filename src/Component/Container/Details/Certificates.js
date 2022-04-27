@@ -12,9 +12,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import moment from "moment";
 import { SubHeader } from "./sub-header/SubHeader";
-import { userid } from "./variable/variable";
+import { setData } from "./server";
 
-export const Certificates = () => {
+export const Certificates = ({ userid }) => {
   const [certificate, setCertificate] = useState({
     cername: null,
     cerfrommonth: null,
@@ -38,11 +38,7 @@ export const Certificates = () => {
     onValue(starCountRef, (snapshot) => {
       const data = snapshot.val();
       if (!fetchedData) setFetchedData(data);
-      cername.current.value = fetchedData.cername || "";
-      cerfrommonth.current.value = fetchedData.cerfrommonth || "";
-      cerfromyear.current.value = fetchedData.cerfromyear || "";
-      certomonth.current.value = fetchedData.certomonth || "";
-      certoyear.current.value = fetchedData.certoyear || "";
+      for (let i in fetchedData) eval(i).current.value = fetchedData[i] || "";
 
       console.log(fetchedData.firstName);
     });
@@ -53,23 +49,9 @@ export const Certificates = () => {
   }, [fetchedData]);
 
   const Push = async (e) => {
-    e.preventDefault();
-    const { cername, cerfrommonth, cerfromyear, certomonth, certoyear } =
-      certificate;
-
-    set(ref(db, "container/" + userid + "/certificate"), {
-      cername,
-      cerfrommonth,
-      cerfromyear,
-      certomonth,
-      certoyear,
-    })
-      .then(() => {
-        navigate(`/layout/summary`);
-      })
-      .catch((error) => {
-        // The write failed...
-      });
+    setData([userid, "certificate"], { ...certificate }).then(() => {
+      navigate("/layout/summary");
+    });
   };
 
   return (

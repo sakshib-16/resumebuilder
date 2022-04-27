@@ -3,13 +3,12 @@ import classes from "./Detail.module.css";
 import { Submit } from "./Submit/Submit";
 import { ref, set, onValue } from "firebase/database";
 import db from "../../../Firebase/Firebase";
-import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { Badge } from "./badge/Badge";
 import { SubHeader } from "./sub-header/SubHeader";
-import { userid } from "./variable/variable";
+import { setData } from "./server";
 
-export const Languages = () => {
+export const Languages = ({ userid }) => {
   const [language, setLanguage] = useState("");
   const [languages, setLanguages] = useState([]);
   const langRef = useRef();
@@ -17,16 +16,9 @@ export const Languages = () => {
   let navigate = useNavigate();
 
   const Push = async (e) => {
-    e.preventDefault();
-    set(ref(db, "container/" + userid + "/languages"), {
-      languages,
-    })
-      .then(() => {
-        navigate(`/layout/certificates`);
-      })
-      .catch((error) => {
-        // The write failed...
-      });
+    setData([userid, "languages"], [...languages]).then(() => {
+      navigate("/layout/certificates");
+    });
   };
 
   const handleSubmit = (e) => {

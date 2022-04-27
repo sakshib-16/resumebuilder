@@ -18,19 +18,20 @@ import { Templates } from "./Component/Container/Template/Templates";
 import Signup from "./Component/Auth/Signup";
 import HomePage from "./Component/Container/Homepage/Homepage";
 import Protected from "./Component/Auth/Protected";
+import { Temp } from "./Component/Container/Template/Temp";
 
 function App() {
-//  const auth = getAuth();
+  //  const auth = getAuth();
   //const [authUser,setAuthUser] =useState(false)
   // onAuthStateChanged(auth, (user) => {
   // if (user) {
   //   setAuthUser(true)
-  //   // ...   
+  //   // ...
   // } else {
   //   // User is signed out
   //   // ...
   // }
-//});
+  //});
 
   return (
     <div className="App">
@@ -52,19 +53,12 @@ function App() {
               </Protected>
             }
           />
-          <Route
-            path="/templates"
-            element={
-              <Protected>
-                <Templates />{" "}
-              </Protected>
-            }
-          />
+
           <Route
             path="/homepage"
             element={
               <Protected>
-                <HomePage />{" "}
+                <HomePage />
               </Protected>
             }
           />
@@ -72,7 +66,15 @@ function App() {
             path="/layout/*"
             element={
               <Protected>
-                <Layout />{" "}
+                <Layout />
+              </Protected>
+            }
+          />
+          <Route
+            path="/temp/*"
+            element={
+              <Protected>
+                <Temp />
               </Protected>
             }
           />

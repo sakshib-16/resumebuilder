@@ -10,9 +10,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import moment from "moment";
 import { SubHeader } from "./sub-header/SubHeader";
-import { userid } from "./variable/variable";
+import { setData } from "./server";
 
-export const Education = () => {
+export const Education = ({ userid }) => {
   const [education, setEducation] = useState({
     university: null,
     degree: null,
@@ -38,13 +38,8 @@ export const Education = () => {
     onValue(starCountRef, (snapshot) => {
       const data = snapshot.val();
       if (!fetchedData) setFetchedData(data);
-      university.current.value = fetchedData.university || "";
-      degree.current.value = fetchedData.degree || "";
-      graduationyear.current.value = fetchedData.graduationyear || "";
-      field.current.value = fetchedData.field || "";
-      accomplishment.current.value = fetchedData.accomplishment || "";
 
-      console.log(fetchedData.firstName);
+      for (let i in fetchedData) eval(i).current.value = fetchedData[i] || "";
     });
   };
 
@@ -53,23 +48,9 @@ export const Education = () => {
   }, [fetchedData]);
 
   const Push = async (e) => {
-    e.preventDefault();
-    const { university, degree, graduationyear, field, accomplishment } =
-      education;
-
-    set(ref(db, "container/" + userid + "/education"), {
-      university,
-      degree,
-      graduationyear,
-      field,
-      accomplishment,
-    })
-      .then(() => {
-        navigate(`/layout/skills`);
-      })
-      .catch((error) => {
-        // The write failed...
-      });
+    setData([userid, "education"], education).then(() => {
+      navigate("/layout/skills");
+    });
   };
 
   const [counter, setCounter] = useState(0);

@@ -5,27 +5,27 @@ import database from "../../../Firebase/Firebase";
 import { Submit } from "./Submit/Submit";
 import { push } from "firebase/database";
 import { useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
 import { ref, set, onValue } from "firebase/database";
 import db from "../../../Firebase/Firebase";
 import { SubHeader } from "./sub-header/SubHeader";
+import { setData } from "./server";
 
-export const PersonalDetails = () => {
+export const PersonalDetails = ({ userid }) => {
   //const PersonalDetail = {}
 
   let navigate = useNavigate();
-  const userid = sessionStorage.getItem("uid");
 
   const [personal, setPersonal] = useState({
-    firstName: null,
-    lastName: null,
-    jobTitle: null,
-    phoneNumber: null,
-    emailAddress: null,
-    personalWebsite: null,
-    city: null,
-    country: null,
+    firstName: "",
+    lastName: "",
+    jobTitle: "",
+    phoneNumber: "",
+    emailAddress: "",
+    personalWebsite: "",
+    city: "",
+    country: "",
   });
+
   const [fetchedData, setFetchedData] = useState("");
 
   const firstName = useRef();
@@ -37,21 +37,22 @@ export const PersonalDetails = () => {
   const city = useRef();
   const country = useRef();
 
-  console.log(userid);
+  //console.log(userid);
+
   //read data
   const getData = () => {
     const starCountRef = ref(db, "container/" + userid + "/personal");
     onValue(starCountRef, (snapshot) => {
       const data = snapshot.val();
       if (!fetchedData) setFetchedData(data);
-      firstName.current.value = fetchedData.firstName || "";
-      lastName.current.value = fetchedData.lastName || "";
-      jobTitle.current.value = fetchedData.jobTitle || "";
-      phoneNumber.current.value = fetchedData.phoneNumber || "";
-      emailAddress.current.value = fetchedData.emailAddress || "";
-      personalWebsite.current.value = fetchedData.personalWebsite || "";
-      city.current.value = fetchedData.city || "";
-      country.current.value = fetchedData.country || "";
+
+      //console.log(firstName, lastName, city, fetchedData.firstName);
+      setPersonal({
+        ...fetchedData,
+      });
+
+      //showing ref value in input type
+      for (let i in fetchedData) eval(i).current.value = fetchedData[i] || "";
     });
   };
 
@@ -61,35 +62,9 @@ export const PersonalDetails = () => {
   }, [fetchedData]);
 
   const Push = () => {
-    // e.preventDefault();
-
-    const {
-      firstName,
-      lastName,
-      jobTitle,
-      phoneNumber,
-      emailAddress,
-      personalWebsite,
-      city,
-      country,
-    } = personal;
-
-    set(ref(db, "container/" + userid + "/personal"), {
-      firstName,
-      lastName,
-      jobTitle,
-      phoneNumber,
-      emailAddress,
-      personalWebsite,
-      city,
-      country,
-    })
-      .then(() => {
-        navigate(`/layout/experience`);
-      })
-      .catch((error) => {
-        // The write failed...
-      });
+    setData([userid, "personal"], { ...personal }).then(() => {
+      navigate("/layout/experience");
+    });
   };
 
   return (

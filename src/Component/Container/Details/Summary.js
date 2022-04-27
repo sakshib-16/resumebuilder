@@ -6,32 +6,18 @@ import db from "../../../Firebase/Firebase";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { SubHeader } from "./sub-header/SubHeader";
-import moment from "moment";
-import { userid } from "./variable/variable";
+import { setData } from "./server";
 
-// "../Template/Template1/Template1.js"
-
-export const Summary = () => {
-  const [summary, setSummary] = useState({
-    summry: null,
-  });
+export const Summary = ({ userid }) => {
+  const [summary, setSummary] = useState(null);
 
   const summry = useRef();
   let navigate = useNavigate();
 
   const Push = async (e) => {
-    e.preventDefault();
-    const { summry } = summary;
-
-    set(ref(db, "container/" + userid + "/summary"), {
-      summry,
-    })
-      .then(() => {
-        navigate(`/layout`);
-      })
-      .catch((error) => {
-        // The write failed...
-      });
+    setData([userid, "summary"], summary).then(() => {
+      navigate("/temp/preview");
+    });
   };
   return (
     <div className={classes.container}>
@@ -41,7 +27,7 @@ export const Summary = () => {
           <input
             type="text"
             placeholder="Your Professional Summary"
-            onChange={(e) => setSummary({ ...summary, summry: e.target.value })}
+            onChange={(e) => setSummary(e.target.value)}
           />
           <Submit click={Push} />
         </div>

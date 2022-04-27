@@ -8,8 +8,9 @@ import { Badge } from "./badge/Badge";
 import { useSelector } from "react-redux";
 import { SubHeader } from "./sub-header/SubHeader";
 import { userid } from "./variable/variable";
+import { setData } from "./server";
 
-export const Skills = () => {
+export const Skills = ({ userid }) => {
   const [skill, setSkill] = useState(null);
   const [skills, setSkills] = useState([]);
   const skillRef = useRef();
@@ -17,34 +18,10 @@ export const Skills = () => {
   let navigate = useNavigate();
 
   const Push = (e) => {
-    e.preventDefault();
-    set(ref(db, "container/" + userid + "/skills"), {
-      skills,
-    })
-      .then(() => {
-        navigate(`/layout/languages`);
-      })
-      .catch((error) => {
-        // The write failed...
-      });
+    setData([userid, "skills"], [...skills]).then(() => {
+      navigate("/layout/languages");
+    });
   };
-
-  // const handleKeyUp = (e) => {
-  //   if (e.keyCode === 13) {
-  //     // const ref = { id: id, value: skillRef.current.value };
-  //     setSkills([...skills, { id: Date.now(), value: skill }]);
-  //     skillRef.current.value = "";
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   window.addEventListener("keyup", handleKeyUp);
-
-  //   return () => {
-  //     window.removeEventListener("keyup", handleKeyUp);
-  //   };
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();

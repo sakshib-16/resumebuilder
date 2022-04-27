@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import classes from "./Templates.module.css";
 import { Link } from "react-router-dom";
 import { Navigation } from "../Navigation/Navigation";
@@ -14,11 +14,15 @@ export const Templates = () => {
           <div className={classes.disFlex}>
             <div
               className={classes.img}
-              onClick={() => console.log("ok")}
+              onClick={() => {
+                sessionStorage.setItem("template-id", 1);
+              }}
             ></div>
             <div
               className={classes.img}
-              onClick={() => console.log("123")}
+              onClick={() => {
+                sessionStorage.setItem("template-id", 2);
+              }}
             ></div>
           </div>
         </Link>
