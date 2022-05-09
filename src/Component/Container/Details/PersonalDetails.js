@@ -1,19 +1,14 @@
 import React, { useEffect, useRef } from "react";
 import classes from "./Detail.module.css";
 import { useState } from "react";
-import database from "../../../Firebase/Firebase";
 import { Submit } from "./Submit/Submit";
-import { push } from "firebase/database";
 import { useNavigate } from "react-router-dom";
-import { ref, set, onValue } from "firebase/database";
-import db from "../../../Firebase/Firebase";
 import { SubHeader } from "./sub-header/SubHeader";
-import { setData } from "./server";
+import { setData, getData } from "./server";
 
 export const PersonalDetails = ({ userid }) => {
-  //const PersonalDetail = {}
-
   let navigate = useNavigate();
+  const dataRoute = [userid, "personal"];
 
   const [personal, setPersonal] = useState({
     firstName: "",
@@ -37,32 +32,14 @@ export const PersonalDetails = ({ userid }) => {
   const city = useRef();
   const country = useRef();
 
-  //console.log(userid);
-
-  //read data
-  const getData = () => {
-    const starCountRef = ref(db, "container/" + userid + "/personal");
-    onValue(starCountRef, (snapshot) => {
-      const data = snapshot.val();
-      if (!fetchedData) setFetchedData(data);
-
-      //console.log(firstName, lastName, city, fetchedData.firstName);
-      setPersonal({
-        ...fetchedData,
-      });
-
-      //showing ref value in input type
-      for (let i in fetchedData) eval(i).current.value = fetchedData[i] || "";
-    });
-  };
-
   useEffect(() => {
-    getData();
+    getData(dataRoute, [fetchedData, setFetchedData]);
+    for (let i in fetchedData) eval(i).current.value = fetchedData[i] || "";
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [fetchedData]);
 
   const Push = () => {
-    setData([userid, "personal"], { ...personal }).then(() => {
+    setData(dataRoute, { ...personal }).then(() => {
       navigate("/layout/experience");
     });
   };

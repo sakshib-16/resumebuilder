@@ -23,6 +23,8 @@ export const experienceReducer = (state = initialState, action) => {
       return { ...state, yearto: action.payload };
     case "accomplishment":
       return { ...state, accomplishment: action.payload };
+    case "exp":
+      return { ...state, ...action.payload };
     default:
       return state;
   }
