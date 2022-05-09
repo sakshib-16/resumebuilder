@@ -34,7 +34,9 @@ export const Navigation = () => {
         </div>
         <div className={classes.logoutContainer}>
           <div className={classes.user_option} onClick={showHide}>
-            <PermIdentityIcon sx={{ fontSize: 30 }} />
+            <PermIdentityIcon
+              sx={{ fontSize: 30, stroke: "#ffffff", strokeWidth: 0.6 }}
+            />
             <ArrowDropDownIcon sx={{ fontSize: 30 }} />
           </div>
         </div>
