@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { ExperienceWrapper } from "./ExperienceWrapper";
 import { Submit } from "./Submit/Submit";
-import { SubHeader } from "./sub-header/SubHeader";
-import classes from "./Detail.module.css";
-import AddIcon from "@mui/icons-material/Add";
 import { useNavigate } from "react-router-dom";
 import { setData, getData } from "./server";
+import { AddButton } from "./AddButton";
 
 export const Experience = ({ userid }) => {
   const [experience, setExperience] = useState("");
@@ -13,37 +11,38 @@ export const Experience = ({ userid }) => {
   const [counter, setCounter] = useState(0);
   let navigate = useNavigate();
   const dataRoute = [userid, "experience"];
+  const [push, setPush] = useState(false);
+
+  const addData = () => experience && setJson([...json, experience]);
 
   const handleClick = () => {
+    addData();
     setCounter(counter + 1);
+  };
+  useEffect(() => {
+    if (push) {
+      setData(dataRoute, [...json]).then(() => {
+        navigate("/layout/education");
+      });
+    }
+  }, [push]);
+
+  const Push = () => {
+    addData();
+    setPush(true);
   };
 
   useEffect(() => {
-    experience && setJson([...json, experience]);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [counter]);
+    getData(dataRoute, setJson);
+  }, []);
 
-  const Push = () => {
-    setData(dataRoute, [...json]).then(() => {
-      navigate("/layout/education");
-    });
-  };
-
-	 useEffect(() => {
- 	   getData(dataRoute, setJson);
- 	   // eslint-disable-next-line react-hooks/exhaustive-deps
-		 }, []);
-	if (json.length && !counter) setCounter(json.length);
+  if (json.length && !counter) setCounter(json.length);
 
   return (
     <>
-      <div className={classes.container}>
-        <SubHeader heading="Experience" />
-        <div className={classes.borderBox}>
-          <h2 onClick={handleClick}>
-            <AddIcon className={classes.addIcon} /> Add Experience
-          </h2>
-        </div>
+      <div>
+        <AddButton click={handleClick} title="Experience" />
+
         {Array.from(Array(counter)).map((c, i) => {
           return (
             <ExperienceWrapper
