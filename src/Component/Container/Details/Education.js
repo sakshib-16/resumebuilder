@@ -6,7 +6,6 @@ import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import { Submit } from "./Submit/Submit";
 import { ref, set, onValue } from "firebase/database";
 import db from "../../../Firebase/Firebase";
-import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import moment from "moment";
 import { SubHeader } from "./sub-header/SubHeader";

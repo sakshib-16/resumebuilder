@@ -22,8 +22,8 @@ export const Experience = ({ userid }) => {
     setCounter(counter + 1);
     // setExperienceContainer([...experience, ...experience]);
     experienceContainer.push(experience);
+    console.log(experienceContainer);
   };
-  console.log(experienceContainer);
   const Push = async (e) => {
     setData([userid, "experience"], experience).then(() => {
       navigate("/layout/education");

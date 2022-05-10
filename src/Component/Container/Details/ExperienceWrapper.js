@@ -20,6 +20,7 @@ export const ExperienceWrapper = ({ userid }) => {
     monthto: null,
     yearto: null,
     accomplishment: null,
+    currentlyworking: false,
   });
 
   const [fetchedData, setFetchedData] = useState("");
@@ -169,7 +170,14 @@ export const ExperienceWrapper = ({ userid }) => {
           </div>
           <div className={classes.checkbox}>
             <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" />
-            <label for="vehicle1"> Currently Working here</label>
+            <label
+              // ref={currentlyworking}
+              onChange={(e) =>
+                dispatch({ type: "currentlyworking", payload: e.target.value })
+              }
+            >
+              Currently Working here
+            </label>
           </div>
           <input
             type="text"
