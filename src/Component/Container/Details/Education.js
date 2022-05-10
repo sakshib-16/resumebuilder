@@ -1,16 +1,14 @@
 import React, { useState, useRef, useEffect } from "react";
-import classes from "./Detail.module.css";
-import AddIcon from "@mui/icons-material/Add";
 import Datetime from "react-datetime";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import { Submit } from "./Submit/Submit";
 import { ref, set, onValue } from "firebase/database";
 import db from "../../../Firebase/Firebase";
-import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import moment from "moment";
-import { SubHeader } from "./sub-header/SubHeader";
 import { setData } from "./server";
+import { AddButton } from "./AddButton";
+import classes from "./Detail.module.css";
 
 export const Education = ({ userid }) => {
   const [education, setEducation] = useState({
@@ -61,13 +59,8 @@ export const Education = ({ userid }) => {
   };
 
   return (
-    <div className={classes.container}>
-      <SubHeader heading="Education" />
-      <div className={classes.borderBox}>
-        <h2 onClick={handleClick}>
-          <AddIcon className={classes.addIcon} /> Add Education
-        </h2>
-      </div>
+    <div>
+      <AddButton click={handleClick} title="Education" />
       {Array.from(Array(counter)).map((c, index) => {
         return (
           <div className={classes.innerContainer}>
@@ -77,7 +70,10 @@ export const Education = ({ userid }) => {
                 name="university"
                 placeholder="University/School"
                 onChange={(e) =>
-                  setEducation({ ...education, university: e.target.value })
+                  setEducation({
+                    ...education,
+                    university: e.target.value,
+                  })
                 }
               />
               <input
@@ -85,7 +81,10 @@ export const Education = ({ userid }) => {
                 name="degree"
                 placeholder="Degree"
                 onChange={(e) =>
-                  setEducation({ ...education, degree: e.target.value })
+                  setEducation({
+                    ...education,
+                    degree: e.target.value,
+                  })
                 }
               />
 
@@ -97,7 +96,9 @@ export const Education = ({ userid }) => {
                     timeFormat={false}
                     renderMonth={false}
                     closeOnSelect
-                    inputProps={{ placeholder: "Graduation Year" }}
+                    inputProps={{
+                      placeholder: "Graduation Year",
+                    }}
                     onChange={(e) =>
                       setEducation({
                         ...education,
@@ -116,7 +117,10 @@ export const Education = ({ userid }) => {
                 name="field"
                 placeholder="Field of Study"
                 onChange={(e) =>
-                  setEducation({ ...education, field: e.target.value })
+                  setEducation({
+                    ...education,
+                    field: e.target.value,
+                  })
                 }
               />
               <input
@@ -124,7 +128,10 @@ export const Education = ({ userid }) => {
                 name="accomplishment"
                 placeholder="Accomplishments"
                 onChange={(e) =>
-                  setEducation({ ...education, accomplishment: e.target.value })
+                  setEducation({
+                    ...education,
+                    accomplishment: e.target.value,
+                  })
                 }
               />
             </div>
