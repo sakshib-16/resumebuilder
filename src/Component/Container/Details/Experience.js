@@ -1,34 +1,40 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { ExperienceWrapper } from "./ExperienceWrapper";
 import { Submit } from "./Submit/Submit";
 import { SubHeader } from "./sub-header/SubHeader";
 import classes from "./Detail.module.css";
 import AddIcon from "@mui/icons-material/Add";
-import { useSelector } from "react-redux";
-import { ref, set, onValue } from "firebase/database";
 import { useNavigate } from "react-router-dom";
-import { setData } from "./server";
+import { setData, getData } from "./server";
 
 export const Experience = ({ userid }) => {
+  const [experience, setExperience] = useState("");
+  const [json, setJson] = useState([]);
   const [counter, setCounter] = useState(0);
-  // const [experienceContainer, setExperienceContainer] = useState([]);
-
-  const experienceContainer = [];
   let navigate = useNavigate();
-
-  let experience = useSelector((i) => i.experienceReducer);
+  const dataRoute = [userid, "experience"];
 
   const handleClick = () => {
     setCounter(counter + 1);
-    // setExperienceContainer([...experience, ...experience]);
-    experienceContainer.push(experience);
-    console.log(experienceContainer);
   };
-  const Push = async (e) => {
-    setData([userid, "experience"], experience).then(() => {
+
+  useEffect(() => {
+    experience && setJson([...json, experience]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [counter]);
+
+  const Push = () => {
+    setData(dataRoute, [...json]).then(() => {
       navigate("/layout/education");
     });
   };
+
+  useEffect(() => {
+    getData(dataRoute, setJson);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+  if (json.length && !counter) setCounter(json.length);
+
   return (
     <>
       <div className={classes.container}>
@@ -38,8 +44,19 @@ export const Experience = ({ userid }) => {
             <AddIcon className={classes.addIcon} /> Add Experience
           </h2>
         </div>
-        {Array.from(Array(counter)).map((c, index) => {
-          return <ExperienceWrapper userid={userid} />;
+        {Array.from(Array(counter)).map((c, i) => {
+          return (
+            <ExperienceWrapper
+              key={i}
+              data={json?.[i]}
+              set={(name, e) =>
+                setExperience({
+                  ...experience,
+                  [name]: e,
+                })
+              }
+            />
+          );
         })}
         <Submit click={Push} />
       </div>
