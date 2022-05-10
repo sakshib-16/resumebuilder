@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import moment from "moment";
 import classes from "./Detail.module.css";
 import Datetime from "react-datetime";
@@ -7,13 +7,17 @@ import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import HorizontalRuleIcon from "@mui/icons-material/HorizontalRule";
 import { useDispatch } from "react-redux";
 
-export const ExperienceWrapper = ({ set }) => {
+export const ExperienceWrapper = ({ set, data }) => {
   let dispatch = useDispatch();
   const exjobtitleRef = useRef();
   const companyRef = useRef();
 
-  // exjobtitleRef.current.value = fetchedData.exjobtitle || "";
-  // companyRef.current.value = fetchedData.company || "";
+  useEffect(() => {
+    if (data) {
+      exjobtitleRef.current.value = data.jobtitle || "";
+      companyRef.current.value = data.company || "";
+    }
+  }, [data]);
 
   return (
     <>

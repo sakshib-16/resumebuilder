@@ -8,11 +8,10 @@ import { useNavigate } from "react-router-dom";
 import { setData, getData } from "./server";
 
 export const Experience = ({ userid }) => {
-  const [experience, setExperience] = useState();
+  const [experience, setExperience] = useState("");
   const [json, setJson] = useState([]);
   const [counter, setCounter] = useState(0);
   let navigate = useNavigate();
-  const [fetchedData, setFetchedData] = useState("");
   const dataRoute = [userid, "experience"];
 
   const handleClick = () => {
@@ -20,24 +19,21 @@ export const Experience = ({ userid }) => {
   };
 
   useEffect(() => {
-    counter > 1 && setJson([...json, experience]);
+    experience && setJson([...json, experience]);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [counter]);
 
   const Push = () => {
-    setJson([...json, experience]);
     setData(dataRoute, [...json]).then(() => {
       navigate("/layout/education");
     });
   };
 
-  useEffect(() => {
-    getData(dataRoute, [fetchedData, setFetchedData]);
-    setCounter(fetchedData.length)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [fetchedData]);
-
-  console.log(fetchedData);
+	 useEffect(() => {
+ 	   getData(dataRoute, setJson);
+ 	   // eslint-disable-next-line react-hooks/exhaustive-deps
+		 }, []);
+	if (json.length && !counter) setCounter(json.length);
 
   return (
     <>
@@ -51,8 +47,8 @@ export const Experience = ({ userid }) => {
         {Array.from(Array(counter)).map((c, i) => {
           return (
             <ExperienceWrapper
-              count={counter}
               key={i}
+              data={json?.[i]}
               set={(name, e) =>
                 setExperience({
                   ...experience,
