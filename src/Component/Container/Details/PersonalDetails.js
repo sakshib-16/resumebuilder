@@ -33,10 +33,11 @@ export const PersonalDetails = ({ userid }) => {
   const country = useRef();
 
   useEffect(() => {
-    getData(dataRoute, [fetchedData, setFetchedData]);
-    for (let i in fetchedData) eval(i).current.value = fetchedData[i] || "";
+    getData(dataRoute, setFetchedData);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [fetchedData]);
+  }, []);
+
+  for (let i in fetchedData) eval(i).current.value = fetchedData[i] || "";
 
   const Push = () => {
     setData(dataRoute, { ...personal }).then(() => {
