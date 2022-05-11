@@ -128,18 +128,7 @@ export const ExperienceWrapper = ({ set, data }) => {
           </div>
           <div className={classes.checkbox}>
             <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" />
-<<<<<<< HEAD
-            <label
-              // ref={currentlyworking}
-              onChange={(e) =>
-                dispatch({ type: "currentlyworking", payload: e.target.value })
-              }
-            >
-              Currently Working here
-            </label>
-=======
             <label htmlFor="vehicle1"> Currently Working here</label>
->>>>>>> master
           </div>
           <input
             type="text"

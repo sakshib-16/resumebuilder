@@ -18,12 +18,20 @@ export const Experience = ({ userid }) => {
     setCounter(counter + 1);
   };
 
-  useEffect(() => {
-    experience && setJson([...json, experience]);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [counter]);
+  console.log(counter.length);
+  // useEffect(() => {
+  //   experience && setJson([...json, experience]);
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, [counter]);
+
+  console.log(counter);
+
+  // for (let i = 0; i < counter; i++) {
+  //   experience && setJson([...json, experience]);
+  // }
 
   const Push = () => {
+    console.log("hh");
     setData(dataRoute, [...json]).then(() => {
       navigate("/layout/education");
     });
@@ -38,7 +46,6 @@ export const Experience = ({ userid }) => {
   return (
     <>
       <div className={classes.container}>
-        <SubHeader heading="Experience" />
         <div className={classes.borderBox}>
           <h2 onClick={handleClick}>
             <AddIcon className={classes.addIcon} /> Add Experience
