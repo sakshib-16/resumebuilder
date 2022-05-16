@@ -12,23 +12,13 @@ import { PersonalDetails } from "../PersonalDetails";
 import Protected from "../../../Auth/Protected";
 
 export const Wrapper = () => {
-  // useEffect(() => {
-  // function writeUserData() {
-  // // const db = getDatabase();
-  // set(ref(db, 'users/' + userId),ed
-
-  //     );
-  //   }
-  //   writeUserData();
-  //   })
-  const uid = sessionStorage.getItem("uid");
   return (
     <Routes>
       <Route
         index
         element={
           <Protected>
-            <PersonalDetails userid={uid} />
+            <PersonalDetails />
           </Protected>
         }
       />
@@ -36,7 +26,7 @@ export const Wrapper = () => {
         path="/experience"
         element={
           <Protected>
-            <Experience userid={uid} />
+            <Experience />
           </Protected>
         }
       />
@@ -44,7 +34,7 @@ export const Wrapper = () => {
         path="/education"
         element={
           <Protected>
-            <Education userid={uid} />
+            <Education />
           </Protected>
         }
       />
@@ -52,7 +42,7 @@ export const Wrapper = () => {
         path="/skills"
         element={
           <Protected>
-            <Skills userid={uid} />
+            <Skills />
           </Protected>
         }
       />
@@ -60,7 +50,7 @@ export const Wrapper = () => {
         path="/certificates"
         element={
           <Protected>
-            <Certificates userid={uid} />
+            <Certificates />
           </Protected>
         }
       />
@@ -68,7 +58,7 @@ export const Wrapper = () => {
         path="/languages"
         element={
           <Protected>
-            <Languages userid={uid} />
+            <Languages />
           </Protected>
         }
       />
@@ -76,7 +66,7 @@ export const Wrapper = () => {
         path="/summary"
         element={
           <Protected>
-            <Summary userid={uid} />
+            <Summary />
           </Protected>
         }
       />
