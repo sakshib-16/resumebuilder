@@ -6,8 +6,9 @@ import "react-datetime/css/react-datetime.css";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import HorizontalRuleIcon from "@mui/icons-material/HorizontalRule";
 import { useDispatch } from "react-redux";
+import { Close } from "./Close";
 
-export const ExperienceWrapper = ({ set, data }) => {
+export const ExperienceWrapper = ({ set, data, click }) => {
   let dispatch = useDispatch();
   const exjobtitleRef = useRef();
   const companyRef = useRef();
@@ -22,6 +23,7 @@ export const ExperienceWrapper = ({ set, data }) => {
   return (
     <>
       <div className={classes.innerContainer}>
+        <Close click={click} />
         <div className={classes.row}>
           <input
             type="text"

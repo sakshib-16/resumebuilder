@@ -8,7 +8,7 @@ import { Badge } from "./badge/Badge";
 import { useSelector } from "react-redux";
 import { SubHeader } from "./sub-header/SubHeader";
 import { userid } from "./variable/variable";
-import { setData } from "./server";
+import { setData, getData } from "./server";
 
 export const Skills = ({ userid }) => {
   const [skill, setSkill] = useState(null);
@@ -18,7 +18,7 @@ export const Skills = ({ userid }) => {
   let navigate = useNavigate();
 
   const Push = (e) => {
-    setData([userid, "skills"], [...skills]).then(() => {
+    setData("skills", [...skills]).then(() => {
       navigate("/layout/languages");
     });
   };
@@ -31,6 +31,9 @@ export const Skills = ({ userid }) => {
       skillRef.current.value = "";
     }
   };
+  useEffect(() => {
+    getData("skills", setSkills);
+  }, []);
 
   return (
     <div className={classes.container}>

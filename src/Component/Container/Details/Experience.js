@@ -10,10 +10,10 @@ export const Experience = ({ userid }) => {
   const [json, setJson] = useState([]);
   const [counter, setCounter] = useState(0);
   let navigate = useNavigate();
-  const dataRoute = [userid, "experience"];
   const [push, setPush] = useState(false);
 
-  const addData = () => experience && setJson([...json, experience]);
+  const addData = () =>
+    experience && setJson([...json, { id: Date.now(), ...experience }]);
 
   const handleClick = () => {
     addData();
@@ -21,7 +21,7 @@ export const Experience = ({ userid }) => {
   };
   useEffect(() => {
     if (push) {
-      setData(dataRoute, [...json]).then(() => {
+      setData("experience", [...json]).then(() => {
         navigate("/layout/education");
       });
     }
@@ -33,11 +33,14 @@ export const Experience = ({ userid }) => {
   };
 
   useEffect(() => {
-    getData(dataRoute, setJson);
+    getData("experience", setJson);
   }, []);
 
   if (json.length && !counter) setCounter(json.length);
-
+  const remove = (data) => {
+    setJson(json.filter((i) => i.id !== data.id));
+    setCounter(counter - 1);
+  };
   return (
     <>
       <div>
@@ -48,6 +51,7 @@ export const Experience = ({ userid }) => {
             <ExperienceWrapper
               key={i}
               data={json?.[i]}
+              click={() => remove(json?.[i])}
               set={(name, e) =>
                 setExperience({
                   ...experience,
