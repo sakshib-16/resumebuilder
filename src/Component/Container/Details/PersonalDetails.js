@@ -20,8 +20,6 @@ export const PersonalDetails = () => {
     country: "",
   });
 
-  const [fetchedData, setFetchedData] = useState("");
-
   const firstName = useRef();
   const lastName = useRef();
   const jobTitle = useRef();
@@ -32,11 +30,12 @@ export const PersonalDetails = () => {
   const country = useRef();
 
   useEffect(() => {
-    getData("personal", setFetchedData);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    getData("personal", setPersonal);
   }, []);
 
-  for (let i in fetchedData) eval(i).current.value = fetchedData[i] || "";
+  useEffect(() => {
+    for (let i in personal) eval(i).current.value = personal[i] || "";
+  }, [personal]);
 
   const Push = () => {
     setData("personal", { ...personal }).then(() => {

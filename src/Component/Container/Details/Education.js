@@ -2,15 +2,13 @@ import React, { useState, useRef, useEffect } from "react";
 import Datetime from "react-datetime";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import { Submit } from "./Submit/Submit";
-import { ref, set, onValue } from "firebase/database";
-import db from "../../../Firebase/Firebase";
 import { useNavigate } from "react-router-dom";
 import moment from "moment";
-import { setData } from "./server";
+import { setData, getData } from "./server";
 import { AddButton } from "./AddButton";
 import classes from "./Detail.module.css";
 
-export const Education = ({ userid }) => {
+export const Education = () => {
   const [education, setEducation] = useState({
     university: null,
     degree: null,
@@ -21,32 +19,18 @@ export const Education = ({ userid }) => {
 
   let navigate = useNavigate();
 
-  const [fetchedData, setFetchedData] = useState("");
-
   const university = useRef();
   const degree = useRef();
   const graduationyear = useRef();
   const field = useRef();
   const accomplishment = useRef();
 
-  //getting uid
-
-  const getData = () => {
-    const starCountRef = ref(db, "container/" + userid + "/education");
-    onValue(starCountRef, (snapshot) => {
-      const data = snapshot.val();
-      if (!fetchedData) setFetchedData(data);
-
-      for (let i in fetchedData) eval(i).current.value = fetchedData[i] || "";
-    });
-  };
-
   useEffect(() => {
-    getData();
-  }, [fetchedData]);
+    getData("education", setEducation);
+  }, []);
 
   const Push = async (e) => {
-    setData([userid, "education"], education).then(() => {
+    setData("education", education).then(() => {
       navigate("/layout/skills");
     });
   };

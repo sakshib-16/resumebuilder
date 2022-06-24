@@ -4,17 +4,13 @@ import Datetime from "react-datetime";
 import "react-datetime/css/react-datetime.css";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import HorizontalRuleIcon from "@mui/icons-material/HorizontalRule";
-import AddIcon from "@mui/icons-material/Add";
 import { Submit } from "./Submit/Submit";
-import { ref, set, onValue } from "firebase/database";
-import db from "../../../Firebase/Firebase";
-import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import moment from "moment";
 import { SubHeader } from "./sub-header/SubHeader";
-import { setData } from "./server";
+import { setData, getData } from "./server";
 
-export const Certificates = ({ userid }) => {
+export const Certificates = () => {
   const [certificate, setCertificate] = useState({
     cername: null,
     cerfrommonth: null,
@@ -25,31 +21,18 @@ export const Certificates = ({ userid }) => {
 
   let navigate = useNavigate();
 
-  const [fetchedData, setFetchedData] = useState("");
-
   const cername = useRef();
   const cerfrommonth = useRef();
   const cerfromyear = useRef();
   const certomonth = useRef();
   const certoyear = useRef();
 
-  const getData = () => {
-    const starCountRef = ref(db, "container/" + userid + "/certificate");
-    onValue(starCountRef, (snapshot) => {
-      const data = snapshot.val();
-      if (!fetchedData) setFetchedData(data);
-      for (let i in fetchedData) eval(i).current.value = fetchedData[i] || "";
-
-      console.log(fetchedData.firstName);
-    });
-  };
-
   useEffect(() => {
-    getData();
-  }, [fetchedData]);
+    getData("certificate", setCertificate);
+  }, []);
 
   const Push = async (e) => {
-    setData([userid, "certificate"], { ...certificate }).then(() => {
+    setData("certificate", { ...certificate }).then(() => {
       navigate("/layout/summary");
     });
   };
