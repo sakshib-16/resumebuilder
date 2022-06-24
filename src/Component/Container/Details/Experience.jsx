@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { setData, getData } from "./server";
 import { AddButton } from "./AddButton";
 
-export const Experience = ({ userid }) => {
+export const Experience = () => {
   const [experience, setExperience] = useState("");
   const [json, setJson] = useState([]);
   const [counter, setCounter] = useState(0);

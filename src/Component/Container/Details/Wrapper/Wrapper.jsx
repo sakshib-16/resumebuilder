@@ -1,13 +1,10 @@
-import React, { useEffect } from "react";
 import { Experience } from "../Experience";
 import { Education } from "../Education";
 import { Skills } from "../Skills";
 import { Certificates } from "../Certificates";
-import { Preview } from "../Preview";
-
 import { Languages } from "../Languages";
 import { Summary } from "../Summary";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import { PersonalDetails } from "../PersonalDetails";
 import Protected from "../../../Auth/Protected";
 

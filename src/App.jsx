@@ -1,13 +1,5 @@
 // import logo from './logo.svg';
 // import './App.css';
-import { PersonalDetails } from "./Component/Container/Details/PersonalDetails";
-import { Experience } from "./Component/Container/Details/Experience";
-import { Education } from "./Component/Container/Details/Education";
-import { Skills } from "./Component/Container/Details/Skills";
-import { Certificates } from "./Component/Container/Details/Certificates";
-import { Summary } from "./Component/Container/Details/Summary";
-import { Languages } from "./Component/Container/Details/Languages";
-import { Navigation } from "./Component/Container/Navigation/Navigation";
 import { CreateResume } from "./Component/Container/CreateResume/CreateResume";
 import classes from "./App.module.css";
 import { Layout } from "./Component/Container/Layout/Layout";
