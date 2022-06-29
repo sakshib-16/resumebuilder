@@ -18,7 +18,6 @@ export const Login = ({ btn, msg }) => {
       // Signed in
       const user = userCredential.user;
       console.log(user.uid);
-      getAuth().createCustomToken.user.uid;
 
       setLoggedUser(user);
       sessionStorage.setItem("loginSession", true);
