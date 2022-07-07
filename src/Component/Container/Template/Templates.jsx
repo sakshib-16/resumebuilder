@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import classes from "./Templates.module.css";
 import { Link } from "react-router-dom";
 import { Navigation } from "../Navigation/Navigation";

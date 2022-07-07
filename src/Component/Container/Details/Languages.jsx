@@ -1,22 +1,19 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import classes from "./Detail.module.css";
 import { Submit } from "./Submit/Submit";
-import { ref, set, onValue } from "firebase/database";
-import db from "../../../Firebase/Firebase";
 import { useNavigate } from "react-router-dom";
 import { Badge } from "./badge/Badge";
 import { SubHeader } from "./sub-header/SubHeader";
-import { setData } from "./server";
+import { setData, getData } from "./server";
 
-export const Languages = ({ userid }) => {
+export const Languages = () => {
   const [language, setLanguage] = useState("");
   const [languages, setLanguages] = useState([]);
   const langRef = useRef();
-
   let navigate = useNavigate();
 
   const Push = async (e) => {
-    setData([userid, "languages"], [...languages]).then(() => {
+    setData("languages", [...languages]).then(() => {
       navigate("/layout/certificates");
     });
   };
@@ -29,6 +26,10 @@ export const Languages = ({ userid }) => {
       langRef.current.value = "";
     }
   };
+
+  useEffect(() => {
+    getData("languages", setLanguages);
+  }, []);
 
   return (
     <div className={classes.container}>

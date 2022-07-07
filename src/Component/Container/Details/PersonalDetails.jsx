@@ -6,9 +6,8 @@ import { useNavigate } from "react-router-dom";
 import { SubHeader } from "./sub-header/SubHeader";
 import { setData, getData } from "./server";
 
-export const PersonalDetails = ({ userid }) => {
+export const PersonalDetails = () => {
   let navigate = useNavigate();
-  const dataRoute = [userid, "personal"];
 
   const [personal, setPersonal] = useState({
     firstName: "",
@@ -21,8 +20,6 @@ export const PersonalDetails = ({ userid }) => {
     country: "",
   });
 
-  const [fetchedData, setFetchedData] = useState("");
-
   const firstName = useRef();
   const lastName = useRef();
   const jobTitle = useRef();
@@ -33,14 +30,15 @@ export const PersonalDetails = ({ userid }) => {
   const country = useRef();
 
   useEffect(() => {
-    getData(dataRoute, setFetchedData);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    getData("personal", setPersonal);
   }, []);
 
-  for (let i in fetchedData) eval(i).current.value = fetchedData[i] || "";
+  useEffect(() => {
+    for (let i in personal) eval(i).current.value = personal[i] || "";
+  }, [personal]);
 
   const Push = () => {
-    setData(dataRoute, { ...personal }).then(() => {
+    setData("personal", { ...personal }).then(() => {
       navigate("/layout/experience");
     });
   };

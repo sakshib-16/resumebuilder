@@ -1,47 +1,55 @@
-import React, { useEffect, useRef } from "react";
-import moment from "moment";
+import React, { useState, useRef, useEffect } from "react";
 import classes from "./Detail.module.css";
 import Datetime from "react-datetime";
 import "react-datetime/css/react-datetime.css";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import HorizontalRuleIcon from "@mui/icons-material/HorizontalRule";
-import { useDispatch } from "react-redux";
+import { Submit } from "./Submit/Submit";
+import { useNavigate } from "react-router-dom";
+import moment from "moment";
+import { SubHeader } from "./sub-header/SubHeader";
+import { setData, getData } from "./server";
 
-export const ExperienceWrapper = ({ set, data }) => {
-  let dispatch = useDispatch();
-  const exjobtitleRef = useRef();
-  const companyRef = useRef();
+export const Certificates = () => {
+  const [certificate, setCertificate] = useState({
+    cername: null,
+    cerfrommonth: null,
+    cerfromyear: null,
+    certomonth: null,
+    certoyear: null,
+  });
+
+  let navigate = useNavigate();
+
+  const cername = useRef();
+  const cerfrommonth = useRef();
+  const cerfromyear = useRef();
+  const certomonth = useRef();
+  const certoyear = useRef();
 
   useEffect(() => {
-    if (data) {
-      exjobtitleRef.current.value = data.jobtitle || "";
-      companyRef.current.value = data.company || "";
-    }
-  }, [data]);
+    getData("certificate", setCertificate);
+  }, []);
+
+  const Push = async (e) => {
+    setData("certificate", { ...certificate }).then(() => {
+      navigate("/layout/summary");
+    });
+  };
 
   return (
-    <>
+    <div className={classes.container}>
+      <SubHeader heading="Certificates" />
+
       <div className={classes.innerContainer}>
         <div className={classes.row}>
           <input
             type="text"
-            id="exjobtitle"
-            name="exjobtitle"
-            placeholder="Job Title"
-            // value={fetchedData.exjobtitle || ""}
-            ref={exjobtitleRef}
-            onChange={(e) => set("jobtitle", e.target.value)}
-            // dispatch({ type: "exjobtitle", payload: e.target.value })
-          />
-          <input
-            type="text"
-            id="company"
-            name="company"
-            placeholder="Company or Project"
-            // value={fetchedData.company || ""}
-            ref={companyRef}
-            onChange={(e) => set("company", e.target.value)}
-            // dispatch({ type: "company", payload: e.target.value })
+            name="cername"
+            placeholder="Certification Name"
+            onChange={(e) =>
+              setCertificate({ ...certificate, cername: e.target.value })
+            }
           />
           <div className={classes.calender}>
             <div className={classes.disFlex}>
@@ -52,15 +60,13 @@ export const ExperienceWrapper = ({ set, data }) => {
                   renderYear={false}
                   closeOnSelect
                   inputProps={{ placeholder: "Month" }}
-                  // ref={monthfrom}
                   onChange={(e) =>
-                    dispatch({
-                      type: "monthfrom",
-                      payload: moment(e, "DD-MM-YYYY").format("MM"),
+                    setCertificate({
+                      ...certificate,
+                      cerfrommonth: moment(e, "DD-MM-YYYY").format("MM"),
                     })
                   }
                 />
-
                 <span>
                   <ArrowDropDownIcon className={classes.arrowIcon} />
                 </span>
@@ -72,12 +78,10 @@ export const ExperienceWrapper = ({ set, data }) => {
                 renderMonth={false}
                 closeOnSelect
                 inputProps={{ placeholder: "Year" }}
-                name="yearfrom"
-                // ref={yearfrom}
                 onChange={(e) =>
-                  dispatch({
-                    type: "yearfrom",
-                    payload: moment(e, "DD-MM-YYYY").format("YYYY"),
+                  setCertificate({
+                    ...certificate,
+                    cerfromyear: moment(e, "DD-MM-YYYY").format("YYYY"),
                   })
                 }
               />
@@ -97,10 +101,11 @@ export const ExperienceWrapper = ({ set, data }) => {
                   renderYear={false}
                   closeOnSelect
                   inputProps={{ placeholder: "Month" }}
-                  name="monthto"
-                  // ref={monthto}
                   onChange={(e) =>
-                    dispatch({ type: "monthto", payload: e.target.value })
+                    setCertificate({
+                      ...certificate,
+                      certomonth: moment(e, "DD-MM-YYYY").format("MM"),
+                    })
                   }
                 />
                 <div>
@@ -114,34 +119,25 @@ export const ExperienceWrapper = ({ set, data }) => {
                 renderMonth={false}
                 closeOnSelect
                 inputProps={{ placeholder: "Year" }}
-                name="yearto"
-                // ref={yearto}
                 onChange={(e) =>
-                  dispatch({ type: "yearto", payload: e.target.value })
+                  setCertificate({
+                    ...certificate,
+                    certoyear: moment(e, "DD-MM-YYYY").format("YYYY"),
+                  })
                 }
               />
-
               <div>
                 <ArrowDropDownIcon className={classes.arrowIcon} />
               </div>
             </div>
           </div>
-          <div className={classes.checkbox}>
-            <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" />
-            <label htmlFor="vehicle1"> Currently Working here</label>
-          </div>
-          <input
-            type="text"
-            id="accomplishments"
-            name="accomplishment"
-            placeholder="Accomplishments"
-            // ref={accomplishment}
-            onChange={(e) =>
-              dispatch({ type: "accomplishment", payload: e.target.value })
-            }
-          />
+          {/* <div className={classes.checkbox}>
+            <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike"/>
+          <label for="vehicle1"> Currently Working here</label>
+          </div> */}
+          <Submit click={Push} />
         </div>
       </div>
-    </>
+    </div>
   );
 };
