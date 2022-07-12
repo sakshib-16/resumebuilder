@@ -12,7 +12,6 @@ export const Sidebar = () => {
             <li>Personal Details</li>
           </Link> */}
           <NavLink
-            exact
             to="/layout"
             end
             className={({ isActive }) => (isActive ? "link-active" : "link")}
