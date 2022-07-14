@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect } from "react";
 import classes from "./Detail.module.css";
 import { useState } from "react";
 import { Submit } from "./Submit/Submit";
@@ -20,22 +20,10 @@ export const PersonalDetails = () => {
     country: "",
   });
 
-  const firstName = useRef();
-  const lastName = useRef();
-  const jobTitle = useRef();
-  const phoneNumber = useRef();
-  const emailAddress = useRef();
-  const personalWebsite = useRef();
-  const city = useRef();
-  const country = useRef();
-
   useEffect(() => {
     getData("personal", setPersonal);
+    return () => setPersonal({});
   }, []);
-
-  useEffect(() => {
-    for (let i in personal) eval(i).current.value = personal[i] || "";
-  }, [personal]);
 
   const Push = () => {
     setData("personal", { ...personal }).then(() => {
@@ -53,7 +41,7 @@ export const PersonalDetails = () => {
             type="text"
             name="firstname"
             placeholder="First Name"
-            ref={firstName}
+            value={personal?.firstName || ""}
             onChange={(e) =>
               setPersonal({ ...personal, firstName: e.target.value })
             }
@@ -62,7 +50,7 @@ export const PersonalDetails = () => {
             type="text"
             name="lastname"
             placeholder="Last Name"
-            ref={lastName}
+            value={personal?.lastName || ""}
             onChange={(e) =>
               setPersonal({ ...personal, lastName: e.target.value })
             }
@@ -71,7 +59,7 @@ export const PersonalDetails = () => {
             type="text"
             name="jobtitle"
             placeholder="Job Title"
-            ref={jobTitle}
+            value={personal?.jobTitle || ""}
             onChange={(e) =>
               setPersonal({ ...personal, jobTitle: e.target.value })
             }
@@ -82,7 +70,7 @@ export const PersonalDetails = () => {
             type="text"
             name="phonenumber"
             placeholder="Phone Number"
-            ref={phoneNumber}
+            value={personal?.phoneNumber || ""}
             onChange={(e) =>
               setPersonal({ ...personal, phoneNumber: e.target.value })
             }
@@ -91,7 +79,7 @@ export const PersonalDetails = () => {
             type="text"
             name="emailaddress"
             placeholder="Email Address"
-            ref={emailAddress}
+            value={personal?.emailAddress || ""}
             onChange={(e) =>
               setPersonal({ ...personal, emailAddress: e.target.value })
             }
@@ -100,7 +88,7 @@ export const PersonalDetails = () => {
             type="text"
             name="personalwebsite"
             placeholder="Personal Website"
-            ref={personalWebsite}
+            value={personal?.personalWebsite || ""}
             onChange={(e) =>
               setPersonal({
                 ...personal,
@@ -115,7 +103,7 @@ export const PersonalDetails = () => {
               type="text"
               name="city"
               placeholder="City"
-              ref={city}
+              value={personal?.city || ""}
               onChange={(e) =>
                 setPersonal({ ...personal, city: e.target.value })
               }
@@ -124,7 +112,7 @@ export const PersonalDetails = () => {
               type="text"
               name="country"
               placeholder="Country"
-              ref={country}
+              value={personal?.country || ""}
               onChange={(e) =>
                 setPersonal({ ...personal, country: e.target.value })
               }

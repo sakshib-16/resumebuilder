@@ -9,8 +9,8 @@ export const setData = async (route, data) => {
 
 export const getData = (route, setData) => {
   userid = sessionStorage.getItem("uid");
-  const starCountRef = ref(db, "container/" + userid + "/" + route);
-  onValue(starCountRef, (snapshot) => {
+  const resumeBuilderRef = ref(db, "container/" + userid + "/" + route);
+  onValue(resumeBuilderRef, (snapshot) => {
     const data = snapshot.val();
     data && setData(data);
   });

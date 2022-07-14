@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import classes from "./Detail.module.css";
 import { Submit } from "./Submit/Submit";
 import { useNavigate } from "react-router-dom";
@@ -8,10 +8,9 @@ import { setData, getData } from "./server";
 export const Summary = () => {
   const [summary, setSummary] = useState(null);
 
-  const summry = useRef();
   let navigate = useNavigate();
 
-  const Push = async (e) => {
+  const Push = async () => {
     setData("summary", summary).then(() => {
       navigate("/temp/preview");
     });
@@ -19,11 +18,8 @@ export const Summary = () => {
 
   useEffect(() => {
     getData("summary", setSummary);
+    return () => setSummary(null);
   }, []);
-
-  useEffect(() => {
-    summry.current.value = summary || "";
-  }, [summary]);
 
   return (
     <div className={classes.container}>
@@ -32,7 +28,7 @@ export const Summary = () => {
         <div className={classes.row}>
           <input
             type="text"
-            ref={summry}
+            value={summary || ""}
             placeholder="Your Professional Summary"
             onChange={(e) => setSummary(e.target.value)}
           />

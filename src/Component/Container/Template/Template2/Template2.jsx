@@ -3,7 +3,7 @@ import "./Template2.css";
 import Pdf from "react-to-pdf";
 
 const ref = React.createRef();
-const Template2 = () => {
+const Template2 = ({ data }) => {
   return (
     <>
       <Pdf
@@ -20,7 +20,9 @@ const Template2 = () => {
           <div className="l-Header">
             <div className="l-Header-col">
               <h1 className="Title">
-                <span className="u-shadow">Sonja Strieder</span>
+                <span className="u-shadow">
+                  {data?.personal?.firstName} {data?.personal?.lastName}
+                </span>
                 <br />
                 <span className="Title-sub">Front-end UI developer</span>
               </h1>

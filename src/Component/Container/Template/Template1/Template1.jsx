@@ -14,7 +14,7 @@ const Template1 = ({ data }) => {
     country,
     phoneNumber,
     emailAddress,
-  } = data.personal;
+  } = data?.personal;
   return (
     <>
       <Pdf targetRef={ref} filename="code-example.pdf">

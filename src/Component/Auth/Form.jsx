@@ -1,17 +1,19 @@
 import React, { useState } from "react";
 import classes from "./form.module.css";
 import VisibilityIcon from "@mui/icons-material/Visibility";
-import logo from "./resumelogo.png";
 import { useDispatch } from "react-redux";
+import { Logo } from "../logo/Logo";
+import { Typography } from "../logo/Typography.jsx";
 
 export const Form = ({ btn, msg }) => {
   const dispatch = useDispatch();
   const [auth, setAuth] = useState({});
-
+  const [toggle, setToggle] = useState(false);
   return (
     <div className={classes.form}>
-      <div className={classes.logoImage}>
-        <img src={logo} alt="logo" />
+      <div className={classes.logoWrapper}>
+        <Logo />
+        <Typography />
       </div>
       <p className={classes.login_msg}>{msg}</p>
       <form>
@@ -64,10 +66,13 @@ export const Form = ({ btn, msg }) => {
 
         <div className={classes.options}>
           <div>
-            <div className={classes.toggle}>
+            <div
+              className={`${classes.toggle} ${toggle ? classes.move : null}`}
+              onClick={() => setToggle(!toggle)}
+            >
               <div></div>
             </div>
-            <label>Remember me</label>
+            <label className={classes.remember}>Remember me</label>
           </div>
           <a href="">Forgot password?</a>
         </div>

@@ -1,6 +1,5 @@
 import React from "react";
 import classes from "./sidebar.module.css";
-import { Link } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 
 export const Sidebar = () => {
@@ -12,7 +11,6 @@ export const Sidebar = () => {
             <li>Personal Details</li>
           </Link> */}
           <NavLink
-            exact
             to="/layout"
             end
             className={({ isActive }) => (isActive ? "link-active" : "link")}
@@ -56,25 +54,6 @@ export const Sidebar = () => {
           >
             <li> Summary</li>
           </NavLink>
-
-          {/* <Link to="/layout/experience">
-            <li>Experience</li>
-          </Link>
-          <Link to="/layout/education">
-            <li>Education</li>
-          </Link>
-          <Link to="/layout/skills">
-            <li>Skills</li>
-          </Link>
-          <Link to="/layout/languages">
-            <li>Language</li>{" "}
-          </Link>
-          <Link to="/layout/certificates">
-            <li>Certificates</li>{" "}
-          </Link>
-          <Link to="/layout/summary">
-            <li> Summary</li>
-          </Link> */}
         </ul>
       </div>
     </div>

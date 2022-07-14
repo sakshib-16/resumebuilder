@@ -10,9 +10,7 @@ export const Experience = () => {
   const [counter, setCounter] = useState(0);
   let navigate = useNavigate();
 
-  const handleClick = () => {
-    setCounter(counter + 1);
-  };
+  const handleClick = () => setCounter(counter + 1);
 
   const Push = () => {
     setData("experience", [...experience]).then(() => {
@@ -26,10 +24,12 @@ export const Experience = () => {
   }, []);
 
   if (experience.length && !counter) setCounter(experience.length);
+
   const remove = (data) => {
-    setExperience(experience.filter((i) => i.id !== data.id));
+    setExperience(experience.filter((i) => i.id !== data?.id));
     setCounter(counter - 1);
   };
+
   return (
     <>
       <div>
