@@ -10,15 +10,6 @@ import { Close } from "./Close";
 
 export const ExperienceWrapper = ({ set, data, click }) => {
   let dispatch = useDispatch();
-  const exjobtitleRef = useRef();
-  const companyRef = useRef();
-
-  useEffect(() => {
-    if (data) {
-      exjobtitleRef.current.value = data.jobtitle || "";
-      companyRef.current.value = data.company || "";
-    }
-  }, [data]);
 
   return (
     <>
@@ -30,20 +21,16 @@ export const ExperienceWrapper = ({ set, data, click }) => {
             id="exjobtitle"
             name="exjobtitle"
             placeholder="Job Title"
-            // value={fetchedData.exjobtitle || ""}
-            ref={exjobtitleRef}
-            onChange={(e) => set("jobtitle", e.target.value)}
-            // dispatch({ type: "exjobtitle", payload: e.target.value })
+            value={data?.exjobtitle || ""}
+            onChange={(e) => set([e.target.name], e.target.value)}
           />
           <input
             type="text"
             id="company"
             name="company"
             placeholder="Company or Project"
-            // value={fetchedData.company || ""}
-            ref={companyRef}
-            onChange={(e) => set("company", e.target.value)}
-            // dispatch({ type: "company", payload: e.target.value })
+            value={data?.company || ""}
+            onChange={(e) => set([e.target.name], e.target.value)}
           />
           <div className={classes.calender}>
             <div className={classes.disFlex}>
@@ -54,12 +41,9 @@ export const ExperienceWrapper = ({ set, data, click }) => {
                   renderYear={false}
                   closeOnSelect
                   inputProps={{ placeholder: "Month" }}
-                  // ref={monthfrom}
+                  value={data?.monthfrom || ""}
                   onChange={(e) =>
-                    dispatch({
-                      type: "monthfrom",
-                      payload: moment(e, "DD-MM-YYYY").format("MM"),
-                    })
+                    set("monthfrom", moment(e, "DD-MM-YYYY").format("MM"))
                   }
                 />
 
@@ -75,12 +59,9 @@ export const ExperienceWrapper = ({ set, data, click }) => {
                 closeOnSelect
                 inputProps={{ placeholder: "Year" }}
                 name="yearfrom"
-                // ref={yearfrom}
+                value={data?.yearfrom || ""}
                 onChange={(e) =>
-                  dispatch({
-                    type: "yearfrom",
-                    payload: moment(e, "DD-MM-YYYY").format("YYYY"),
-                  })
+                  set("yearfrom", moment(e, "DD-MM-YYYY").format("YYYY"))
                 }
               />
               <div>
@@ -100,9 +81,9 @@ export const ExperienceWrapper = ({ set, data, click }) => {
                   closeOnSelect
                   inputProps={{ placeholder: "Month" }}
                   name="monthto"
-                  // ref={monthto}
+                  value={data?.monthto || ""}
                   onChange={(e) =>
-                    dispatch({ type: "monthto", payload: e.target.value })
+                    set("monthto", moment(e, "DD-MM-YYYY").format("MM"))
                   }
                 />
                 <div>
@@ -117,9 +98,9 @@ export const ExperienceWrapper = ({ set, data, click }) => {
                 closeOnSelect
                 inputProps={{ placeholder: "Year" }}
                 name="yearto"
-                // ref={yearto}
+                value={data?.yearto || ""}
                 onChange={(e) =>
-                  dispatch({ type: "yearto", payload: e.target.value })
+                  set("yearto", moment(e, "DD-MM-YYYY").format("YYYY"))
                 }
               />
 
@@ -137,10 +118,8 @@ export const ExperienceWrapper = ({ set, data, click }) => {
             id="accomplishments"
             name="accomplishment"
             placeholder="Accomplishments"
-            // ref={accomplishment}
-            onChange={(e) =>
-              dispatch({ type: "accomplishment", payload: e.target.value })
-            }
+            value={data?.accomplishment || ""}
+            onChange={(e) => set([e.target.name], e.target.value)}
           />
         </div>
       </div>
