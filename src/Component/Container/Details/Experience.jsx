@@ -6,39 +6,28 @@ import { setData, getData } from "./server";
 import { AddButton } from "./AddButton";
 
 export const Experience = () => {
-  const [experience, setExperience] = useState("");
-  const [json, setJson] = useState([]);
+  const [experience, setExperience] = useState([]);
   const [counter, setCounter] = useState(0);
   let navigate = useNavigate();
-  const [push, setPush] = useState(false);
-
-  const addData = () =>
-    experience && setJson([...json, { id: Date.now(), ...experience }]);
 
   const handleClick = () => {
-    addData();
     setCounter(counter + 1);
   };
-  useEffect(() => {
-    if (push) {
-      setData("experience", [...json]).then(() => {
-        navigate("/layout/education");
-      });
-    }
-  }, [push]);
 
   const Push = () => {
-    addData();
-    setPush(true);
+    setData("experience", [...experience]).then(() => {
+      navigate("/layout/education");
+    });
   };
 
   useEffect(() => {
-    getData("experience", setJson);
+    getData("experience", setExperience);
+    return () => setExperience([]);
   }, []);
 
-  if (json.length && !counter) setCounter(json.length);
+  if (experience.length && !counter) setCounter(experience.length);
   const remove = (data) => {
-    setJson(json.filter((i) => i.id !== data.id));
+    setExperience(experience.filter((i) => i.id !== data.id));
     setCounter(counter - 1);
   };
   return (
@@ -50,14 +39,19 @@ export const Experience = () => {
           return (
             <ExperienceWrapper
               key={i}
-              data={json?.[i]}
-              click={() => remove(json?.[i])}
-              set={(name, e) =>
-                setExperience({
-                  ...experience,
-                  [name]: e,
-                })
-              }
+              data={experience?.[i]}
+              click={() => remove(experience?.[i])}
+              set={(name, value) => {
+                setExperience(
+                  experience[i]?.id
+                    ? experience.map((a) => {
+                        if (a.id === experience[i].id)
+                          a = { ...a, [name]: value };
+                        return a;
+                      })
+                    : [...experience, { [name]: value, id: Date.now() }]
+                );
+              }}
             />
           );
         })}
