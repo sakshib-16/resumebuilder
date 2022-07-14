@@ -7,8 +7,8 @@
   display: inline-block;
 }
 
-.logo {
+.typography {
+  display: inline-block;
   font-size: 1.4rem;
-  margin: 4px;
   user-select: none;
 }

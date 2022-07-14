@@ -1,30 +1,13 @@
-// import logo from './logo.svg';
-// import './App.css';
 import { CreateResume } from "./Component/Container/CreateResume/CreateResume";
-import classes from "./App.module.css";
 import { Layout } from "./Component/Container/Layout/Layout";
-import ReactDOM from "react-dom";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Login } from "./Component/Auth/Login";
-import { Templates } from "./Component/Container/Template/Templates";
 import Signup from "./Component/Auth/Signup";
 import HomePage from "./Component/Container/Homepage/Homepage";
 import Protected from "./Component/Auth/Protected";
 import { Temp } from "./Component/Container/Template/Temp";
 
 function App() {
-  //  const auth = getAuth();
-  //const [authUser,setAuthUser] =useState(false)
-  // onAuthStateChanged(auth, (user) => {
-  // if (user) {
-  //   setAuthUser(true)
-  //   // ...
-  // } else {
-  //   // User is signed out
-  //   // ...
-  // }
-  //});
-
   return (
     <div className="App">
       <BrowserRouter>

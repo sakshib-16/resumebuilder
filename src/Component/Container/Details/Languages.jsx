@@ -12,7 +12,7 @@ export const Languages = () => {
   const langRef = useRef();
   let navigate = useNavigate();
 
-  const Push = async (e) => {
+  const Push = async () => {
     setData("languages", [...languages]).then(() => {
       navigate("/layout/certificates");
     });
@@ -29,6 +29,7 @@ export const Languages = () => {
 
   useEffect(() => {
     getData("languages", setLanguages);
+    return () => setLanguages([]);
   }, []);
 
   return (

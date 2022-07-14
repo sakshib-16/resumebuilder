@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import classes from "./Detail.module.css";
 import Datetime from "react-datetime";
 import "react-datetime/css/react-datetime.css";
@@ -21,17 +21,12 @@ export const Certificates = () => {
 
   let navigate = useNavigate();
 
-  const cername = useRef();
-  const cerfrommonth = useRef();
-  const cerfromyear = useRef();
-  const certomonth = useRef();
-  const certoyear = useRef();
-
   useEffect(() => {
     getData("certificate", setCertificate);
+    return () => setCertificate({});
   }, []);
 
-  const Push = async (e) => {
+  const Push = async () => {
     setData("certificate", { ...certificate }).then(() => {
       navigate("/layout/summary");
     });

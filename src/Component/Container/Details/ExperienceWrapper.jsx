@@ -1,16 +1,12 @@
-import React, { useEffect, useRef } from "react";
 import moment from "moment";
 import classes from "./Detail.module.css";
 import Datetime from "react-datetime";
 import "react-datetime/css/react-datetime.css";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import HorizontalRuleIcon from "@mui/icons-material/HorizontalRule";
-import { useDispatch } from "react-redux";
 import { Close } from "./Close";
 
 export const ExperienceWrapper = ({ set, data, click }) => {
-  let dispatch = useDispatch();
-
   return (
     <>
       <div className={classes.innerContainer}>
@@ -18,7 +14,6 @@ export const ExperienceWrapper = ({ set, data, click }) => {
         <div className={classes.row}>
           <input
             type="text"
-            id="exjobtitle"
             name="exjobtitle"
             placeholder="Job Title"
             value={data?.exjobtitle || ""}
@@ -26,7 +21,6 @@ export const ExperienceWrapper = ({ set, data, click }) => {
           />
           <input
             type="text"
-            id="company"
             name="company"
             placeholder="Company or Project"
             value={data?.company || ""}
@@ -110,12 +104,17 @@ export const ExperienceWrapper = ({ set, data, click }) => {
             </div>
           </div>
           <div className={classes.checkbox}>
-            <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" />
-            <label htmlFor="vehicle1"> Currently Working here</label>
+            <input
+              type="checkbox"
+              name="status"
+              value={data?.status || ""}
+              checked={data?.status}
+              onChange={(e) => set([e.target.name], !e.target.value)}
+            />
+            <label htmlFor="status"> Currently Working here</label>
           </div>
           <input
             type="text"
-            id="accomplishments"
             name="accomplishment"
             placeholder="Accomplishments"
             value={data?.accomplishment || ""}

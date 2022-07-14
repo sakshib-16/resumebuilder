@@ -12,7 +12,7 @@ export const Skills = () => {
   const skillRef = useRef();
   let navigate = useNavigate();
 
-  const Push = (e) => {
+  const Push = () => {
     setData("skills", [...skills]).then(() => {
       navigate("/layout/languages");
     });
@@ -28,6 +28,7 @@ export const Skills = () => {
   };
   useEffect(() => {
     getData("skills", setSkills);
+    return () => setSkills([]);
   }, []);
 
   return (

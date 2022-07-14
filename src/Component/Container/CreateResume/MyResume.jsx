@@ -6,14 +6,13 @@ import DownloadIcon from "@mui/icons-material/Download";
 import { Link } from "react-router-dom";
 import { ref, set, onValue, remove } from "firebase/database";
 import db from "../../../Firebase/Firebase";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 
 export const MyResume = () => {
   const userid = useSelector((id) => id.userIdReducer);
   const deleteData = () => {
-    remove(ref(db, "container/" + userid));
-
-    console.log("dl");
+    const confirm = window.confirm("Do you want to delete this resume?");
+    if (confirm) remove(ref(db, "container/" + userid));
   };
 
   return (
