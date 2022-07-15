@@ -81,7 +81,7 @@ export const Form = ({ btn, msg }) => {
           className={classes.btn}
           onClick={(e) => {
             e.preventDefault();
-            dispatch({ type: "auth", payload: auth });
+            dispatch({ type: "AUTH", payload: auth });
           }}
         >
           {btn}

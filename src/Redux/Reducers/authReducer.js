@@ -1,16 +1,17 @@
 // import action from './action'
 
-const initialState = {}
-
+const initialState = {};
 
 export const authReducer = (state = initialState, action) => {
-    
-    switch (action.type) {
-        case 'auth':
-            return {
-                ...state, ...action.payload
-            }
-        default:
-            return state
-    }    
-}
+  switch (action.type) {
+    case "AUTH":
+      return {
+        ...state,
+        ...action.payload,
+      };
+    case "RESET":
+      return (state = null);
+    default:
+      return state;
+  }
+};
