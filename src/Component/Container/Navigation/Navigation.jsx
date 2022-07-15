@@ -18,13 +18,12 @@ export const Navigation = () => {
     const auth = getAuth();
     signOut(auth)
       .then(() => {
-        // Sign-out successful.
         sessionStorage.clear();
-        dispatch({ type: "auth", payload: { email: null, password: null } });
-        navigate("/");
+        dispatch({ type: "RESET" });
+        navigate("/login");
       })
       .catch((error) => {
-        // An error happened.
+        console.log(error);
       });
   };
 

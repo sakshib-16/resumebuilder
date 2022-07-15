@@ -15,21 +15,26 @@ export const AuthHOC = (Auth, AuthFunction) => {
       return () => setLoggedUser("");
     }, [loggedUser]);
 
+    const entries =
+      credential !== null ? Object.entries(credential).length : null;
+
     const auth = getAuth();
 
-    AuthFunction(auth, credential.email, credential.password)
-      .then((userCredential) => {
-        const user = userCredential.user;
-        console.log(user.uid);
-        setLoggedUser(user);
-        sessionStorage.setItem("loginSession", true);
-        sessionStorage.setItem("uid", user.uid);
+    if (entries && !loggedUser) {
+      AuthFunction(auth, credential.email, credential.password)
+        .then((userCredential) => {
+          const user = userCredential.user;
+          console.log(user.uid);
+          setLoggedUser(user);
+          sessionStorage.setItem("loginSession", true);
+          sessionStorage.setItem("uid", user.uid);
 
-        dispatch({ type: "UID", payload: userCredential.user.uid });
-      })
-      .catch((error) => {
-        //console.log(error.message);
-      });
+          dispatch({ type: "UID", payload: userCredential.user.uid });
+        })
+        .catch((error) => {
+          console.log(error.message);
+        });
+    }
     return <Auth />;
   };
 };
