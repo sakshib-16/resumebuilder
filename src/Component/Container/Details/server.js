@@ -1,17 +1,18 @@
 import { ref, set, onValue, remove } from "firebase/database";
 import db from "../../../Firebase/Firebase";
-let userid = sessionStorage.getItem("uid");
+
+const userId = () => sessionStorage.getItem("uid");
 
 export const setData = async (route, data) => {
-  await set(ref(db, "container/" + userid + "/" + route), data);
+  await set(ref(db, "container/" + userId() + "/" + route), data);
 };
 
 export const getData = (route, setData) => {
-  const resumeBuilderRef = ref(db, "container/" + userid + "/" + route);
+  const resumeBuilderRef = ref(db, "container/" + userId() + "/" + route);
   onValue(resumeBuilderRef, (snapshot) => {
     const data = snapshot.val();
     data && setData(data);
   });
 };
 
-export const removeData = () => remove(ref(db, "container/" + userid));
+export const removeData = () => remove(ref(db, "container/" + userId()));
