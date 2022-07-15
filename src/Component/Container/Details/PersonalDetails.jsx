@@ -9,16 +9,7 @@ import { setData, getData } from "./server";
 export const PersonalDetails = () => {
   let navigate = useNavigate();
 
-  const [personal, setPersonal] = useState({
-    firstName: "",
-    lastName: "",
-    jobTitle: "",
-    phoneNumber: "",
-    emailAddress: "",
-    personalWebsite: "",
-    city: "",
-    country: "",
-  });
+  const [personal, setPersonal] = useState({});
 
   useEffect(() => {
     getData("personal", setPersonal);
