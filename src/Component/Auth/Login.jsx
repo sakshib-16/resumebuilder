@@ -1,33 +1,23 @@
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-import { useSelector, useDispatch } from "react-redux";
-import { LoginContainer } from "./LoginContainer";
-import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React from "react";
+import { Form } from "./Form";
+import classes from "./auth.module.css";
+import { Link } from "react-router-dom";
+import { AuthHOC } from "./AuthHOC";
+import { signInWithEmailAndPassword } from "firebase/auth";
 
-export const Login = ({ btn, msg }) => {
-  const credential = useSelector((i) => i.authReducer);
-  const [loggedUser, setLoggedUser] = useState();
-  let navigate = useNavigate();
-  let dispatch = useDispatch();
-
-  useEffect(() => loggedUser && navigate("/homepage"), [loggedUser]);
-
-  const auth = getAuth();
-  signInWithEmailAndPassword(auth, credential.email, credential.password)
-    .then((userCredential) => {
-      // Signed in
-      const user = userCredential.user;
-      console.log(user.uid);
-
-      setLoggedUser(user);
-      sessionStorage.setItem("loginSession", true);
-      sessionStorage.setItem("uid", user.uid);
-
-      dispatch({ type: "UID", payload: userCredential.user.uid });
-    })
-    .catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-    });
-  return <LoginContainer btn={btn} msg={msg} />;
+const LoginContainer = () => {
+  return (
+    <div className={classes.login}>
+      <div className={classes.banner}></div>
+      <div>
+        <Form btn="Sign in" msg="Nice to see you again" />
+        <div className={classes.signup_msg}>
+          <p>Dont have an account?</p>
+          <Link to="/">Sign up now</Link>
+        </div>
+      </div>
+    </div>
+  );
 };
+
+export const Login = AuthHOC(LoginContainer, signInWithEmailAndPassword);
