@@ -1,10 +1,8 @@
 ## RESUME BUILDER
 
-Initially created using the react CRA now using [Vite](https://vitejs.dev) for fast Development!
+Initially created using the react CRA now using [Vite](https://vitejs.dev) for faster Development!
 
 ## Dependencies Used
-
-- Redux
 
 - React to Pdf
 

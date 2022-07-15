@@ -11,13 +11,7 @@ import { SubHeader } from "./sub-header/SubHeader";
 import { setData, getData } from "./server";
 
 export const Certificates = () => {
-  const [certificate, setCertificate] = useState({
-    cername: null,
-    cerfrommonth: null,
-    cerfromyear: null,
-    certomonth: null,
-    certoyear: null,
-  });
+  const [certificate, setCertificate] = useState({});
 
   let navigate = useNavigate();
 

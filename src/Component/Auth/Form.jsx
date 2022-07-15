@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import classes from "./form.module.css";
 import VisibilityIcon from "@mui/icons-material/Visibility";
-import { useDispatch } from "react-redux";
 import { Logo } from "../logo/Logo";
 import { Typography } from "../logo/Typography.jsx";
+import { useContext } from "react";
+import AuthContext from "./AuthContext";
 
 export const Form = ({ btn, msg }) => {
-  const dispatch = useDispatch();
+  const user = useContext(AuthContext);
   const [auth, setAuth] = useState({});
   const [toggle, setToggle] = useState(false);
   return (
@@ -81,7 +82,7 @@ export const Form = ({ btn, msg }) => {
           className={classes.btn}
           onClick={(e) => {
             e.preventDefault();
-            dispatch({ type: "AUTH", payload: auth });
+            user.login(auth);
           }}
         >
           {btn}

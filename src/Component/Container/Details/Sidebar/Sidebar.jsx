@@ -7,9 +7,6 @@ export const Sidebar = () => {
     <div className={classes.sidebar}>
       <div className={classes.list}>
         <ul>
-          {/* <Link to="/layout">
-            <li>Personal Details</li>
-          </Link> */}
           <NavLink
             to="/layout"
             end

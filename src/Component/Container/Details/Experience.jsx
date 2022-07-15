@@ -8,6 +8,7 @@ import { AddButton } from "./AddButton";
 export const Experience = () => {
   const [experience, setExperience] = useState([]);
   const [counter, setCounter] = useState(0);
+
   let navigate = useNavigate();
 
   const handleClick = () => setCounter(counter + 1);
@@ -31,32 +32,30 @@ export const Experience = () => {
   };
 
   return (
-    <>
-      <div>
-        <AddButton click={handleClick} title="Experience" />
+    <div>
+      <AddButton click={handleClick} title="Experience" />
 
-        {Array.from(Array(counter)).map((c, i) => {
-          return (
-            <ExperienceWrapper
-              key={i}
-              data={experience?.[i]}
-              click={() => remove(experience?.[i])}
-              set={(name, value) => {
-                setExperience(
-                  experience[i]?.id
-                    ? experience.map((a) => {
-                        if (a.id === experience[i].id)
-                          a = { ...a, [name]: value };
-                        return a;
-                      })
-                    : [...experience, { [name]: value, id: Date.now() }]
-                );
-              }}
-            />
-          );
-        })}
-        <Submit click={Push} />
-      </div>
-    </>
+      {Array.from(Array(counter)).map((_, i) => {
+        return (
+          <ExperienceWrapper
+            key={i}
+            data={experience?.[i]}
+            click={() => remove(experience?.[i])}
+            set={(name, value) => {
+              setExperience(
+                experience[i]?.id
+                  ? experience.map((a) => {
+                      if (a.id === experience[i].id)
+                        a = { ...a, [name]: value };
+                      return a;
+                    })
+                  : [...experience, { [name]: value, id: Date.now() }]
+              );
+            }}
+          />
+        );
+      })}
+      <Submit click={Push} />
+    </div>
   );
 };
