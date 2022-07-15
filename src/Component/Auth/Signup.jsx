@@ -1,37 +1,23 @@
+import React from "react";
 import { Form } from "./Form";
 import classes from "./auth.module.css";
 import { Link } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { menu } from "../../Redux/action";
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
-import { SignupContainer } from "./SignupContainer";
-import HomePage from "../Container/Homepage/Homepage";
+import { AuthHOC } from "./AuthHOC";
+import { createUserWithEmailAndPassword } from "firebase/auth";
 
-const Signup = ({ btn, msg }) => {
-  // const [menu, setMenu] = useState(false)
-  const dispatch = useDispatch();
-  const isLoggedIn = useSelector((i) => i.menuReducer);
-  const credential = useSelector((i) => i.authReducer);
-  const auth = getAuth();
-  createUserWithEmailAndPassword(auth, credential.email, credential.password)
-    .then((userCredential) => {
-      // Signed in
-      const user = userCredential.user;
-     // dispatch(menu(true));
-          console.log(userCredential.user.uid);
-
-      //  setMenu(true)
-      // ...
-    })
-    .catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      // ..
-    });
-
+const SignupContainer = () => {
   return (
-    <>{!isLoggedIn ? <SignupContainer btn={btn} msg={msg} /> : <HomePage />}</>
+    <div className={classes.signup}>
+      <div className={classes.banner}></div>
+      <div>
+        <Form btn="Sign Up" msg="Make you Account" />
+        <div className={classes.signin_msg}>
+          <p>Already have an account?</p>
+          <Link to="/login">Sign in now</Link>
+        </div>
+      </div>
+    </div>
   );
 };
 
-export default Signup;
+export const Signup = AuthHOC(SignupContainer, createUserWithEmailAndPassword);

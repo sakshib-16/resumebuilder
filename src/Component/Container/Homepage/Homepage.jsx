@@ -9,7 +9,7 @@ const HomePage = () => {
       <Navigation />
       <div className={classes.homepage}>
         <div className={classes.content}>
-          <spam> Make your resume </spam>
+          <span> Make your resume </span>
           <p>
             Build your resume on our website and get a free analysis report your
             our AI algorithm
