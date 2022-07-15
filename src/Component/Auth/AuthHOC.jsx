@@ -1,27 +1,25 @@
 import { getAuth } from "firebase/auth";
-import { useSelector, useDispatch } from "react-redux";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import AuthContext from "./AuthContext";
 
 export const AuthHOC = (Auth, AuthFunction) => {
   return () => {
-    const credential = useSelector((i) => i.authReducer);
+    const user = useContext(AuthContext).user;
     const [loggedUser, setLoggedUser] = useState();
     let navigate = useNavigate();
-    let dispatch = useDispatch();
 
     useEffect(() => {
       loggedUser && navigate("/homepage");
       return () => setLoggedUser("");
     }, [loggedUser]);
 
-    const entries =
-      credential !== null ? Object.entries(credential).length : null;
+    const entries = user !== null ? Object.entries(user).length : null;
 
     const auth = getAuth();
 
     if (entries && !loggedUser) {
-      AuthFunction(auth, credential.email, credential.password)
+      AuthFunction(auth, user.email, user.password)
         .then((userCredential) => {
           const user = userCredential.user;
           setLoggedUser(user);
