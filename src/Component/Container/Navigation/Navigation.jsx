@@ -36,7 +36,7 @@ export const Navigation = () => {
         </div>
         <div className={classes.logoutContainer}>
           <div className={classes.user_option} onClick={showHide}>
-            <img src="user.svg" alt="user" />
+            <img src="/user.svg" alt="user" />
             <ArrowDropDownIcon sx={{ fontSize: 30 }} />
           </div>
         </div>

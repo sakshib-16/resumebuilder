@@ -4,15 +4,12 @@ import EditIcon from "@mui/icons-material/Edit";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import DownloadIcon from "@mui/icons-material/Download";
 import { Link } from "react-router-dom";
-import { ref, set, onValue, remove } from "firebase/database";
-import db from "../../../Firebase/Firebase";
-import { useSelector } from "react-redux";
+import { removeData } from "../Details/server";
 
 export const MyResume = () => {
-  const userid = useSelector((id) => id.userIdReducer);
   const deleteData = () => {
     const confirm = window.confirm("Do you want to delete this resume?");
-    if (confirm) remove(ref(db, "container/" + userid));
+    if (confirm) removeData();
   };
 
   return (

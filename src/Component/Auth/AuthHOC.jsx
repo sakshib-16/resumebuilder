@@ -24,12 +24,9 @@ export const AuthHOC = (Auth, AuthFunction) => {
       AuthFunction(auth, credential.email, credential.password)
         .then((userCredential) => {
           const user = userCredential.user;
-          console.log(user.uid);
           setLoggedUser(user);
           sessionStorage.setItem("loginSession", true);
           sessionStorage.setItem("uid", user.uid);
-
-          dispatch({ type: "UID", payload: userCredential.user.uid });
         })
         .catch((error) => {
           console.log(error.message);
