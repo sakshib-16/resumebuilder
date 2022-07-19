@@ -1,20 +1,20 @@
-import React, { useState } from "react";
-import classes from "./form.module.css";
-import VisibilityIcon from "@mui/icons-material/Visibility";
-import { Logo } from "../logo/Logo";
-import { Typography } from "../logo/Typography.jsx";
-import { useContext } from "react";
-import AuthContext from "./AuthContext";
+import React, { useState } from 'react';
+import classes from './form.module.css';
+import VisibilityIcon from '@mui/icons-material/Visibility';
+import { Logo } from '../logo/Logo';
+import { useContext } from 'react';
+import AuthContext from './AuthContext';
+import { getAuth, sendPasswordResetEmail } from 'firebase/auth';
 
 export const Form = ({ btn, msg }) => {
   const user = useContext(AuthContext);
   const [auth, setAuth] = useState({});
   const [toggle, setToggle] = useState(false);
+
   return (
     <div className={classes.form}>
       <div className={classes.logoWrapper}>
         <Logo />
-        <Typography />
       </div>
       <p className={classes.login_msg}>{msg}</p>
       <form>
@@ -29,25 +29,25 @@ export const Form = ({ btn, msg }) => {
         <label className={classes.label}>Password</label>
         <div className={classes.input}>
           <input
-            type={auth.showPassword ? "text" : "password"}
+            type={auth.showPassword ? 'text' : 'password'}
             className={classes.input_box}
             placeholder="Enter password"
             onChange={(e) => setAuth({ ...auth, password: e.target.value })}
           />
           <VisibilityIcon
-            sx={{ color: "#4D4D4D", fontSize: 18 }}
+            sx={{ color: '#4D4D4D', fontSize: 18 }}
             onMouseUp={() => setAuth({ ...auth, showPassword: false })}
             onMouseDown={() => {
               setAuth({ ...auth, showPassword: true });
             }}
           />
         </div>
-        {btn === "Sign Up" && (
+        {btn === 'Sign Up' && (
           <>
             <label className={classes.label}>Re-Password</label>
             <div className={classes.input}>
               <input
-                type={auth.reShowPassword ? "text" : "password"}
+                type={auth.reShowPassword ? 'text' : 'password'}
                 className={classes.input_box}
                 placeholder="Enter password"
                 onChange={(e) =>
@@ -55,7 +55,7 @@ export const Form = ({ btn, msg }) => {
                 }
               />
               <VisibilityIcon
-                sx={{ color: "#4D4D4D", fontSize: 18 }}
+                sx={{ color: '#4D4D4D', fontSize: 18 }}
                 onMouseUp={() => setAuth({ ...auth, reShowPassword: false })}
                 onMouseDown={() => {
                   setAuth({ ...auth, reShowPassword: true });
@@ -75,7 +75,23 @@ export const Form = ({ btn, msg }) => {
             </div>
             <label className={classes.remember}>Remember me</label>
           </div>
-          <a href="">Forgot password?</a>
+          <p
+            className={classes.forgot}
+            onClick={() => {
+              const mail = prompt(
+                'Enter your Email to get the password reset mail'
+              );
+              if (mail) {
+                sendPasswordResetEmail(getAuth(), mail)
+                  .then(() => alert('Reset Link sent to the mail'))
+                  .catch((error) => {
+                    alert(error.code);
+                  });
+              }
+            }}
+          >
+            Forgot password?
+          </p>
         </div>
 
         <button

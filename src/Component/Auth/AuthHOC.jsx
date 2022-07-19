@@ -1,7 +1,7 @@
-import { getAuth } from "firebase/auth";
-import { useContext, useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import AuthContext from "./AuthContext";
+import { getAuth } from 'firebase/auth';
+import { useContext, useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import AuthContext from './AuthContext';
 
 export const AuthHOC = (Auth, AuthFunction) => {
   return () => {
@@ -10,8 +10,8 @@ export const AuthHOC = (Auth, AuthFunction) => {
     let navigate = useNavigate();
 
     useEffect(() => {
-      loggedUser && navigate("/homepage");
-      return () => setLoggedUser("");
+      loggedUser && navigate('/homepage');
+      return () => setLoggedUser('');
     }, [loggedUser]);
 
     const entries = user !== null ? Object.entries(user).length : null;
@@ -23,8 +23,8 @@ export const AuthHOC = (Auth, AuthFunction) => {
         .then((userCredential) => {
           const user = userCredential.user;
           setLoggedUser(user);
-          sessionStorage.setItem("loginSession", true);
-          sessionStorage.setItem("uid", user.uid);
+          sessionStorage.setItem('loginSession', true);
+          sessionStorage.setItem('uid', user.uid);
         })
         .catch((error) => {
           console.log(error.message);

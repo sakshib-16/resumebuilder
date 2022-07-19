@@ -1,14 +1,14 @@
-import React from "react";
-import classes from "./resume.module.css";
-import EditIcon from "@mui/icons-material/Edit";
-import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
-import DownloadIcon from "@mui/icons-material/Download";
-import { Link } from "react-router-dom";
-import { removeData } from "../Details/server";
+import React from 'react';
+import classes from './resume.module.css';
+import EditIcon from '@mui/icons-material/Edit';
+import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
+import DownloadIcon from '@mui/icons-material/Download';
+import { Link } from 'react-router-dom';
+import { removeData } from '../Details/server';
 
 export const MyResume = () => {
   const deleteData = () => {
-    const confirm = window.confirm("Do you want to delete this resume?");
+    const confirm = window.confirm('Do you want to delete this resume?');
     if (confirm) removeData();
   };
 
@@ -23,7 +23,7 @@ export const MyResume = () => {
         <p>Untitled Resume</p>
         <div className={classes.option}>
           <EditIcon />
-          <Link to="/layout">
+          <Link className={classes.link} to="/layout">
             <span>Edit</span>
           </Link>
         </div>

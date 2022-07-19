@@ -1,7 +1,7 @@
-import { Navigate } from "react-router-dom";
+import { Navigate } from 'react-router-dom';
 
 const Protected = ({ children }) => {
-  const isLoggedIn = sessionStorage.getItem("loginSession");
+  const isLoggedIn = sessionStorage.getItem('loginSession');
   if (!isLoggedIn) {
     return <Navigate to="/" replace />;
   }

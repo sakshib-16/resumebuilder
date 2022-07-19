@@ -15,7 +15,7 @@
   font-size: 20px;
   align-self: flex-start;
   color: #1a1a1a;
-  font-family: "Inter", sans-serif;
+  font-family: 'Inter', sans-serif;
 }
 
 .input {
@@ -45,14 +45,14 @@
   font-size: 11px;
   letter-spacing: 0.3px;
   align-self: flex-start;
-  font-family: "Inter", sans-serif;
+  font-family: 'Inter', sans-serif;
 }
 
 .options {
   display: flex;
   justify-content: space-between;
   margin: 10px 2px;
-  font-family: "Inter";
+  font-family: 'Inter';
   font-size: 12px;
   letter-spacing: 0.3px;
   line-height: 20px;
@@ -60,6 +60,7 @@
 
 .options div {
   display: flex;
+  align-items: center;
 }
 
 .options label {
@@ -77,7 +78,7 @@
   background: #1ea5fc;
   height: 40px;
   font-weight: 700;
-  font-family: "Inter", sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 15px;
   color: #fff;
   border-radius: 6px;
@@ -113,6 +114,12 @@
 .remember {
   font-size: 12px;
   line-height: 20px;
+}
+
+.forgot {
+  color: #1ea5fc;
+  user-select: none;
+  cursor: pointer;
 }
 
 .logoWrapper {

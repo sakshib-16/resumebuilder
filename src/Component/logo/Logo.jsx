@@ -1,10 +1,12 @@
+import classes from './logo.module.css';
+
 export const Logo = () => {
   return (
-    <>
+    <div className={classes.logo}>
       <svg width="35.879421" height="41.525383">
         <g transform="matrix(3.7795276,0,0,3.7795276,-53.920574,-132.09415)">
           <g
-            style={{ fill: "none" }}
+            style={{ fill: 'none' }}
             transform="matrix(0.26458333,0,0,0.26458333,14.266485,34.94991)"
           >
             <path
@@ -13,7 +15,7 @@ export const Logo = () => {
             />
           </g>
           <g
-            style={{ fill: "none" }}
+            style={{ fill: 'none' }}
             id="g133"
             transform="matrix(0.26458333,0,0,0.26458333,16.202156,40.075573)"
           >
@@ -24,6 +26,10 @@ export const Logo = () => {
           </g>
         </g>
       </svg>
-    </>
+      <div className={classes.typography}>
+        <p className={classes.p1}>Pro</p>
+        <p className={classes.p2}>Resume</p>
+      </div>
+    </div>
   );
 };
