@@ -60,6 +60,7 @@
 
 .options div {
   display: flex;
+  align-items: center;
 }
 
 .options label {
