@@ -1,3 +1,8 @@
+.logo {
+  display: flex;
+  align-items: center;
+}
+
 .p2 {
   color: #1ea5fc;
   display: inline-block;
@@ -11,4 +16,7 @@
   display: inline-block;
   font-size: 1.4rem;
   user-select: none;
+  font-family: Inter, sans-serif;
+  font-weight: 700;
+  margin-left: 10px;
 }

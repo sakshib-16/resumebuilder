@@ -2,19 +2,19 @@ import React, { useState } from 'react';
 import classes from './form.module.css';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import { Logo } from '../logo/Logo';
-import { Typography } from '../logo/Typography.jsx';
 import { useContext } from 'react';
 import AuthContext from './AuthContext';
+import { getAuth, sendPasswordResetEmail } from 'firebase/auth';
 
 export const Form = ({ btn, msg }) => {
   const user = useContext(AuthContext);
   const [auth, setAuth] = useState({});
   const [toggle, setToggle] = useState(false);
+
   return (
     <div className={classes.form}>
       <div className={classes.logoWrapper}>
         <Logo />
-        <Typography />
       </div>
       <p className={classes.login_msg}>{msg}</p>
       <form>
@@ -75,7 +75,23 @@ export const Form = ({ btn, msg }) => {
             </div>
             <label className={classes.remember}>Remember me</label>
           </div>
-          <a href="">Forgot password?</a>
+          <p
+            className={classes.forgot}
+            onClick={() => {
+              const mail = prompt(
+                'Enter your Email to get the password reset mail'
+              );
+              if (mail) {
+                sendPasswordResetEmail(getAuth(), mail)
+                  .then(() => alert('Reset Link sent to the mail'))
+                  .catch((error) => {
+                    alert(error.code);
+                  });
+              }
+            }}
+          >
+            Forgot password?
+          </p>
         </div>
 
         <button

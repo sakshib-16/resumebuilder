@@ -115,6 +115,12 @@
   line-height: 20px;
 }
 
+.forgot {
+  color: #1ea5fc;
+  user-select: none;
+  cursor: pointer;
+}
+
 .logoWrapper {
   margin-top: 10px;
 }

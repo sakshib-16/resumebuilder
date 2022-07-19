@@ -1,19 +1,19 @@
-import classes from "./navigation.module.css";
-import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import classes from './navigation.module.css';
+import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-import { getAuth, signOut } from "firebase/auth";
-import { Logo } from "../../logo/Logo";
-import { Typography } from "../../logo/Typography";
-import { useContext } from "react";
-import AuthContext from "../../Auth/AuthContext";
+import { getAuth, signOut } from 'firebase/auth';
+import { Logo } from '../../logo/Logo';
+import { useContext } from 'react';
+import AuthContext from '../../Auth/AuthContext';
 
 export const Navigation = () => {
   const user = useContext(AuthContext);
   const [show, setShow] = useState(false);
   let navigate = useNavigate();
-  const showHide = () => (!show ? setShow(true) : setShow(false));
+
+  const showHide = () => setShow(!show);
 
   const logout = () => {
     const auth = getAuth();
@@ -21,7 +21,7 @@ export const Navigation = () => {
       .then(() => {
         sessionStorage.clear();
         user.login(null);
-        navigate("/login");
+        navigate('/login');
       })
       .catch((error) => {
         console.log(error);
@@ -33,7 +33,6 @@ export const Navigation = () => {
       <div className={classes.nav}>
         <div className={classes.logo}>
           <Logo />
-          <Typography />
         </div>
         <div className={classes.logoutContainer}>
           <div className={classes.user_option} onClick={showHide}>
