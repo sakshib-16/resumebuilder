@@ -1,9 +1,9 @@
-import React from "react";
-import { Form } from "./Form";
-import classes from "./auth.module.css";
-import { Link } from "react-router-dom";
-import { AuthHOC } from "./AuthHOC";
-import { signInWithEmailAndPassword } from "firebase/auth";
+import React from 'react';
+import { Form } from './Form';
+import classes from './auth.module.css';
+import { Link } from 'react-router-dom';
+import { AuthHOC } from './AuthHOC';
+import { signInWithEmailAndPassword } from 'firebase/auth';
 
 const LoginContainer = () => {
   return (
