@@ -51,6 +51,7 @@
 .link {
   text-decoration: none;
   color: #504e4e;
+  width: fit-content;
 }
 
 .option {
@@ -73,4 +74,3 @@
 .create_resumeicon p {
   text-decoration: none;
 }
-
